@@ -12,9 +12,9 @@ title                    : "Hii There"
 title_separator          : "-"
 name                     : &name "Yash Singh Pathania"
 description              : &description "Hey there! I’m Yash, a Ruby and Python developer with a knack for AWS, diving into computer vision, and pioneering AR/VR. I love blending tech with a dash of sci-fi, turning futuristic dreams into reality. From backend architectures to immersive AR experiences, I’m all about exploring new dimensions of code and pushing the boundaries of what’s possible."
-url                      : https://yash_singh_pathania.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
-baseurl                  : "" # the subpath of your site, e.g. "/blog"
-repository               : "academicpages/academicpages.github.io"
+url                      : https://yash-git-hub.github.io/
+baseurl                  : "this_is_me/"
+repository               : "https://github.com/Yash-Git-Hub/this_is_me"
 
 # Site Author - The following control what appear as part of the author content on the side bar.
 #               If a field is blank the icon and link will not appear, otherwise it will be shown.
