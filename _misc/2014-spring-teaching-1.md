@@ -1,20 +1,10 @@
 ---
-title: "Teaching experience 1"
-collection: misc
-type: "Undergraduate course"
-permalink: /misc/2014-spring-teaching-1
-venue: "University 1, Department"
-date: 2014-01-01
-location: "City, Country"
+title: "Cooking"
+permalink: /misc/cooking
 ---
+I love to cook and was lucky enough to participate in one of the biggest reality TV shows in India, “Young Chef Ahmedabad,” as a high schooler. 🍳
 
-This is a description of a teaching experience. You can use markdown like any other post.
+As an international student in Ireland, I enjoy exploring new cuisines and cooking for friends. If you’re nearby, feel free to drop by for a meal—good food and great company never hurt anyone! 🌍🍲
 
-Heading 1
-======
+<iframe width="1022" height="436" src="https://www.youtube.com/embed/1DojHklphOs" title="Young Chef India on NDTV - Ahmedabad" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
-Heading 2
-======
-
-Heading 3
-======

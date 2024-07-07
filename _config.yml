@@ -184,17 +184,19 @@ defaults:
       path: ""
       type: posts
     values:
+      exclude: /leetcode/
       layout: single
       author_profile: true
       read_time: true
-      comments: true
-      related: true
+      comments: false
+      related: false
   # _pages
   - scope:
       path: ""
       type: pages
     values:
-      read_time: true
+      exclude: /leetcode/
+      read_time: false
       layout: single
       author_profile: true
   # _misc
@@ -214,7 +216,7 @@ defaults:
       layout: single
       author_profile: true
       share: true
-      comments: true
+      comments: false
   # _projects
   - scope:
       path: ""
@@ -222,8 +224,8 @@ defaults:
     values:
       layout: single
       author_profile: true
-      share: true
-      comment: true
+      share: false
+      comment: false
 
 # Sass/SCSS
 sass:

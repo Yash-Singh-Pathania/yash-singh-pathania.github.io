@@ -13,7 +13,7 @@ citation: 'Yash Singh Pathania,(2021). &quot;An Optimized Deep Learning Model fo
 
 Sentiment analysis of tweets has become increasingly important due to the wide range of emotions expressed, from national leaders to the average person. This paper proposes a hybrid LSTM-CNN model to improve accuracy and efficiency by comparing various deep learning and machine learning techniques.
 
-This research was conducted during my undergraduate minor under the capable guidance of [Ps Rana](https://www.psrana.com) at Thapar Institute of Technology.
+This research was conducted during my CS undergraduate minors in Data Science under the capable guidance of [Ps Rana](https://www.psrana.com) at Thapar Institute of Technology.
 
 ### Research Methodology
 
