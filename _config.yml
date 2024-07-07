@@ -185,6 +185,7 @@ defaults:
       type: posts
     values:
       layout: single
+      show_in_archive: true
       author_profile: true
       read_time: true
       comments: false
