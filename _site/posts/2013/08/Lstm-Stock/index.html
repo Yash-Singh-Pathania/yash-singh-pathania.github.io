@@ -1,0 +1,728 @@
+
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+
+<meta charset="utf-8">
+
+
+
+<!-- begin SEO -->
+
+
+
+
+
+
+
+
+
+<title>Predicting Stock Prices with Sentiment Analysis  📈😄 - Hii There</title>
+
+
+
+
+
+
+
+<meta property="og:locale" content="en-US">
+<meta property="og:site_name" content="Hii There">
+<meta property="og:title" content="Predicting Stock Prices with Sentiment Analysis  📈😄">
+
+
+  <link rel="canonical" href="http://localhost:4000/this_is_me/posts/2013/08/Lstm-Stock/">
+  <meta property="og:url" content="http://localhost:4000/this_is_me/posts/2013/08/Lstm-Stock/">
+
+
+
+  <meta property="og:description" content="The ideation of this project came from our capstone project under Dr. Seema Bhardwaj. We aimed to create an ML model predictor to help protect my friends from dubious websites and irregular patterns. Simple Stock, the product we developed, focused on prediction and teaching students about stock market trends. This blog deals with the prediction part and our approach to it. If you’re interested in learning more about the product here is much lengthier brief about it .">
+
+
+
+
+
+  
+
+  
+
+
+
+
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2022-06-14T00:00:00+01:00">
+
+
+
+
+
+
+
+
+  <script type="application/ld+json">
+    {
+      "@context" : "http://schema.org",
+      "@type" : "Person",
+      "name" : "Yash Singh Pathania",
+      "url" : "http://localhost:4000/this_is_me",
+      "sameAs" : null
+    }
+  </script>
+
+
+
+
+
+
+<!-- end SEO -->
+
+
+<link href="http://localhost:4000/this_is_me/feed.xml" type="application/atom+xml" rel="alternate" title="Hii There Feed">
+
+<!-- http://t.co/dKP3o1e -->
+<meta name="HandheldFriendly" content="True">
+<meta name="MobileOptimized" content="320">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<script>
+  document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
+</script>
+
+<!-- For all browsers -->
+<link rel="stylesheet" href="http://localhost:4000/this_is_me/assets/css/main.css">
+
+<meta http-equiv="cleartype" content="on">
+    
+
+<!-- start custom head snippets -->
+
+<link rel="apple-touch-icon" sizes="57x57" href="http://localhost:4000/this_is_me/images/apple-touch-icon-57x57.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="60x60" href="http://localhost:4000/this_is_me/images/apple-touch-icon-60x60.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="72x72" href="http://localhost:4000/this_is_me/images/apple-touch-icon-72x72.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="76x76" href="http://localhost:4000/this_is_me/images/apple-touch-icon-76x76.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="114x114" href="http://localhost:4000/this_is_me/images/apple-touch-icon-114x114.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="120x120" href="http://localhost:4000/this_is_me/images/apple-touch-icon-120x120.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="144x144" href="http://localhost:4000/this_is_me/images/apple-touch-icon-144x144.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="152x152" href="http://localhost:4000/this_is_me/images/apple-touch-icon-152x152.png?v=M44lzPylqQ">
+<link rel="apple-touch-icon" sizes="180x180" href="http://localhost:4000/this_is_me/images/apple-touch-icon-180x180.png?v=M44lzPylqQ">
+<link rel="icon" type="image/png" href="http://localhost:4000/this_is_me/images/favicon-32x32.png?v=M44lzPylqQ" sizes="32x32">
+<link rel="icon" type="image/png" href="http://localhost:4000/this_is_me/images/android-chrome-192x192.png?v=M44lzPylqQ" sizes="192x192">
+<link rel="icon" type="image/png" href="http://localhost:4000/this_is_me/images/favicon-96x96.png?v=M44lzPylqQ" sizes="96x96">
+<link rel="icon" type="image/png" href="http://localhost:4000/this_is_me/images/favicon-16x16.png?v=M44lzPylqQ" sizes="16x16">
+<link rel="manifest" href="http://localhost:4000/this_is_me/images/manifest.json?v=M44lzPylqQ">
+<link rel="mask-icon" href="http://localhost:4000/this_is_me/images/safari-pinned-tab.svg?v=M44lzPylqQ" color="#000000">
+<link rel="shortcut icon" href="/images/favicon.ico?v=M44lzPylqQ">
+<meta name="msapplication-TileColor" content="#000000">
+<meta name="msapplication-TileImage" content="http://localhost:4000/this_is_me/images/mstile-144x144.png?v=M44lzPylqQ">
+<meta name="msapplication-config" content="http://localhost:4000/this_is_me/images/browserconfig.xml?v=M44lzPylqQ">
+<meta name="theme-color" content="#ffffff">
+<link rel="stylesheet" href="http://localhost:4000/this_is_me/assets/css/academicons.css"/>
+
+
+<!-- Support for MatJax -->
+<script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+<script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+<!-- end custom head snippets -->
+
+  </head>
+
+  <body>
+
+    <!--[if lt IE 9]>
+<div class="notice--danger align-center" style="margin: 0;">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</div>
+<![endif]-->
+    
+
+<div class="masthead">
+  <div class="masthead__inner-wrap">
+    <div class="masthead__menu">
+      <nav id="site-nav" class="greedy-nav">
+        <button><div class="navicon"></div></button>
+        <ul class="visible-links">
+          <li class="masthead__menu-item masthead__menu-item--lg"><a href="http://localhost:4000/this_is_me/">Hii There</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/this_is_me/publications/">Publications</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/this_is_me/teaching/">Teaching</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/this_is_me/Projects/">Projects</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/this_is_me/year-archive/">Blog Posts</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/this_is_me/cv/">CV</a></li>
+          
+            
+            <li class="masthead__menu-item"><a href="http://localhost:4000/this_is_me/markdown/">Guide</a></li>
+          
+        </ul>
+        <ul class="hidden-links hidden"></ul>
+      </nav>
+    </div>
+  </div>
+</div>
+
+    
+
+
+
+
+
+<div id="main" role="main">
+  
+
+
+  <div class="sidebar sticky">
+  
+
+
+
+<div itemscope itemtype="http://schema.org/Person">
+
+  <div class="author__avatar">
+    
+    	<img src="http://localhost:4000/this_is_me/images/profile.png" class="author__avatar" alt="Yash">
+    
+  </div>
+
+  <div class="author__content">
+    <h3 class="author__name">Yash</h3>
+    <p class="author__pronouns">he/him</p>
+    <p class="author__bio">Solving everyday problems through code, one line at a time.</p>
+  </div>
+
+  <div class="author__urls-wrapper">
+    <button class="btn btn--inverse">Follow</button>
+    <ul class="author__urls social-icons">
+      <!-- Font Awesome icons / Biographic information  -->
+      
+        <li class="author__desktop"><i class="fa-solid fa-location-dot icon-pad-right" aria-hidden="true"></i>Dublin, Ireland</li>
+      
+
+      
+      
+      
+        <li><a href="mailto:yashpathania704@gmail.com"><i class="fas fa-fw fa-envelope icon-pad-right" aria-hidden="true"></i>Email</a></li>
+      
+
+      
+        <li class="author__desktop"><i class="fa-solid fa-graduation-cap icon-pad-right" aria-hidden="true"></i>University College Dublin</li>
+      
+      
+        <li class="author__desktop"><i class="fa-solid fa-book icon-pad-right" aria-hidden="true"></i>Thapar Institute Of Technology</li>
+      
+
+      <!-- Font Awesome and Academicons icons / Academic websites -->
+            
+      
+      
+      
+      
+                              
+      
+
+      <!-- Font Awesome icons / Repositories and software development -->
+      
+            
+            
+      
+        <li><a href="https://github.com/Yash-Git-Hub"><i class="fab fa-fw fa-github icon-pad-right" aria-hidden="true"></i>Github</a></li>
+      
+            
+            
+
+      <!-- Font Awesome icons / Social media -->
+      
+      
+
+      
+        <li><a href="https://monkeytype.com/profile/Yash_07"><i class="fa-solid fa-keyboard icon-pad-right" aria-hidden="true"></i>Monkeytype</a></li>
+      
+            
+      
+                  
+                  
+      
+            
+            
+      
+        <li><a href="https://www.linkedin.com/in/yashhere/"><i class="fab fa-fw fa-linkedin icon-pad-right" aria-hidden="true"></i>LinkedIn</a></li>
+            
+      
+            
+                  
+            
+      
+            
+            
+      
+              
+      
+                      
+      
+      
+            
+    </ul>
+  </div>
+</div>
+
+  
+  </div>
+
+
+  <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
+    <meta itemprop="headline" content="Predicting Stock Prices with Sentiment Analysis  📈😄">
+    <meta itemprop="description" content="The ideation of this project came from our capstone project under Dr. Seema Bhardwaj. We aimed to create an ML model predictor to help protect my friends from dubious websites and irregular patterns. Simple Stock, the product we developed, focused on prediction and teaching students about stock market trends. This blog deals with the prediction part and our approach to it. If you’re interested in learning more about the product here is much lengthier brief about it .">
+    <meta itemprop="datePublished" content="June 14, 2022">
+    
+
+    <div class="page__inner-wrap">
+      
+        <header>
+          <h1 class="page__title" itemprop="headline">Predicting Stock Prices with Sentiment Analysis  📈😄
+</h1>
+          
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  4 minute read
+	
+</p>
+          
+        
+        
+        
+          <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2022-06-14T00:00:00+01:00">June 14, 2022</time></p>
+            
+        </header>
+      
+
+      <section class="page__content" itemprop="text">
+        <p>The ideation of this project came from our capstone project under <a href="https://csed.thapar.edu/facultydetails/OTYx">Dr. Seema Bhardwaj</a>. We aimed to create an ML model predictor to help protect my friends from dubious websites and irregular patterns. Simple Stock, the product we developed, focused on prediction and teaching students about stock market trends. This blog deals with the prediction part and our approach to it. If you’re interested in learning more about the product here is much lengthier <a href="https://drive.google.com/file/d/1-iVwzWASrF0pgtrxj69C8T6OpCDish6C/view?usp=share_link">brief</a> about it .</p>
+
+<p>In this blog post, I’ll take you through one of my exciting data science projects where I used sentiment analysis of news articles to predict stock prices using an LSTM model. Let’s dive in! 🚀</p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>Predicting stock prices is a challenging task due to the numerous factors influencing them. In this project, we will use the VADER sentiment analysis model to analyze news articles and incorporate their sentiment scores as features in our stock price prediction model. Our model will use an LSTM (Long Short-Term Memory) architecture to make predictions based on historical stock prices and news sentiments.</p>
+
+<h2 id="step-by-step-guide">Step-by-Step Guide</h2>
+
+<h3 id="step-1-data-collection-">Step 1: Data Collection 📝</h3>
+
+<p>First, we need to collect historical stock prices and news articles. For this project, I used data from the New York Times and historical stock prices of the top 10 companies in the S&amp;P 500 index.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">yfinance</span> <span class="k">as</span> <span class="n">yf</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+
+<span class="c1"># List of top 10 S&amp;P 500 companies
+</span><span class="n">companies</span> <span class="o">=</span> <span class="p">[</span><span class="s">"AAPL"</span><span class="p">,</span> <span class="s">"MSFT"</span><span class="p">,</span> <span class="s">"AMZN"</span><span class="p">,</span> <span class="s">"GOOGL"</span><span class="p">,</span> <span class="s">"FB"</span><span class="p">,</span> <span class="s">"TSLA"</span><span class="p">,</span> <span class="s">"BRK-B"</span><span class="p">,</span> <span class="s">"JPM"</span><span class="p">,</span> <span class="s">"JNJ"</span><span class="p">,</span> <span class="s">"V"</span><span class="p">]</span>
+
+<span class="c1"># Download historical stock prices
+</span><span class="n">stock_data</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">company</span> <span class="ow">in</span> <span class="n">companies</span><span class="p">:</span>
+    <span class="n">stock_data</span><span class="p">[</span><span class="n">company</span><span class="p">]</span> <span class="o">=</span> <span class="n">yf</span><span class="p">.</span><span class="n">download</span><span class="p">(</span><span class="n">company</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="s">"2015-01-01"</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s">"2020-12-31"</span><span class="p">)</span>
+    
+<span class="c1"># Convert to DataFrame
+</span><span class="n">stock_prices</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">concat</span><span class="p">(</span><span class="n">stock_data</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">stock_prices</span><span class="p">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s">"stock_prices.csv"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="step-2-sentiment-analysis-with-vader-">Step 2: Sentiment Analysis with VADER 😃😞</h3>
+
+<p>Next, we’ll use the VADER sentiment analysis model to analyze the sentiment of news articles. VADER is a pre-trained model specifically designed for sentiment analysis of social media texts.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">vaderSentiment.vaderSentiment</span> <span class="kn">import</span> <span class="n">SentimentIntensityAnalyzer</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">analyzer</span> <span class="o">=</span> <span class="n">SentimentIntensityAnalyzer</span><span class="p">()</span>
+
+<span class="c1"># Function to fetch and analyze news sentiment
+</span><span class="k">def</span> <span class="nf">fetch_news_sentiment</span><span class="p">(</span><span class="n">company</span><span class="p">):</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s">"https://api.nytimes.com/svc/search/v2/articlesearch.json?q=</span><span class="si">{</span><span class="n">company</span><span class="si">}</span><span class="s">&amp;api-key=YOUR_API_KEY"</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">articles</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">()[</span><span class="s">"response"</span><span class="p">][</span><span class="s">"docs"</span><span class="p">]</span>
+    
+    <span class="n">sentiments</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">article</span> <span class="ow">in</span> <span class="n">articles</span><span class="p">:</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">article</span><span class="p">[</span><span class="s">"lead_paragraph"</span><span class="p">]</span>
+        <span class="n">sentiment</span> <span class="o">=</span> <span class="n">analyzer</span><span class="p">.</span><span class="n">polarity_scores</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="n">sentiments</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">sentiment</span><span class="p">[</span><span class="s">"compound"</span><span class="p">])</span>
+    
+    <span class="k">return</span> <span class="n">sentiments</span>
+
+<span class="c1"># Analyze sentiments for each company
+</span><span class="n">news_sentiments</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">company</span> <span class="ow">in</span> <span class="n">companies</span><span class="p">:</span>
+    <span class="n">news_sentiments</span><span class="p">[</span><span class="n">company</span><span class="p">]</span> <span class="o">=</span> <span class="n">fetch_news_sentiment</span><span class="p">(</span><span class="n">company</span><span class="p">)</span>
+
+<span class="c1"># Convert to DataFrame
+</span><span class="n">sentiment_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">news_sentiments</span><span class="p">)</span>
+<span class="n">sentiment_df</span><span class="p">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s">"news_sentiments.csv"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="step-3-data-preparation-">Step 3: Data Preparation 📊</h3>
+
+<p>We need to prepare our data by merging the stock prices and news sentiments. We’ll also normalize the data to ensure consistency.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Load data
+</span><span class="n">stock_prices</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"stock_prices.csv"</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">sentiments</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"news_sentiments.csv"</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Normalize stock prices
+</span><span class="n">stock_prices_norm</span> <span class="o">=</span> <span class="p">(</span><span class="n">stock_prices</span> <span class="o">-</span> <span class="n">stock_prices</span><span class="p">.</span><span class="n">mean</span><span class="p">())</span> <span class="o">/</span> <span class="n">stock_prices</span><span class="p">.</span><span class="n">std</span><span class="p">()</span>
+
+<span class="c1"># Merge data
+</span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">concat</span><span class="p">([</span><span class="n">stock_prices_norm</span><span class="p">,</span> <span class="n">sentiments</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">data</span><span class="p">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="step-4-building-the-lstm-model-">Step 4: Building the LSTM Model 🧠</h3>
+<p>We’ll build our LSTM model using TensorFlow/Keras. The model will have an input layer, two LSTM layers, and a dense output layer.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">LSTM</span><span class="p">,</span> <span class="n">Dense</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="c1"># Prepare data for LSTM
+</span><span class="k">def</span> <span class="nf">create_dataset</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">window_size</span><span class="p">):</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-</span> <span class="n">window_size</span><span class="p">):</span>
+        <span class="n">X</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">window_size</span><span class="p">])</span>
+        <span class="n">y</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">window_size</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="n">window_size</span> <span class="o">=</span> <span class="mi">60</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">create_dataset</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">values</span><span class="p">,</span> <span class="n">window_size</span><span class="p">)</span>
+
+<span class="c1"># Split data
+</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="c1"># Build LSTM model
+</span><span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">([</span>
+    <span class="n">LSTM</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">return_sequences</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="n">window_size</span><span class="p">,</span> <span class="n">X</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">])),</span>
+    <span class="n">LSTM</span><span class="p">(</span><span class="mi">32</span><span class="p">),</span>
+    <span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">)</span>
+<span class="p">])</span>
+
+<span class="n">model</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s">'adam'</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s">'mse'</span><span class="p">)</span>
+<span class="n">model</span><span class="p">.</span><span class="n">summary</span><span class="p">()</span>
+
+<span class="c1"># Train model
+</span><span class="n">model</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+</code></pre></div></div>
+
+<h3 id="step-5-evaluating-the-model-">Step 5: Evaluating the Model 📉</h3>
+<p>We’ll evaluate our model using the Root Mean Squared Error (RMSE) metric to assess its accuracy.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
+
+<span class="c1"># Predict
+</span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">rmse</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"RMSE: </span><span class="si">{</span><span class="n">rmse</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="conclusion-">Conclusion 🎉</h3>
+<p>In this project, we successfully used sentiment analysis of news articles to improve stock price prediction with an LSTM model. By combining historical stock prices and sentiment scores, our model achieved some pretty impressive results. But hey, there’s always room for improvement! So, don’t hesitate to experiment with different model architectures and datasets. Happy coding! 😊</p>
+
+<p>Oh, and if you want to check out the initial stages and thought process behind this blog, check out these <a href="https://docs.google.com/presentation/d/1p5pjDrXCANU300sAD91NlZbE9xU09SUX/edit?usp=share_link&amp;ouid=112246221369441046993&amp;rtpof=true&amp;sd=true">slides</a> from back when I was in 3rd year. Do remember, I’ve significantly improved at making presentations—oops, I mean coding—since then!</p>
+
+
+        
+
+        
+      </section>
+
+      <footer class="page__meta">
+        
+        
+
+
+  
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/this_is_me/tags/#datascience" class="page__taxonomy-item" rel="tag">DataScience</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/this_is_me/tags/#lstm" class="page__taxonomy-item" rel="tag">Lstm</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/this_is_me/tags/#python" class="page__taxonomy-item" rel="tag">Python</a>
+    
+    </span>
+  </p>
+
+
+
+
+      </footer>
+      
+
+
+  <nav class="pagination">
+    
+      <a href="http://localhost:4000/this_is_me/posts/2012/08/blog-post-4/" class="pagination--pager" title="Blog Post number 4
+">Previous</a>
+    
+    
+      <a href="http://localhost:4000/this_is_me/posts/yjit_upgrade" class="pagination--pager" title="Moving From ruby 2.6 -&gt; Ruby 3.2 Yjit
+">Next</a>
+    
+  </nav>
+
+    </div>
+
+    
+  </article>
+
+  
+  
+    <div class="page__related">
+      
+        <h4 class="page__related-title">You May Also Enjoy</h4>
+      
+      <div class="grid__wrapper">
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/this_is_me/posts/yjit_upgrade" rel="permalink">Moving From ruby 2.6 -&gt; Ruby 3.2 Yjit
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  less than 1 minute read
+	
+</p>
+    
+
+        
+         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2024-04-07T00:00:00+01:00">April 07, 2024</time></p>
+        
+
+    
+    <p class="archive__item-excerpt" itemprop="description"><p>This post will show up by default. To disable scheduling of future posts, edit <code class="language-plaintext highlighter-rouge">config.yml</code> and set <code class="language-plaintext highlighter-rouge">future: false</code>.</p>
+</p>
+    
+    
+    
+
+  </article>
+</div>
+
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/this_is_me/posts/2012/08/blog-post-4/" rel="permalink">Blog Post number 4
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  less than 1 minute read
+	
+</p>
+    
+
+        
+         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2015-08-14T00:00:00+01:00">August 14, 2015</time></p>
+        
+
+    
+    <p class="archive__item-excerpt" itemprop="description"><p>This is a sample blog post. Lorem ipsum I can’t remember the rest of lorem ipsum and don’t have an internet connection right now. Testing testing testing this blog post. Blog posts are cool.</p>
+
+</p>
+    
+    
+    
+
+  </article>
+</div>
+
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/this_is_me/posts/2014/08/blog-post-3/" rel="permalink">Blog Post number 3
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  less than 1 minute read
+	
+</p>
+    
+
+        
+         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2014-08-14T00:00:00+01:00">August 14, 2014</time></p>
+        
+
+    
+    <p class="archive__item-excerpt" itemprop="description"><p>This is a sample blog post. Lorem ipsum I can’t remember the rest of lorem ipsum and don’t have an internet connection right now. Testing testing testing this blog post. Blog posts are cool.</p>
+
+</p>
+    
+    
+    
+
+  </article>
+</div>
+
+        
+          
+
+
+
+
+
+<div class="grid__item">
+  <article class="archive__item" itemscope itemtype="http://schema.org/CreativeWork">
+    
+
+    <h2 class="archive__item-title" itemprop="headline">
+      
+        <a href="http://localhost:4000/this_is_me/posts/2012/08/blog-post-1/" rel="permalink">Blog Post number 1
+</a>
+      
+    </h2>
+    
+    
+      <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  less than 1 minute read
+	
+</p>
+    
+
+        
+         <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2012-08-14T00:00:00+01:00">August 14, 2012</time></p>
+        
+
+    
+    <p class="archive__item-excerpt" itemprop="description"><p>This is a sample blog post. Lorem ipsum I can’t remember the rest of lorem ipsum and don’t have an internet connection right now. Testing testing testing this blog post. Blog posts are cool.</p>
+
+</p>
+    
+    
+    
+
+  </article>
+</div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+    <div class="page__footer">
+      <footer>
+        <!-- start custom footer snippets -->
+<a href="/sitemap/">Sitemap</a>
+<!-- end custom footer snippets -->
+
+        
+
+
+<div class="page__footer-follow">
+  <ul class="social-icons">
+    
+      <li><strong>Follow:</strong></li>
+    
+    
+      <li><a href="http://github.com/Yash-Git-Hub"><i class="fab fa-github" aria-hidden="true"></i> GitHub</a></li>
+    
+    
+  </ul>
+</div>
+
+
+<div class="page__footer-copyright">
+  &copy; 2024 Yash Singh Pathania
+</div>
+      </footer>
+    </div>
+
+    <script src="http://localhost:4000/this_is_me/assets/js/main.min.js"></script>
+
+
+
+
+
+
+
+
+
+  </body>
+</html>
+

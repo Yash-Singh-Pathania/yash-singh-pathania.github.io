@@ -1,22 +1,146 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="http://localhost:4000/this_is_me/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/this_is_me/" rel="alternate" type="text/html" /><updated>2024-07-06T21:29:26-07:00</updated><id>http://localhost:4000/this_is_me/feed.xml</id><title type="html">Hii There</title><subtitle>Hey there! I’m Yash, a Ruby and Python developer with a knack for AWS, diving into computer vision, and pioneering AR/VR. I love blending tech with a dash of sci-fi, turning futuristic dreams into reality. From backend architectures to immersive AR experiences, I’m all about exploring new dimensions of code and pushing the boundaries of what’s possible.</subtitle><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><entry><title type="html">Moving From ruby 2.6 -&amp;gt; Ruby 3.2 Yjit</title><link href="http://localhost:4000/this_is_me/posts/yjit_upgrade" rel="alternate" type="text/html" title="Moving From ruby 2.6 -&amp;gt; Ruby 3.2 Yjit" /><published>2024-04-07T00:00:00-07:00</published><updated>2024-04-07T00:00:00-07:00</updated><id>http://localhost:4000/this_is_me/posts/future-post</id><content type="html" xml:base="http://localhost:4000/this_is_me/posts/yjit_upgrade"><![CDATA[<p>This post will show up by default. To disable scheduling of future posts, edit <code class="language-plaintext highlighter-rouge">config.yml</code> and set <code class="language-plaintext highlighter-rouge">future: false</code>.</p>]]></content><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><category term="ruby" /><category term="engineering" /><category term="yjit" /><summary type="html"><![CDATA[This post will show up by default. To disable scheduling of future posts, edit config.yml and set future: false.]]></summary></entry><entry><title type="html">Blog Post number 4</title><link href="http://localhost:4000/this_is_me/posts/2012/08/blog-post-4/" rel="alternate" type="text/html" title="Blog Post number 4" /><published>2015-08-14T00:00:00-07:00</published><updated>2015-08-14T00:00:00-07:00</updated><id>http://localhost:4000/this_is_me/posts/2012/08/blog-post-4</id><content type="html" xml:base="http://localhost:4000/this_is_me/posts/2012/08/blog-post-4/"><![CDATA[<p>This is a sample blog post. Lorem ipsum I can’t remember the rest of lorem ipsum and don’t have an internet connection right now. Testing testing testing this blog post. Blog posts are cool.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="http://localhost:4000/this_is_me/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/this_is_me/" rel="alternate" type="text/html" /><updated>2024-07-07T10:02:34+01:00</updated><id>http://localhost:4000/this_is_me/feed.xml</id><title type="html">Hii There</title><subtitle>Hey there! I’m Yash, a Ruby and Python developer with a knack for AWS, diving into computer vision, and pioneering AR/VR. I love blending tech with a dash of sci-fi, turning futuristic dreams into reality. From backend architectures to immersive AR experiences, I’m all about exploring new dimensions of code and pushing the boundaries of what’s possible.</subtitle><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><entry><title type="html">Moving From ruby 2.6 -&amp;gt; Ruby 3.2 Yjit</title><link href="http://localhost:4000/this_is_me/posts/yjit_upgrade" rel="alternate" type="text/html" title="Moving From ruby 2.6 -&amp;gt; Ruby 3.2 Yjit" /><published>2024-04-07T00:00:00+01:00</published><updated>2024-04-07T00:00:00+01:00</updated><id>http://localhost:4000/this_is_me/posts/future-post</id><content type="html" xml:base="http://localhost:4000/this_is_me/posts/yjit_upgrade"><![CDATA[<p>This post will show up by default. To disable scheduling of future posts, edit <code class="language-plaintext highlighter-rouge">config.yml</code> and set <code class="language-plaintext highlighter-rouge">future: false</code>.</p>]]></content><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><category term="ruby" /><category term="engineering" /><category term="yjit" /><summary type="html"><![CDATA[This post will show up by default. To disable scheduling of future posts, edit config.yml and set future: false.]]></summary></entry><entry><title type="html">Predicting Stock Prices with Sentiment Analysis 📈😄</title><link href="http://localhost:4000/this_is_me/posts/2013/08/Lstm-Stock/" rel="alternate" type="text/html" title="Predicting Stock Prices with Sentiment Analysis 📈😄" /><published>2022-06-14T00:00:00+01:00</published><updated>2022-06-14T00:00:00+01:00</updated><id>http://localhost:4000/this_is_me/posts/2013/08/blog-post-2</id><content type="html" xml:base="http://localhost:4000/this_is_me/posts/2013/08/Lstm-Stock/"><![CDATA[<p>The ideation of this project came from our capstone project under <a href="https://csed.thapar.edu/facultydetails/OTYx">Dr. Seema Bhardwaj</a>. We aimed to create an ML model predictor to help protect my friends from dubious websites and irregular patterns. Simple Stock, the product we developed, focused on prediction and teaching students about stock market trends. This blog deals with the prediction part and our approach to it. If you’re interested in learning more about the product here is much lengthier <a href="https://drive.google.com/file/d/1-iVwzWASrF0pgtrxj69C8T6OpCDish6C/view?usp=share_link">brief</a> about it .</p>
+
+<p>In this blog post, I’ll take you through one of my exciting data science projects where I used sentiment analysis of news articles to predict stock prices using an LSTM model. Let’s dive in! 🚀</p>
+
+<h2 id="introduction">Introduction</h2>
+
+<p>Predicting stock prices is a challenging task due to the numerous factors influencing them. In this project, we will use the VADER sentiment analysis model to analyze news articles and incorporate their sentiment scores as features in our stock price prediction model. Our model will use an LSTM (Long Short-Term Memory) architecture to make predictions based on historical stock prices and news sentiments.</p>
+
+<h2 id="step-by-step-guide">Step-by-Step Guide</h2>
+
+<h3 id="step-1-data-collection-">Step 1: Data Collection 📝</h3>
+
+<p>First, we need to collect historical stock prices and news articles. For this project, I used data from the New York Times and historical stock prices of the top 10 companies in the S&amp;P 500 index.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">yfinance</span> <span class="k">as</span> <span class="n">yf</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="n">pd</span>
+
+<span class="c1"># List of top 10 S&amp;P 500 companies
+</span><span class="n">companies</span> <span class="o">=</span> <span class="p">[</span><span class="s">"AAPL"</span><span class="p">,</span> <span class="s">"MSFT"</span><span class="p">,</span> <span class="s">"AMZN"</span><span class="p">,</span> <span class="s">"GOOGL"</span><span class="p">,</span> <span class="s">"FB"</span><span class="p">,</span> <span class="s">"TSLA"</span><span class="p">,</span> <span class="s">"BRK-B"</span><span class="p">,</span> <span class="s">"JPM"</span><span class="p">,</span> <span class="s">"JNJ"</span><span class="p">,</span> <span class="s">"V"</span><span class="p">]</span>
+
+<span class="c1"># Download historical stock prices
+</span><span class="n">stock_data</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">company</span> <span class="ow">in</span> <span class="n">companies</span><span class="p">:</span>
+    <span class="n">stock_data</span><span class="p">[</span><span class="n">company</span><span class="p">]</span> <span class="o">=</span> <span class="n">yf</span><span class="p">.</span><span class="n">download</span><span class="p">(</span><span class="n">company</span><span class="p">,</span> <span class="n">start</span><span class="o">=</span><span class="s">"2015-01-01"</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s">"2020-12-31"</span><span class="p">)</span>
+    
+<span class="c1"># Convert to DataFrame
+</span><span class="n">stock_prices</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">concat</span><span class="p">(</span><span class="n">stock_data</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">stock_prices</span><span class="p">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s">"stock_prices.csv"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="step-2-sentiment-analysis-with-vader-">Step 2: Sentiment Analysis with VADER 😃😞</h3>
+
+<p>Next, we’ll use the VADER sentiment analysis model to analyze the sentiment of news articles. VADER is a pre-trained model specifically designed for sentiment analysis of social media texts.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">vaderSentiment.vaderSentiment</span> <span class="kn">import</span> <span class="n">SentimentIntensityAnalyzer</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+
+<span class="n">analyzer</span> <span class="o">=</span> <span class="n">SentimentIntensityAnalyzer</span><span class="p">()</span>
+
+<span class="c1"># Function to fetch and analyze news sentiment
+</span><span class="k">def</span> <span class="nf">fetch_news_sentiment</span><span class="p">(</span><span class="n">company</span><span class="p">):</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="sa">f</span><span class="s">"https://api.nytimes.com/svc/search/v2/articlesearch.json?q=</span><span class="si">{</span><span class="n">company</span><span class="si">}</span><span class="s">&amp;api-key=YOUR_API_KEY"</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">articles</span> <span class="o">=</span> <span class="n">response</span><span class="p">.</span><span class="n">json</span><span class="p">()[</span><span class="s">"response"</span><span class="p">][</span><span class="s">"docs"</span><span class="p">]</span>
+    
+    <span class="n">sentiments</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">article</span> <span class="ow">in</span> <span class="n">articles</span><span class="p">:</span>
+        <span class="n">text</span> <span class="o">=</span> <span class="n">article</span><span class="p">[</span><span class="s">"lead_paragraph"</span><span class="p">]</span>
+        <span class="n">sentiment</span> <span class="o">=</span> <span class="n">analyzer</span><span class="p">.</span><span class="n">polarity_scores</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+        <span class="n">sentiments</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">sentiment</span><span class="p">[</span><span class="s">"compound"</span><span class="p">])</span>
+    
+    <span class="k">return</span> <span class="n">sentiments</span>
+
+<span class="c1"># Analyze sentiments for each company
+</span><span class="n">news_sentiments</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">company</span> <span class="ow">in</span> <span class="n">companies</span><span class="p">:</span>
+    <span class="n">news_sentiments</span><span class="p">[</span><span class="n">company</span><span class="p">]</span> <span class="o">=</span> <span class="n">fetch_news_sentiment</span><span class="p">(</span><span class="n">company</span><span class="p">)</span>
+
+<span class="c1"># Convert to DataFrame
+</span><span class="n">sentiment_df</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">news_sentiments</span><span class="p">)</span>
+<span class="n">sentiment_df</span><span class="p">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s">"news_sentiments.csv"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="step-3-data-preparation-">Step 3: Data Preparation 📊</h3>
+
+<p>We need to prepare our data by merging the stock prices and news sentiments. We’ll also normalize the data to ensure consistency.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Load data
+</span><span class="n">stock_prices</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"stock_prices.csv"</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">sentiments</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s">"news_sentiments.csv"</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="c1"># Normalize stock prices
+</span><span class="n">stock_prices_norm</span> <span class="o">=</span> <span class="p">(</span><span class="n">stock_prices</span> <span class="o">-</span> <span class="n">stock_prices</span><span class="p">.</span><span class="n">mean</span><span class="p">())</span> <span class="o">/</span> <span class="n">stock_prices</span><span class="p">.</span><span class="n">std</span><span class="p">()</span>
+
+<span class="c1"># Merge data
+</span><span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="p">.</span><span class="n">concat</span><span class="p">([</span><span class="n">stock_prices_norm</span><span class="p">,</span> <span class="n">sentiments</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">data</span><span class="p">.</span><span class="n">dropna</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="step-4-building-the-lstm-model-">Step 4: Building the LSTM Model 🧠</h3>
+<p>We’ll build our LSTM model using TensorFlow/Keras. The model will have an input layer, two LSTM layers, and a dense output layer.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="n">np</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="n">LSTM</span><span class="p">,</span> <span class="n">Dense</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+
+<span class="c1"># Prepare data for LSTM
+</span><span class="k">def</span> <span class="nf">create_dataset</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">window_size</span><span class="p">):</span>
+    <span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">data</span><span class="p">)</span> <span class="o">-</span> <span class="n">window_size</span><span class="p">):</span>
+        <span class="n">X</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span><span class="p">:</span><span class="n">i</span> <span class="o">+</span> <span class="n">window_size</span><span class="p">])</span>
+        <span class="n">y</span><span class="p">.</span><span class="n">append</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">window_size</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">X</span><span class="p">),</span> <span class="n">np</span><span class="p">.</span><span class="n">array</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="n">window_size</span> <span class="o">=</span> <span class="mi">60</span>
+<span class="n">X</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">create_dataset</span><span class="p">(</span><span class="n">data</span><span class="p">.</span><span class="n">values</span><span class="p">,</span> <span class="n">window_size</span><span class="p">)</span>
+
+<span class="c1"># Split data
+</span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+<span class="c1"># Build LSTM model
+</span><span class="n">model</span> <span class="o">=</span> <span class="n">Sequential</span><span class="p">([</span>
+    <span class="n">LSTM</span><span class="p">(</span><span class="mi">64</span><span class="p">,</span> <span class="n">return_sequences</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">input_shape</span><span class="o">=</span><span class="p">(</span><span class="n">window_size</span><span class="p">,</span> <span class="n">X</span><span class="p">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">2</span><span class="p">])),</span>
+    <span class="n">LSTM</span><span class="p">(</span><span class="mi">32</span><span class="p">),</span>
+    <span class="n">Dense</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">activation</span><span class="o">=</span><span class="s">'relu'</span><span class="p">)</span>
+<span class="p">])</span>
+
+<span class="n">model</span><span class="p">.</span><span class="nb">compile</span><span class="p">(</span><span class="n">optimizer</span><span class="o">=</span><span class="s">'adam'</span><span class="p">,</span> <span class="n">loss</span><span class="o">=</span><span class="s">'mse'</span><span class="p">)</span>
+<span class="n">model</span><span class="p">.</span><span class="n">summary</span><span class="p">()</span>
+
+<span class="c1"># Train model
+</span><span class="n">model</span><span class="p">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">batch_size</span><span class="o">=</span><span class="mi">32</span><span class="p">,</span> <span class="n">validation_data</span><span class="o">=</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">))</span>
+</code></pre></div></div>
+
+<h3 id="step-5-evaluating-the-model-">Step 5: Evaluating the Model 📉</h3>
+<p>We’ll evaluate our model using the Root Mean Squared Error (RMSE) metric to assess its accuracy.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">mean_squared_error</span>
+
+<span class="c1"># Predict
+</span><span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="p">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_test</span><span class="p">)</span>
+<span class="n">rmse</span> <span class="o">=</span> <span class="n">np</span><span class="p">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">))</span>
+
+<span class="k">print</span><span class="p">(</span><span class="sa">f</span><span class="s">"RMSE: </span><span class="si">{</span><span class="n">rmse</span><span class="si">}</span><span class="s">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="conclusion-">Conclusion 🎉</h3>
+<p>In this project, we successfully used sentiment analysis of news articles to improve stock price prediction with an LSTM model. By combining historical stock prices and sentiment scores, our model achieved some pretty impressive results. But hey, there’s always room for improvement! So, don’t hesitate to experiment with different model architectures and datasets. Happy coding! 😊</p>
+
+<p>Oh, and if you want to check out the initial stages and thought process behind this blog, check out these <a href="https://docs.google.com/presentation/d/1p5pjDrXCANU300sAD91NlZbE9xU09SUX/edit?usp=share_link&amp;ouid=112246221369441046993&amp;rtpof=true&amp;sd=true">slides</a> from back when I was in 3rd year. Do remember, I’ve significantly improved at making presentations—oops, I mean coding—since then!</p>]]></content><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><category term="Lstm" /><category term="DataScience" /><category term="Python" /><summary type="html"><![CDATA[The ideation of this project came from our capstone project under Dr. Seema Bhardwaj. We aimed to create an ML model predictor to help protect my friends from dubious websites and irregular patterns. Simple Stock, the product we developed, focused on prediction and teaching students about stock market trends. This blog deals with the prediction part and our approach to it. If you’re interested in learning more about the product here is much lengthier brief about it .]]></summary></entry><entry><title type="html">Blog Post number 4</title><link href="http://localhost:4000/this_is_me/posts/2012/08/blog-post-4/" rel="alternate" type="text/html" title="Blog Post number 4" /><published>2015-08-14T00:00:00+01:00</published><updated>2015-08-14T00:00:00+01:00</updated><id>http://localhost:4000/this_is_me/posts/2012/08/blog-post-4</id><content type="html" xml:base="http://localhost:4000/this_is_me/posts/2012/08/blog-post-4/"><![CDATA[<p>This is a sample blog post. Lorem ipsum I can’t remember the rest of lorem ipsum and don’t have an internet connection right now. Testing testing testing this blog post. Blog posts are cool.</p>
 
 <h1 id="headings-are-cool">Headings are cool</h1>
 
 <h1 id="you-can-have-many-headings">You can have many headings</h1>
 
-<h2 id="arent-headings-cool">Aren’t headings cool?</h2>]]></content><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><category term="cool posts" /><category term="category1" /><category term="category2" /><summary type="html"><![CDATA[This is a sample blog post. Lorem ipsum I can’t remember the rest of lorem ipsum and don’t have an internet connection right now. Testing testing testing this blog post. Blog posts are cool.]]></summary></entry><entry><title type="html">Blog Post number 3</title><link href="http://localhost:4000/this_is_me/posts/2014/08/blog-post-3/" rel="alternate" type="text/html" title="Blog Post number 3" /><published>2014-08-14T00:00:00-07:00</published><updated>2014-08-14T00:00:00-07:00</updated><id>http://localhost:4000/this_is_me/posts/2014/08/blog-post-3</id><content type="html" xml:base="http://localhost:4000/this_is_me/posts/2014/08/blog-post-3/"><![CDATA[<p>This is a sample blog post. Lorem ipsum I can’t remember the rest of lorem ipsum and don’t have an internet connection right now. Testing testing testing this blog post. Blog posts are cool.</p>
+<h2 id="arent-headings-cool">Aren’t headings cool?</h2>]]></content><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><category term="cool posts" /><category term="category1" /><category term="category2" /><summary type="html"><![CDATA[This is a sample blog post. Lorem ipsum I can’t remember the rest of lorem ipsum and don’t have an internet connection right now. Testing testing testing this blog post. Blog posts are cool.]]></summary></entry><entry><title type="html">Blog Post number 3</title><link href="http://localhost:4000/this_is_me/posts/2014/08/blog-post-3/" rel="alternate" type="text/html" title="Blog Post number 3" /><published>2014-08-14T00:00:00+01:00</published><updated>2014-08-14T00:00:00+01:00</updated><id>http://localhost:4000/this_is_me/posts/2014/08/blog-post-3</id><content type="html" xml:base="http://localhost:4000/this_is_me/posts/2014/08/blog-post-3/"><![CDATA[<p>This is a sample blog post. Lorem ipsum I can’t remember the rest of lorem ipsum and don’t have an internet connection right now. Testing testing testing this blog post. Blog posts are cool.</p>
 
 <h1 id="headings-are-cool">Headings are cool</h1>
 
 <h1 id="you-can-have-many-headings">You can have many headings</h1>
 
-<h2 id="arent-headings-cool">Aren’t headings cool?</h2>]]></content><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><category term="cool posts" /><category term="category1" /><category term="category2" /><summary type="html"><![CDATA[This is a sample blog post. Lorem ipsum I can’t remember the rest of lorem ipsum and don’t have an internet connection right now. Testing testing testing this blog post. Blog posts are cool.]]></summary></entry><entry><title type="html">Blog Post number 2</title><link href="http://localhost:4000/this_is_me/posts/2013/08/blog-post-2/" rel="alternate" type="text/html" title="Blog Post number 2" /><published>2013-08-14T00:00:00-07:00</published><updated>2013-08-14T00:00:00-07:00</updated><id>http://localhost:4000/this_is_me/posts/2013/08/blog-post-2</id><content type="html" xml:base="http://localhost:4000/this_is_me/posts/2013/08/blog-post-2/"><![CDATA[<p>This is a sample blog post. Lorem ipsum I can’t remember the rest of lorem ipsum and don’t have an internet connection right now. Testing testing testing this blog post. Blog posts are cool.</p>
-
-<h1 id="headings-are-cool">Headings are cool</h1>
-
-<h1 id="you-can-have-many-headings">You can have many headings</h1>
-
-<h2 id="arent-headings-cool">Aren’t headings cool?</h2>]]></content><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><category term="cool posts" /><category term="category1" /><category term="category2" /><summary type="html"><![CDATA[This is a sample blog post. Lorem ipsum I can’t remember the rest of lorem ipsum and don’t have an internet connection right now. Testing testing testing this blog post. Blog posts are cool.]]></summary></entry><entry><title type="html">Blog Post number 1</title><link href="http://localhost:4000/this_is_me/posts/2012/08/blog-post-1/" rel="alternate" type="text/html" title="Blog Post number 1" /><published>2012-08-14T00:00:00-07:00</published><updated>2012-08-14T00:00:00-07:00</updated><id>http://localhost:4000/this_is_me/posts/2012/08/blog-post-1</id><content type="html" xml:base="http://localhost:4000/this_is_me/posts/2012/08/blog-post-1/"><![CDATA[<p>This is a sample blog post. Lorem ipsum I can’t remember the rest of lorem ipsum and don’t have an internet connection right now. Testing testing testing this blog post. Blog posts are cool.</p>
+<h2 id="arent-headings-cool">Aren’t headings cool?</h2>]]></content><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><category term="cool posts" /><category term="category1" /><category term="category2" /><summary type="html"><![CDATA[This is a sample blog post. Lorem ipsum I can’t remember the rest of lorem ipsum and don’t have an internet connection right now. Testing testing testing this blog post. Blog posts are cool.]]></summary></entry><entry><title type="html">Blog Post number 1</title><link href="http://localhost:4000/this_is_me/posts/2012/08/blog-post-1/" rel="alternate" type="text/html" title="Blog Post number 1" /><published>2012-08-14T00:00:00+01:00</published><updated>2012-08-14T00:00:00+01:00</updated><id>http://localhost:4000/this_is_me/posts/2012/08/blog-post-1</id><content type="html" xml:base="http://localhost:4000/this_is_me/posts/2012/08/blog-post-1/"><![CDATA[<p>This is a sample blog post. Lorem ipsum I can’t remember the rest of lorem ipsum and don’t have an internet connection right now. Testing testing testing this blog post. Blog posts are cool.</p>
 
 <h1 id="headings-are-cool">Headings are cool</h1>
 
