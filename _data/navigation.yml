@@ -3,9 +3,6 @@ main:
   - title: "Publications"
     url: /publications/
 
-  - title: "Teaching"
-    url: /teaching/    
-    
   - title: "Projects"
     url: /Projects/
         
@@ -17,3 +14,6 @@ main:
     
   - title: "Guide"
     url: /markdown/
+
+  - title: "Misc"
+    url: /misc/   

@@ -6,7 +6,7 @@ excerpt: 'This paper is about fixing template issue #693.'
 date: 2021-05-26 
 venue: 'Computers, Materials & Continua 2022 '
 paperurl: 'https://www.techscience.com/cmc/v70n3/44965/pdf'
-citation: 'Yash Singh Pathania,(2021). &quot;An Optimized Deep Learning Model for Emotion Classification in Tweets.&quot; <i>GitHub Journal of Bugs</i>. 1(3).'
+citation: 'Yash Singh Pathania,(2021). &quot;An Optimized Deep Learning Model for Emotion Classification in Tweets'
 ---
 
 ## Natural Language Processing
