@@ -1,1 +1,1 @@
-Sitemap: http://localhost:4000/this_is_me/sitemap.xml
+Sitemap: https://yash-git-hub.github.io/this_is_me/sitemap.xml
