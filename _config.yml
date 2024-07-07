@@ -184,7 +184,6 @@ defaults:
       path: ""
       type: posts
     values:
-      exclude: /leetcode/
       layout: single
       author_profile: true
       read_time: true
@@ -195,7 +194,6 @@ defaults:
       path: ""
       type: pages
     values:
-      exclude: /leetcode/
       read_time: false
       layout: single
       author_profile: true
