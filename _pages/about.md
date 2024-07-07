@@ -7,7 +7,7 @@ redirect_from:
   - /about.html
 ---
 
-Hey there! I'm a master's student in [Computer Science Negotiated Learning](https://hub.ucd.ie/usis/!W_HU_MENU.P_PUBLISH?p_tag=PROG&MAJR=T150) at University College Dublin. Before this, I worked at [Tata 1mg](https://www.1mg.com/aboutUs?wpsrc=Google+Organic+Search) as a Software Developer on [ODIN](https://odin.1mg.com/login), an amazing warehouse management software for medicine supply chains.
+Hey there! I'm a master's student in [Computer Science Negotiated Learning](https://hub.ucd.ie/usis/!W_HU_MENU.P_PUBLISH?p_tag=PROG&MAJR=T150) at University College Dublin. Before this, I worked at [Tata 1mg](https://www.1mg.com/aboutUs?wpsrc=Google+Organic+Search) as a Software Developer on [ODIN](https://odin.1mg.com/login), an inhouse  data science driven warehouse management software for medicine supply chains serviing about 100k orders in a day.
 
 I'm passionate about NLP and machine learning and have worked on various projects, including a [research paper](https://www.techscience.com/cmc/v70n3/44965). Want to know more? Check out my CV and projects tab on this site. Don’t miss the blogs section—I’d love to hear your thoughts!
 
