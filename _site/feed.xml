@@ -1,12 +1,113 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="http://localhost:4000/this_is_me/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/this_is_me/" rel="alternate" type="text/html" /><updated>2024-07-07T18:44:22+01:00</updated><id>http://localhost:4000/this_is_me/feed.xml</id><title type="html">Hii There</title><subtitle>Hey there! I’m Yash, a Ruby and Python developer with a knack for AWS, diving into computer vision, and pioneering AR/VR. I love blending tech with a dash of sci-fi, turning futuristic dreams into reality. From backend architectures to immersive AR experiences, I’m all about exploring new dimensions of code and pushing the boundaries of what’s possible.</subtitle><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><entry><title type="html">Leet Code Fun Questions</title><link href="http://localhost:4000/this_is_me/posts/leetcode/" rel="alternate" type="text/html" title="Leet Code Fun Questions" /><published>2024-07-14T00:00:00+01:00</published><updated>2024-07-14T00:00:00+01:00</updated><id>http://localhost:4000/this_is_me/posts/leetcode</id><content type="html" xml:base="http://localhost:4000/this_is_me/posts/leetcode/"><![CDATA[<p>This is the place where I write about the LeetCode questions I find interesting. I rarely do LeetCode, but I need to brush up on my DSA and competitive coding skills before my master’s, so I’ll be blogging about that here.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="http://localhost:4000/this_is_me/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/this_is_me/" rel="alternate" type="text/html" /><updated>2024-07-13T18:27:37+01:00</updated><id>http://localhost:4000/this_is_me/feed.xml</id><title type="html">Hii There</title><subtitle>Hey there! I’m Yash, a Ruby and Python developer with a knack for AWS, diving into computer vision, and pioneering AR/VR. I love blending tech with a dash of sci-fi, turning futuristic dreams into reality. From backend architectures to immersive AR experiences, I’m all about exploring new dimensions of code and pushing the boundaries of what’s possible.</subtitle><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><entry><title type="html">Hawkeye : Computer Vision For Metrics</title><link href="http://localhost:4000/this_is_me/posts/building_hawkeye/" rel="alternate" type="text/html" title="Hawkeye : Computer Vision For Metrics" /><published>2024-08-14T00:00:00+01:00</published><updated>2024-08-14T00:00:00+01:00</updated><id>http://localhost:4000/this_is_me/posts/building_hawkeye</id><content type="html" xml:base="http://localhost:4000/this_is_me/posts/building_hawkeye/"><![CDATA[<p>As the lead developer at Tata 1mg, designing the Common Order Taking (COT) portal, I realized the critical need for analytics and performance metrics in high-efficiency retail stores, dark stores, and warehouses. When every last rupee counts towards profitability, understanding these metrics is imperative. So during my notice period i have decided to work on something called hawkeye ( i watch cricket a lot and hence the name )</p>
+
+<h2 id="introducing-hawk-eye">Introducing HaWk Eye</h2>
+
+<p>The idea of HaWk Eye (yes, I wanted to spell it with a capital H and W) was born from this need. I envision it as a computer vision software that can evolve into a great SaaS product. It has the potential to be specialized for very specific use cases like warehouses and retail stores.</p>
+
+<h2 id="what-to-expect">What to Expect</h2>
+
+<p>I’ll keep updating this blog with my progress on HaWk Eye, detailing what I’m doing and how I’m going about it. For anyone reading this, I aim to keep everything organized in one specific folder. This page will serve as the root for all future updates.</p>
+
+<p>As I pen down this header, I am excited and eager to code. Happy reading!</p>
+
+<h2 id="progress">Progress</h2>
+<p>-<a href="../building_hawkeye/week1">Week 1: Core Functionality Development</a></p>]]></content><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><category term="Computer Vision" /><category term="Python" /><summary type="html"><![CDATA[As the lead developer at Tata 1mg, designing the Common Order Taking (COT) portal, I realized the critical need for analytics and performance metrics in high-efficiency retail stores, dark stores, and warehouses. When every last rupee counts towards profitability, understanding these metrics is imperative. So during my notice period i have decided to work on something called hawkeye ( i watch cricket a lot and hence the name )]]></summary></entry><entry><title type="html">Leet Code Subpage 2</title><link href="http://localhost:4000/this_is_me/posts/leetcode/subpage2/" rel="alternate" type="text/html" title="Leet Code Subpage 2" /><published>2024-07-14T00:00:00+01:00</published><updated>2024-07-14T00:00:00+01:00</updated><id>http://localhost:4000/this_is_me/posts/leetcode/subpage2</id><content type="html" xml:base="http://localhost:4000/this_is_me/posts/leetcode/subpage2/"><![CDATA[<p>This is the second subpage for the LeetCode Fun Questions blog post. Here, I will cover more advanced problems and techniques.</p>]]></content><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><category term="leetcode" /><summary type="html"><![CDATA[This is the second subpage for the LeetCode Fun Questions blog post. Here, I will cover more advanced problems and techniques.]]></summary></entry><entry><title type="html">Week 1: Core Functionality Development</title><link href="http://localhost:4000/this_is_me/posts/building_hawkeye/week1/" rel="alternate" type="text/html" title="Week 1: Core Functionality Development" /><published>2024-07-14T00:00:00+01:00</published><updated>2024-07-14T00:00:00+01:00</updated><id>http://localhost:4000/this_is_me/posts/building_hawkeye/week1</id><content type="html" xml:base="http://localhost:4000/this_is_me/posts/building_hawkeye/week1/"><![CDATA[<p>Day 1-7: Project Setup and Initial Development</p>
+<h2 id="day-1-setting-up-hawkeye">Day 1: Setting Up Hawkeye</h2>
+
+<p>Hey everyone, on day one my basic aim is to research what I am going to pen down, jot down my feelings, and think about this. I am thinking of using FastAPI for the backend because I have never used it before, and I consider it should not be too heavy when it comes to backend development.</p>
+
+<h3 id="frameworks-and-tools">Frameworks and Tools</h3>
+<ul>
+  <li>Backend: FastAPI for the API</li>
+  <li>Frontend: Streamlit (I chose Streamlit because it looks good, and for an MVP, I believe frontend aesthetics are not critical. We can focus on backend functionality and scale up to something more robust and visually appealing later on.)</li>
+  <li>Database: PostgreSQL or SQLite for storing video data and analysis results (I prefer PostgreSQL due to my familiarity with the Tortoise wrapper, which should facilitate better interaction. I still need to finalize the database design.)</li>
+  <li>Cloud Storage: AWS S3 (I can set up a local stack to mirror AWS S3)</li>
+  <li>Deployment: Docker for containerization, AWS EC2 (local stack supremacy)</li>
+</ul>
+
+<p>Today, I made progress by setting up my GitHub repository, pushing my requirements, and establishing a basic file structure. I faced some challenges because I just bought a new MacBook Pro M3, so I had to install Python and everything from scratch, but it was fairly easy. I’ve also created a <code class="language-plaintext highlighter-rouge">requirements.txt</code> that will help in setting up and Dockerizing later. My next steps involve setting up the basic application.</p>
+
+<h2 id="github-repo-link-hawkeye-github-repo">GitHub repo link: <a href="https://github.com/Yash-Git-Hub/Hawkeye">Hawkeye GitHub Repo</a></h2>]]></content><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><category term="Computer Vision" /><category term="Python" /><category term="Building Hawkeye" /><summary type="html"><![CDATA[Day 1-7: Project Setup and Initial Development Day 1: Setting Up Hawkeye]]></summary></entry><entry><title type="html">Leet Code Fun Questions</title><link href="http://localhost:4000/this_is_me/posts/leetcode/" rel="alternate" type="text/html" title="Leet Code Fun Questions" /><published>2024-07-14T00:00:00+01:00</published><updated>2024-07-14T00:00:00+01:00</updated><id>http://localhost:4000/this_is_me/posts/leetcode</id><content type="html" xml:base="http://localhost:4000/this_is_me/posts/leetcode/"><![CDATA[<p>This is the place where I write about the LeetCode questions I find interesting. I rarely do LeetCode, but I need to brush up on my DSA and competitive coding skills before my master’s, so I’ll be blogging about that here.</p>
 
 <p>Check out these subpages for more detailed discussions:</p>
 <ul>
   <li><a href="../leetcode/1518">Bottle Exchange</a></li>
   <li><a href="../leetcode/subpage2">Subpage 2</a></li>
+</ul>]]></content><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><category term="Leetcode" /><category term="Competitive Coding" /><summary type="html"><![CDATA[This is the place where I write about the LeetCode questions I find interesting. I rarely do LeetCode, but I need to brush up on my DSA and competitive coding skills before my master’s, so I’ll be blogging about that here.]]></summary></entry><entry><title type="html">Moving From ruby 2.6 -&amp;gt; Ruby 3.2 Yjit</title><link href="http://localhost:4000/this_is_me/posts/yjit_upgrade" rel="alternate" type="text/html" title="Moving From ruby 2.6 -&amp;gt; Ruby 3.2 Yjit" /><published>2024-04-07T00:00:00+01:00</published><updated>2024-04-07T00:00:00+01:00</updated><id>http://localhost:4000/this_is_me/posts/future-post</id><content type="html" xml:base="http://localhost:4000/this_is_me/posts/yjit_upgrade"><![CDATA[<p>This post will show up by default. To disable scheduling of future posts, edit <code class="language-plaintext highlighter-rouge">config.yml</code> and set <code class="language-plaintext highlighter-rouge">future: false</code>.</p>]]></content><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><category term="ruby" /><category term="engineering" /><category term="yjit" /><summary type="html"><![CDATA[This post will show up by default. To disable scheduling of future posts, edit config.yml and set future: false.]]></summary></entry><entry><title type="html">Postgres Sequence Item Go Up Even If Object Creation Fails</title><link href="http://localhost:4000/this_is_me/posts/next_val_postgres/" rel="alternate" type="text/html" title="Postgres Sequence Item Go Up Even If Object Creation Fails" /><published>2024-03-25T00:00:00+00:00</published><updated>2024-03-25T00:00:00+00:00</updated><id>http://localhost:4000/this_is_me/posts/next_val_postgres</id><content type="html" xml:base="http://localhost:4000/this_is_me/posts/next_val_postgres/"><![CDATA[<p>Today while working  on a ror project we run into an abrupt issue wiht transaction where even if the transaction was not being processed the id was increasing leading to a failure in a backgroud sidekiq worker this lead me to this stackover flow post</p>
+
+<p><a href="https://stackoverflow.com/questions/50650010/why-does-postgres-sequence-item-go-up-even-if-object-creation-fails">Post</a>
+Which then led me in rabit hole that i have tried to pen to the best of my abilities below :-&gt;</p>
+
+<h1 id="postgresql-sequences-unexpected-increments">PostgreSQL Sequences: Unexpected Increments?</h1>
+
+<p>Imagine you’re working with a PostgreSQL database, and you’ve set up a sequence to auto-increment primary keys for your <code class="language-plaintext highlighter-rouge">Client</code> model. Everything seems fine until you encounter a puzzling issue: the sequence value jumps up even when a client creation fails.</p>
+
+<h2 id="the-mystery-unveiled">The Mystery Unveiled</h2>
+
+<p>In PostgreSQL, sequences are special objects used to generate unique identifiers, commonly for primary key fields. When you create a new record, PostgreSQL automatically fetches the next value from the sequence and assigns it to the primary key column.</p>
+
+<h3 id="example-scenario">Example Scenario</h3>
+
+<p>Let’s say your sequence currently stands at 262. You attempt to create a new client, but due to a unique constraint violation (perhaps someone manually set a primary key, which PostgreSQL sequences ignore), the creation fails. Oddly enough, upon rechecking the sequence, you find it’s incremented to 263, despite no new client being added to the database.</p>
+
+<h3 id="why-does-this-happen">Why Does This Happen?</h3>
+
+<p>PostgreSQL’s sequence mechanism operates independently of transaction rollbacks. When you call <code class="language-plaintext highlighter-rouge">nextval</code> on a sequence (implicitly done when a new record is inserted), it advances the sequence whether or not the transaction succeeds or fails. This design ensures each session receives a unique sequence value, even if multiple sessions are running concurrently.</p>
+
+<h3 id="consider-the-consequences">Consider the Consequences</h3>
+
+<p>This behavior can lead to unexpected scenarios if not handled carefully. For instance, if your application logic relies on sequential numbering for auditing or reporting purposes, gaps might appear if transactions fail after fetching a sequence value. These gaps are harmless but can be surprising if not anticipated.</p>
+
+<h3 id="best-practices">Best Practices</h3>
+
+<p>To avoid issues:</p>
+<ul>
+  <li><strong>Avoid Manually Setting Primary Keys:</strong> Let PostgreSQL manage sequence values automatically.</li>
+  <li><strong>Handle Unique Constraints Gracefully:</strong> Ensure your application handles unique constraint violations gracefully to prevent unnecessary gaps in sequence usage.</li>
 </ul>
 
-<p>http://localhost:4000/this_is_me/posts/leetcode/Bottle_Exchange</p>]]></content><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><category term="Leetcode" /><category term="Competitive Coding" /><summary type="html"><![CDATA[This is the place where I write about the LeetCode questions I find interesting. I rarely do LeetCode, but I need to brush up on my DSA and competitive coding skills before my master’s, so I’ll be blogging about that here.]]></summary></entry><entry><title type="html">Leet Code Subpage 2</title><link href="http://localhost:4000/this_is_me/posts/leetcode/subpage2/" rel="alternate" type="text/html" title="Leet Code Subpage 2" /><published>2024-07-14T00:00:00+01:00</published><updated>2024-07-14T00:00:00+01:00</updated><id>http://localhost:4000/this_is_me/posts/leetcode/subpage2</id><content type="html" xml:base="http://localhost:4000/this_is_me/posts/leetcode/subpage2/"><![CDATA[<p>This is the second subpage for the LeetCode Fun Questions blog post. Here, I will cover more advanced problems and techniques.</p>]]></content><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><category term="leetcode" /><summary type="html"><![CDATA[This is the second subpage for the LeetCode Fun Questions blog post. Here, I will cover more advanced problems and techniques.]]></summary></entry><entry><title type="html">Moving From ruby 2.6 -&amp;gt; Ruby 3.2 Yjit</title><link href="http://localhost:4000/this_is_me/posts/yjit_upgrade" rel="alternate" type="text/html" title="Moving From ruby 2.6 -&amp;gt; Ruby 3.2 Yjit" /><published>2024-04-07T00:00:00+01:00</published><updated>2024-04-07T00:00:00+01:00</updated><id>http://localhost:4000/this_is_me/posts/future-post</id><content type="html" xml:base="http://localhost:4000/this_is_me/posts/yjit_upgrade"><![CDATA[<p>This post will show up by default. To disable scheduling of future posts, edit <code class="language-plaintext highlighter-rouge">config.yml</code> and set <code class="language-plaintext highlighter-rouge">future: false</code>.</p>]]></content><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><category term="ruby" /><category term="engineering" /><category term="yjit" /><summary type="html"><![CDATA[This post will show up by default. To disable scheduling of future posts, edit config.yml and set future: false.]]></summary></entry><entry><title type="html">1518-Water Bottles</title><link href="http://localhost:4000/this_is_me/posts/leetcode/1518/" rel="alternate" type="text/html" title="1518-Water Bottles" /><published>2022-08-14T00:00:00+01:00</published><updated>2022-08-14T00:00:00+01:00</updated><id>http://localhost:4000/this_is_me/posts/leetcode/water_bottles</id><content type="html" xml:base="http://localhost:4000/this_is_me/posts/leetcode/1518/"><![CDATA[<h2 id="optimized-bottle-exchange">Optimized Bottle Exchange</h2>
+<h2 id="visualizing-postgresql-sequence-behavior">Visualizing PostgreSQL Sequence Behavior</h2>
+
+<p>To illustrate, here’s a table summarizing how PostgreSQL sequences behave:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Action</th>
+      <th>Sequence Value Before</th>
+      <th>Sequence Value After</th>
+      <th>Transaction Outcome</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Attempt to Create Client</td>
+      <td>262</td>
+      <td>262 (if creation fails)</td>
+      <td>Transaction fails, no new client added</td>
+    </tr>
+    <tr>
+      <td>Retry Creation</td>
+      <td>262</td>
+      <td>263 (if creation succeeds)</td>
+      <td>Transaction succeeds, new client added</td>
+    </tr>
+    <tr>
+      <td>Query Sequence</td>
+      <td>263</td>
+      <td>263</td>
+      <td>Query reflects latest sequence value</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Understanding PostgreSQL sequences is crucial for maintaining data integrity and application reliability. While the behavior of sequence incrementation on failed transactions might seem counterintuitive at first, it ensures robustness and scalability in multi-session environments.</p>
+
+<p>So, the next time you encounter an unexpected sequence increment in PostgreSQL, remember: it’s all part of PostgreSQL’s design to maintain transactional integrity and support concurrent operations seamlessly.</p>
+
+<p>By grasping these nuances, you can navigate PostgreSQL’s sequence behavior more effectively, ensuring your applications perform reliably even under challenging conditions. Understanding these mechanics not only enhances your troubleshooting skills but also empowers you to design more resilient database architectures.</p>]]></content><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><category term="Postgres" /><summary type="html"><![CDATA[Today while working on a ror project we run into an abrupt issue wiht transaction where even if the transaction was not being processed the id was increasing leading to a failure in a backgroud sidekiq worker this lead me to this stackover flow post]]></summary></entry><entry><title type="html">1518-Water Bottles</title><link href="http://localhost:4000/this_is_me/posts/leetcode/1518/" rel="alternate" type="text/html" title="1518-Water Bottles" /><published>2022-08-14T00:00:00+01:00</published><updated>2022-08-14T00:00:00+01:00</updated><id>http://localhost:4000/this_is_me/posts/leetcode/water_bottles</id><content type="html" xml:base="http://localhost:4000/this_is_me/posts/leetcode/1518/"><![CDATA[<h2 id="optimized-bottle-exchange">Optimized Bottle Exchange</h2>
 <p>Even though this is an easy solution  i absoluetly loved this elegant solution that i thoough of.</p>
 <h3 id="approach">Approach</h3>
 

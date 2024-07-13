@@ -23,6 +23,10 @@
 <lastmod>2022-08-14T00:00:00+01:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/this_is_me/posts/next_val_postgres/</loc>
+<lastmod>2024-03-25T00:00:00+00:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/this_is_me/posts/yjit_upgrade</loc>
 <lastmod>2024-04-07T00:00:00+01:00</lastmod>
 </url>
@@ -31,8 +35,16 @@
 <lastmod>2024-07-14T00:00:00+01:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/this_is_me/posts/building_hawkeye/week1/</loc>
+<lastmod>2024-07-14T00:00:00+01:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/this_is_me/posts/leetcode/subpage2/</loc>
 <lastmod>2024-07-14T00:00:00+01:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/this_is_me/posts/building_hawkeye/</loc>
+<lastmod>2024-08-14T00:00:00+01:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/this_is_me/projects/project-1/</loc>

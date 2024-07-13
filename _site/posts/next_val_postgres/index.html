@@ -19,7 +19,7 @@
 
 
 
-<title>Leet Code Fun Questions - Hii There</title>
+<title>Postgres Sequence Item Go Up Even If Object Creation Fails - Hii There</title>
 
 
 
@@ -29,15 +29,15 @@
 
 <meta property="og:locale" content="en-US">
 <meta property="og:site_name" content="Hii There">
-<meta property="og:title" content="Leet Code Fun Questions">
+<meta property="og:title" content="Postgres Sequence Item Go Up Even If Object Creation Fails">
 
 
-  <link rel="canonical" href="http://localhost:4000/this_is_me/posts/leetcode/">
-  <meta property="og:url" content="http://localhost:4000/this_is_me/posts/leetcode/">
+  <link rel="canonical" href="http://localhost:4000/this_is_me/posts/next_val_postgres/">
+  <meta property="og:url" content="http://localhost:4000/this_is_me/posts/next_val_postgres/">
 
 
 
-  <meta property="og:description" content="This is the place where I write about the LeetCode questions I find interesting. I rarely do LeetCode, but I need to brush up on my DSA and competitive coding skills before my master’s, so I’ll be blogging about that here.">
+  <meta property="og:description" content="Today while working  on a ror project we run into an abrupt issue wiht transaction where even if the transaction was not being processed the id was increasing leading to a failure in a backgroud sidekiq worker this lead me to this stackover flow post">
 
 
 
@@ -52,7 +52,7 @@
 
 
   <meta property="og:type" content="article">
-  <meta property="article:published_time" content="2024-07-14T00:00:00+01:00">
+  <meta property="article:published_time" content="2024-03-25T00:00:00+00:00">
 
 
 
@@ -279,13 +279,13 @@
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
     
-      <meta itemprop="headline" content="Leet Code Fun Questions">
+      <meta itemprop="headline" content="Postgres Sequence Item Go Up Even If Object Creation Fails">
     
     
-      <meta itemprop="description" content="This is the place where I write about the LeetCode questions I find interesting. I rarely do LeetCode, but I need to brush up on my DSA and competitive coding skills before my master’s, so I’ll be blogging about that here.">
+      <meta itemprop="description" content="Today while working  on a ror project we run into an abrupt issue wiht transaction where even if the transaction was not being processed the id was increasing leading to a failure in a backgroud sidekiq worker this lead me to this stackover flow post">
     
     
-      <meta itemprop="datePublished" content="July 14, 2024">
+      <meta itemprop="datePublished" content="March 25, 2024">
     
     
 
@@ -293,25 +293,101 @@
       
         <header>
           
-            <h1 class="page__title" itemprop="headline">Leet Code Fun Questions
+            <h1 class="page__title" itemprop="headline">Postgres Sequence Item Go Up Even If Object Creation Fails
 </h1>
           
           
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  3 minute read
+	
+</p>
           
           
-            <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2024-07-14T00:00:00+01:00">July 14, 2024</time></p>
+          
+            <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2024-03-25T00:00:00+00:00">March 25, 2024</time></p>
               
         </header>
       
 
       <section class="page__content" itemprop="text">
-        <p>This is the place where I write about the LeetCode questions I find interesting. I rarely do LeetCode, but I need to brush up on my DSA and competitive coding skills before my master’s, so I’ll be blogging about that here.</p>
+        <p>Today while working  on a ror project we run into an abrupt issue wiht transaction where even if the transaction was not being processed the id was increasing leading to a failure in a backgroud sidekiq worker this lead me to this stackover flow post</p>
 
-<p>Check out these subpages for more detailed discussions:</p>
+<p><a href="https://stackoverflow.com/questions/50650010/why-does-postgres-sequence-item-go-up-even-if-object-creation-fails">Post</a>
+Which then led me in rabit hole that i have tried to pen to the best of my abilities below :-&gt;</p>
+
+<h1 id="postgresql-sequences-unexpected-increments">PostgreSQL Sequences: Unexpected Increments?</h1>
+
+<p>Imagine you’re working with a PostgreSQL database, and you’ve set up a sequence to auto-increment primary keys for your <code class="language-plaintext highlighter-rouge">Client</code> model. Everything seems fine until you encounter a puzzling issue: the sequence value jumps up even when a client creation fails.</p>
+
+<h2 id="the-mystery-unveiled">The Mystery Unveiled</h2>
+
+<p>In PostgreSQL, sequences are special objects used to generate unique identifiers, commonly for primary key fields. When you create a new record, PostgreSQL automatically fetches the next value from the sequence and assigns it to the primary key column.</p>
+
+<h3 id="example-scenario">Example Scenario</h3>
+
+<p>Let’s say your sequence currently stands at 262. You attempt to create a new client, but due to a unique constraint violation (perhaps someone manually set a primary key, which PostgreSQL sequences ignore), the creation fails. Oddly enough, upon rechecking the sequence, you find it’s incremented to 263, despite no new client being added to the database.</p>
+
+<h3 id="why-does-this-happen">Why Does This Happen?</h3>
+
+<p>PostgreSQL’s sequence mechanism operates independently of transaction rollbacks. When you call <code class="language-plaintext highlighter-rouge">nextval</code> on a sequence (implicitly done when a new record is inserted), it advances the sequence whether or not the transaction succeeds or fails. This design ensures each session receives a unique sequence value, even if multiple sessions are running concurrently.</p>
+
+<h3 id="consider-the-consequences">Consider the Consequences</h3>
+
+<p>This behavior can lead to unexpected scenarios if not handled carefully. For instance, if your application logic relies on sequential numbering for auditing or reporting purposes, gaps might appear if transactions fail after fetching a sequence value. These gaps are harmless but can be surprising if not anticipated.</p>
+
+<h3 id="best-practices">Best Practices</h3>
+
+<p>To avoid issues:</p>
 <ul>
-  <li><a href="../leetcode/1518">Bottle Exchange</a></li>
-  <li><a href="../leetcode/subpage2">Subpage 2</a></li>
+  <li><strong>Avoid Manually Setting Primary Keys:</strong> Let PostgreSQL manage sequence values automatically.</li>
+  <li><strong>Handle Unique Constraints Gracefully:</strong> Ensure your application handles unique constraint violations gracefully to prevent unnecessary gaps in sequence usage.</li>
 </ul>
+
+<h2 id="visualizing-postgresql-sequence-behavior">Visualizing PostgreSQL Sequence Behavior</h2>
+
+<p>To illustrate, here’s a table summarizing how PostgreSQL sequences behave:</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>Action</th>
+      <th>Sequence Value Before</th>
+      <th>Sequence Value After</th>
+      <th>Transaction Outcome</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Attempt to Create Client</td>
+      <td>262</td>
+      <td>262 (if creation fails)</td>
+      <td>Transaction fails, no new client added</td>
+    </tr>
+    <tr>
+      <td>Retry Creation</td>
+      <td>262</td>
+      <td>263 (if creation succeeds)</td>
+      <td>Transaction succeeds, new client added</td>
+    </tr>
+    <tr>
+      <td>Query Sequence</td>
+      <td>263</td>
+      <td>263</td>
+      <td>Query reflects latest sequence value</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Understanding PostgreSQL sequences is crucial for maintaining data integrity and application reliability. While the behavior of sequence incrementation on failed transactions might seem counterintuitive at first, it ensures robustness and scalability in multi-session environments.</p>
+
+<p>So, the next time you encounter an unexpected sequence increment in PostgreSQL, remember: it’s all part of PostgreSQL’s design to maintain transactional integrity and support concurrent operations seamlessly.</p>
+
+<p>By grasping these nuances, you can navigate PostgreSQL’s sequence behavior more effectively, ensuring your applications perform reliably even under challenging conditions. Understanding these mechanics not only enhances your troubleshooting skills but also empowers you to design more resilient database architectures.</p>
 
 
         
@@ -339,11 +415,7 @@
     
       
       
-      <a href="http://localhost:4000/this_is_me/tags/#competitive-coding" class="page__taxonomy-item" rel="tag">Competitive Coding</a><span class="sep">, </span>
-    
-      
-      
-      <a href="http://localhost:4000/this_is_me/tags/#leetcode" class="page__taxonomy-item" rel="tag">Leetcode</a>
+      <a href="http://localhost:4000/this_is_me/tags/#postgres" class="page__taxonomy-item" rel="tag">Postgres</a>
     
     </span>
   </p>
