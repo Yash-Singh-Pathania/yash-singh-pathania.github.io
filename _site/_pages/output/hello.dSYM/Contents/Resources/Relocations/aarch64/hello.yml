@@ -152,9 +152,6 @@
             <li class="masthead__menu-item"><a href="http://localhost:4000/this_is_me/cv/">CV</a></li>
           
             
-            <li class="masthead__menu-item"><a href="http://localhost:4000/this_is_me/markdown/">Guide</a></li>
-          
-            
             <li class="masthead__menu-item"><a href="http://localhost:4000/this_is_me/misc/">Misc</a></li>
           
         </ul>
