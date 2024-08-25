@@ -21,7 +21,7 @@ repository               : "Yash-Singh-Pathania/yash-singh-pathania.github.io"
 #               Additional customization can be done by editing /_includes/author-profile.html
 author:
   # Biographic information
-  avatar           : "profile.png"
+  avatar           : "profile.jpg"
   name             : "Yash"
   pronouns         : "he/him"  
   bio              : "Solving everyday problems through code, one line at a time."
@@ -29,8 +29,8 @@ author:
   email            : "yashpathania704@gmail.com" 
 
   # Academic websites
-  postgrad         : "University College Dublin"
-  undergrad        : "Thapar Institute Of Technology"
+  postgrad         : "UCD"
+  undergrad        : "TIET"
 
   # Repositories and software development
   github           : "Yash-Singh-Pathania" 

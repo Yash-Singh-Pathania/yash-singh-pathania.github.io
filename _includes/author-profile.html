@@ -38,12 +38,18 @@
         <li><a href="mailto:{{ author.email }}"><i class="fas fa-fw fa-envelope icon-pad-right" aria-hidden="true"></i>{{ site.data.ui-text[site.locale].email_label | default: "Email" }}</a></li>
       {% endif %}
 
-      {% if author.postgrad %}
-        <li class="author__desktop"><i class="fa-solid fa-graduation-cap icon-pad-right" aria-hidden="true"></i>{{ author.postgrad }}</li>
-      {% endif %}
-      {% if author.undergrad %}
-        <li class="author__desktop"><i class="fa-solid fa-book icon-pad-right" aria-hidden="true"></i>{{ author.undergrad }}</li>
-      {% endif %}
+{% if author.postgrad %}
+  <li class="author__desktop" style="display: flex; align-items: center;">
+    <i class="fa-solid fa-building-columns" aria-hidden="true"></i>
+    <a href="https://www.ucd.ie" target="_blank" style="margin-left: 0.2em;">{{ author.postgrad }}</a>
+  </li>
+{% endif %}
+{% if author.undergrad %}
+  <li class="author__desktop" style="display: flex; align-items: center;">
+    <i class="fa-solid fa-book icon-pad-right" aria-hidden="true"></i>
+    <a href="https://www.thapar.edu" target="_blank" style="margin-left: 0.02em;">{{ author.undergrad }}</a>
+  </li>
+{% endif %}
 
       <!-- Font Awesome and Academicons icons / Academic websites -->
       {% if author.arxiv %}
