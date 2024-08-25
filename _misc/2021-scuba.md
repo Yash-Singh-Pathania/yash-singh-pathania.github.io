@@ -12,7 +12,7 @@ Before diving into the details of how scuba diving changed my life, I have to sh
 
 Fast forward a bit—halfway through the dive, the kid starts having issues, so we surface. When I asked what was wrong, it hit me like a ton of bricks—the mom wasn't just reiterating my instructions; she was translating them. 🤦‍♂️ There I was, in the middle of the Indian Ocean, realizing that my 700-day Duolingo streak had failed me because, guess what? Duolingo doesn't have a scuba lesson! 😅 The kid had no idea what I was talking about the entire time. Lesson learned: never underestimate the importance of clear communication, especially when it involves diving!
 
-<img src="/images/scuba4.jpg" alt="Gear while scuba diving" style="width:50%;">
+<img src="images/scuba4.jpg" alt="Gear while scuba diving" style="width:50%;">
 
 Looking back, I can confidently say that learning to scuba dive was one of the best decisions of my life. 🧜‍♂️ Not only did it help me stay physically active, but it also did wonders for my mental health. 🌊
 
@@ -20,13 +20,13 @@ Looking back, I can confidently say that learning to scuba dive was one of the b
 
 In a time when the world felt closed off and restricted, diving offered me a sense of freedom I hadn't experienced in a while. Being underwater, surrounded by the vibrant marine life, gave me a perspective that was both humbling and refreshing. It was like meditation, but with fish! 🐠 Each dive was a journey into a tranquil world, where all my worries and anxieties seemed to dissolve into the blue.
 
-<img src="/images/scuba1.jpg" alt="Scuba Diving in Port Blair" style="width:50%;">
+<img src="images/scuba1.jpg" alt="Scuba Diving in Port Blair" style="width:50%;">
 
 ### New Friendships 🤝
 
 Another incredible aspect of this experience was the people I met along the way. The diving community in Port Blair was welcoming, and I quickly made friends who shared the same passion. These friendships went beyond just diving; we bonded over our love for exploration and adventure, and some of these connections have lasted long after the diving courses ended.
 
-<img src="/images/scuba2.jpg" alt="Diving Group Photo" style="width:50%;">
+<img src="images/scuba2.jpg" alt="Diving Group Photo" style="width:50%;">
 
 ### Coding, Calmness, and Creativity 💻
 
@@ -38,4 +38,4 @@ Diving also sparked a new wave of creativity in me. Being in such a unique envir
 
 In many ways, scuba diving during the pandemic wasn't just a hobby; it was a lifeline. It brought new experiences, new friends, and a renewed sense of peace and creativity into my life. If you ever get the chance to dive, I highly recommend it—it's more than just an adventure; it's a way to connect with yourself and the world in a whole new way.
 
-<img src="/images/scuba3.jpg" alt="Underwater Scenery" style="width:50%;">
+<img src="images/scuba3.jpg" alt="Underwater Scenery" style="width:50%;">
