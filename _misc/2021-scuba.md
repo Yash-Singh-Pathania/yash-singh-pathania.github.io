@@ -20,7 +20,7 @@ Looking back, I can confidently say that learning to scuba dive was one of the b
 
 In a time when the world felt closed off and restricted, diving offered me a sense of freedom I hadn't experienced in a while. Being underwater, surrounded by the vibrant marine life, gave me a perspective that was both humbling and refreshing. It was like meditation, but with fish! 🐠 Each dive was a journey into a tranquil world, where all my worries and anxieties seemed to dissolve into the blue.
 
-<img src="/images/scuba1.JPG" alt="Scuba Diving in Port Blair" style="width:50%;">
+<img src="/images/scuba1.jpg" alt="Scuba Diving in Port Blair" style="width:50%;">
 
 ### New Friendships 🤝
 
