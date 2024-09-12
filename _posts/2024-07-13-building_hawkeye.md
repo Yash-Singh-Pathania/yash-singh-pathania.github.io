@@ -1,5 +1,5 @@
 ---
-title: 'Hawkeye : Computer Vision For Metrics'
+title: 'Hawkeye : Computer Vision For Metrics [WIP]'
 date: 2024-08-14
 permalink: /posts/building_hawkeye/
 read_time: false

@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-09-12T01:15:02+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Hii There</title><subtitle>Hey there! I’m Yash, a Ruby and Python developer with a knack for AWS, diving into computer vision, and pioneering AR/VR. I love blending tech with a dash of sci-fi, turning futuristic dreams into reality. From backend architectures to immersive AR experiences, I’m all about exploring new dimensions of code and pushing the boundaries of what’s possible.</subtitle><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><entry><title type="html">Bruno</title><link href="http://localhost:4000/posts/bruno/" rel="alternate" type="text/html" title="Bruno" /><published>2024-09-03T00:00:00+01:00</published><updated>2024-09-03T00:00:00+01:00</updated><id>http://localhost:4000/posts/Bruno</id><content type="html" xml:base="http://localhost:4000/posts/bruno/"><![CDATA[<p>APIs are crucial today, but testing tools  inlcuding dev testing especially between devs is a hassle. The most popular tool, Postman, has become bloated, with many features hidden behind a paywall. This led me on a search for an open-source, privacy-focused API testing tool—<strong>Bruno</strong>.</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-09-12T01:49:34+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Hii There</title><subtitle>Hey there! I’m Yash, a Ruby and Python developer with a knack for AWS, diving into computer vision, and pioneering AR/VR. I love blending tech with a dash of sci-fi, turning futuristic dreams into reality. From backend architectures to immersive AR experiences, I’m all about exploring new dimensions of code and pushing the boundaries of what’s possible.</subtitle><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><entry><title type="html">Bruno</title><link href="http://localhost:4000/posts/bruno/" rel="alternate" type="text/html" title="Bruno" /><published>2024-09-03T00:00:00+01:00</published><updated>2024-09-03T00:00:00+01:00</updated><id>http://localhost:4000/posts/Bruno</id><content type="html" xml:base="http://localhost:4000/posts/bruno/"><![CDATA[<p>APIs are crucial today, but testing tools  inlcuding dev testing especially between devs is a hassle. The most popular tool, Postman, has become bloated, with many features hidden behind a paywall. This led me on a search for an open-source, privacy-focused API testing tool—<strong>Bruno</strong>.</p>
 
 <h2 id="why-bruno-">Why Bruno? 🤔</h2>
 
@@ -85,7 +85,169 @@ This was day 2 of the project, and I was weirdly excited about it. I had to deci
 <ul>
   <li><a href="../leetcode/1518">Bottle Exchange</a></li>
   <li><a href="../leetcode/subpage2">Subpage 2</a></li>
-</ul>]]></content><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><category term="Leetcode" /><category term="Competitive Coding" /><summary type="html"><![CDATA[This is the place where I write about the LeetCode questions I find interesting. I rarely do LeetCode, but I need to brush up on my DSA and competitive coding skills before my master’s, so I’ll be blogging about that here.]]></summary></entry><entry><title type="html">Moving From ruby 2.6 -&amp;gt; Ruby 3.2 Yjit</title><link href="http://localhost:4000/posts/yjit_upgrade" rel="alternate" type="text/html" title="Moving From ruby 2.6 -&amp;gt; Ruby 3.2 Yjit" /><published>2024-04-07T00:00:00+01:00</published><updated>2024-04-07T00:00:00+01:00</updated><id>http://localhost:4000/posts/future-post</id><content type="html" xml:base="http://localhost:4000/posts/yjit_upgrade"><![CDATA[<p>This post will show up by default. To disable scheduling of future posts, edit <code class="language-plaintext highlighter-rouge">config.yml</code> and set <code class="language-plaintext highlighter-rouge">future: false</code>.</p>]]></content><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><category term="ruby" /><category term="engineering" /><category term="yjit" /><summary type="html"><![CDATA[This post will show up by default. To disable scheduling of future posts, edit config.yml and set future: false.]]></summary></entry><entry><title type="html">Postgres Sequence Item Go Up Even If Object Creation Fails</title><link href="http://localhost:4000/posts/next_val_postgres/" rel="alternate" type="text/html" title="Postgres Sequence Item Go Up Even If Object Creation Fails" /><published>2024-03-25T00:00:00+00:00</published><updated>2024-03-25T00:00:00+00:00</updated><id>http://localhost:4000/posts/next_val_postgres</id><content type="html" xml:base="http://localhost:4000/posts/next_val_postgres/"><![CDATA[<p>Today while working  on a ror project we run into an abrupt issue wiht transaction where even if the transaction was not being processed the id was increasing leading to a failure in a backgroud sidekiq worker this lead me to this stackover flow post</p>
+</ul>]]></content><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><category term="Leetcode" /><category term="Competitive Coding" /><summary type="html"><![CDATA[This is the place where I write about the LeetCode questions I find interesting. I rarely do LeetCode, but I need to brush up on my DSA and competitive coding skills before my master’s, so I’ll be blogging about that here.]]></summary></entry><entry><title type="html">Moving From ruby 2.6 -&amp;gt; Ruby 3.2 Yjit</title><link href="http://localhost:4000/posts/yjit_upgrade" rel="alternate" type="text/html" title="Moving From ruby 2.6 -&amp;gt; Ruby 3.2 Yjit" /><published>2024-04-07T00:00:00+01:00</published><updated>2024-04-07T00:00:00+01:00</updated><id>http://localhost:4000/posts/yjit</id><content type="html" xml:base="http://localhost:4000/posts/yjit_upgrade"><![CDATA[<p>As a developer at Tata 1mg, I recently led the upgrade of our Ruby on Rails app from Ruby 2.6 to Ruby 3.2. Our production setup was complex, with dual branches for C-Ruby and JRuby. This migration not only unified the Ruby versions across our services but also paved the way for containerization using Kubernetes (K8s), streamlining our deployment processes. In this post, I’ll walk you through the small syntax changes, breaking issues, and the peculiar adjustments I had to make for a smooth transition.</p>
+
+<h3 id="why-ruby-32">Why Ruby 3.2?</h3>
+
+<p>Ruby 3.2 brings many exciting changes:</p>
+<ul>
+  <li><strong>YJIT</strong>: Faster execution with Just-in-Time compilation.</li>
+  <li><strong>Ractor improvements</strong>: True parallel execution.</li>
+  <li><strong>Memory efficiency</strong>: Improved garbage collection and memory management.</li>
+  <li><strong>Better syntax</strong>: Cleaner and faster code execution.</li>
+</ul>
+
+<p>But along with these came breaking changes that impacted how we wrote and executed code. Below are the key challenges I faced and the solutions I implemented.</p>
+
+<hr />
+
+<h2 id="1-positional-vs-keyword-arguments">1. <strong>Positional vs. Keyword Arguments</strong></h2>
+
+<p>Ruby 2.7 started the shift with deprecation warnings about positional vs. keyword arguments, and by Ruby 3.2, this became a hard error.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Ruby 2.6 - This works</span>
+<span class="k">def</span> <span class="nf">method_a</span><span class="p">(</span><span class="n">options</span> <span class="o">=</span> <span class="p">{})</span>
+  <span class="nb">puts</span> <span class="n">options</span>
+<span class="k">end</span>
+
+<span class="n">method_a</span><span class="p">(</span><span class="ss">key: </span><span class="s1">'value'</span><span class="p">)</span>
+
+<span class="c1"># Ruby 3.2 - This raises an ArgumentError</span>
+<span class="n">method_a</span><span class="p">({</span> <span class="ss">key: </span><span class="s1">'value'</span> <span class="p">})</span>  <span class="c1"># Must explicitly pass as a hash</span>
+</code></pre></div></div>
+
+<p><strong>Fix</strong>: All methods that receive keyword arguments need to explicitly define them.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Ruby 3.2 - Fix</span>
+<span class="k">def</span> <span class="nf">method_a</span><span class="p">(</span><span class="o">**</span><span class="n">options</span><span class="p">)</span>
+  <span class="nb">puts</span> <span class="n">options</span>
+<span class="k">end</span>
+
+<span class="n">method_a</span><span class="p">(</span><span class="ss">key: </span><span class="s1">'value'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="2-endless-method-definitions">2. <strong>Endless Method Definitions</strong></h2>
+
+<p>Ruby 3.0 introduced endless method definitions, improving readability for simple methods. We adopted this in some of our utility methods.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Ruby 2.6</span>
+<span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+  <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+<span class="k">end</span>
+
+<span class="c1"># Ruby 3.2 - Endless method definition</span>
+<span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="3-hash-default-values-and-frozen-strings">3. <strong>Hash Default Values and Frozen Strings</strong></h2>
+
+<p>In Ruby 3.0, string literals are frozen by default, which can lead to errors if your code modifies strings or uses mutable defaults in hashes.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Ruby 2.6</span>
+<span class="nb">hash</span> <span class="o">=</span> <span class="no">Hash</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
+<span class="nb">hash</span><span class="p">[</span><span class="ss">:key</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s1">'value'</span>   <span class="c1"># This works fine</span>
+
+<span class="c1"># Ruby 3.2</span>
+<span class="nb">hash</span> <span class="o">=</span> <span class="no">Hash</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
+<span class="nb">hash</span><span class="p">[</span><span class="ss">:key</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s1">'value'</span>   <span class="c1"># FrozenError: can't modify frozen String</span>
+</code></pre></div></div>
+
+<p><strong>Fix</strong>: Use a block to return a mutable default.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Ruby 3.2 - Fix</span>
+<span class="nb">hash</span> <span class="o">=</span> <span class="no">Hash</span><span class="p">.</span><span class="nf">new</span> <span class="p">{</span> <span class="o">|</span><span class="n">h</span><span class="p">,</span> <span class="n">k</span><span class="o">|</span> <span class="n">h</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="s1">''</span> <span class="p">}</span>
+<span class="nb">hash</span><span class="p">[</span><span class="ss">:key</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s1">'value'</span>   <span class="c1"># Works fine</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="4-pattern-matching-improvements">4. <strong>Pattern Matching Improvements</strong></h2>
+
+<p>Ruby 3.x introduced expanded pattern matching, making it easier to work with complex data.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Ruby 3.2 - Pattern Matching Example</span>
+<span class="k">case</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="k">in</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="o">*</span><span class="n">rest</span><span class="p">]</span>
+  <span class="nb">puts</span> <span class="s2">"a=</span><span class="si">#{</span><span class="n">a</span><span class="si">}</span><span class="s2">, b=</span><span class="si">#{</span><span class="n">b</span><span class="si">}</span><span class="s2">, rest=</span><span class="si">#{</span><span class="n">rest</span><span class="si">}</span><span class="s2">"</span>
+<span class="k">end</span>
+<span class="c1"># Outputs: a=1, b=2, rest=[3]</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="5-deprecation-of-to_h-with-no-arguments">5. <strong>Deprecation of <code class="language-plaintext highlighter-rouge">#to_h</code> with No Arguments</strong></h2>
+
+<p><code class="language-plaintext highlighter-rouge">#to_h</code> used to work without arguments in Ruby 2.6, but not anymore in Ruby 3.2.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Ruby 2.6</span>
+<span class="n">my_hash</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">key: </span><span class="s1">'value'</span> <span class="p">}</span>
+<span class="n">my_hash</span><span class="p">.</span><span class="nf">to_h</span>    <span class="c1"># This works</span>
+
+<span class="c1"># Ruby 3.2 - This throws an error</span>
+<span class="n">my_hash</span><span class="p">.</span><span class="nf">to_h</span>    <span class="c1"># ArgumentError: wrong number of arguments (given 0, expected 1)</span>
+</code></pre></div></div>
+
+<p><strong>Fix</strong>: Provide arguments or handle the conversion explicitly.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Ruby 3.2 - Fix</span>
+<span class="n">my_hash</span><span class="p">.</span><span class="nf">to_h</span> <span class="p">{</span> <span class="o">|</span><span class="n">pair</span><span class="o">|</span> <span class="n">pair</span> <span class="p">}</span>   <span class="c1"># Works fine</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="6-ractor-and-thread-safety">6. <strong>Ractor and Thread Safety</strong></h2>
+
+<p>One of the most exciting features of Ruby 3.x is <strong>Ractor</strong>, enabling parallel execution. However, global variables and shared state need to be refactored for thread safety.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Ruby 2.6 - Global caching</span>
+<span class="vg">$cache</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">def</span> <span class="nf">cache_result</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+  <span class="vg">$cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
+<span class="k">end</span>
+
+<span class="c1"># Ruby 3.2 - Ractor-safe refactor</span>
+<span class="k">class</span> <span class="nc">Cache</span>
+  <span class="k">def</span> <span class="nf">initialize</span>
+    <span class="vi">@cache</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="vi">@lock</span> <span class="o">=</span> <span class="no">Mutex</span><span class="p">.</span><span class="nf">new</span>
+  <span class="k">end</span>
+
+  <span class="k">def</span> <span class="nf">cache_result</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+    <span class="vi">@lock</span><span class="p">.</span><span class="nf">synchronize</span> <span class="p">{</span> <span class="vi">@cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span> <span class="p">}</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="7-other-minor-gotchas">7. <strong>Other Minor Gotchas</strong></h2>
+
+<ul>
+  <li><strong><code class="language-plaintext highlighter-rouge">Bignum</code> and <code class="language-plaintext highlighter-rouge">Fixnum</code> unified into <code class="language-plaintext highlighter-rouge">Integer</code></strong>: Ensure no legacy code depends on these.</li>
+  <li><strong><code class="language-plaintext highlighter-rouge">URI.encode</code> and <code class="language-plaintext highlighter-rouge">URI.decode</code></strong> are deprecated: Use <code class="language-plaintext highlighter-rouge">URI.encode_www_form</code> or <code class="language-plaintext highlighter-rouge">CGI.escape</code>.</li>
+  <li><strong>Method visibility with blocks</strong>: Ruby 3.x changes how visibility modifiers (<code class="language-plaintext highlighter-rouge">public</code>, <code class="language-plaintext highlighter-rouge">protected</code>, <code class="language-plaintext highlighter-rouge">private</code>) interact with methods accepting blocks.</li>
+</ul>
+
+<hr />
+
+<h2 id="the-benefits-of-the-migration">The Benefits of the Migration</h2>
+
+<p>The upgrade to Ruby 3.2 not only gave us performance improvements (thanks to YJIT) but also allowed us to unify our C-Ruby and JRuby branches into a single Ruby version. This paved the way for transitioning our production app to Kubernetes (K8s), making deployments more streamlined and scalable.</p>
+
+<p>With faster processing, reduced memory overhead, and the flexibility of containerized microservices, this migration allowed us to improve overall system efficiency while simplifying our infrastructure management.</p>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p>Migrating from Ruby 2.6 to Ruby 3.2 in a production environment comes with its challenges, but the benefits far outweigh the effort. By addressing syntax changes, frozen string literals, and thread safety, we were able to optimize both performance and deployment. Ruby 3.2, paired with Kubernetes, made our production processes faster, more efficient, and easier to manage.</p>
+
+<p>This migration has set the stage for future improvements in both code performance and infrastructure scalability, and I highly recommend other teams to make the switch.</p>
+
+<p>Happy coding!</p>]]></content><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><category term="ruby" /><category term="engineering" /><category term="yjit" /><summary type="html"><![CDATA[As a developer at Tata 1mg, I recently led the upgrade of our Ruby on Rails app from Ruby 2.6 to Ruby 3.2. Our production setup was complex, with dual branches for C-Ruby and JRuby. This migration not only unified the Ruby versions across our services but also paved the way for containerization using Kubernetes (K8s), streamlining our deployment processes. In this post, I’ll walk you through the small syntax changes, breaking issues, and the peculiar adjustments I had to make for a smooth transition.]]></summary></entry><entry><title type="html">Postgres Sequence Item Go Up Even If Object Creation Fails</title><link href="http://localhost:4000/posts/next_val_postgres/" rel="alternate" type="text/html" title="Postgres Sequence Item Go Up Even If Object Creation Fails" /><published>2024-03-25T00:00:00+00:00</published><updated>2024-03-25T00:00:00+00:00</updated><id>http://localhost:4000/posts/next_val_postgres</id><content type="html" xml:base="http://localhost:4000/posts/next_val_postgres/"><![CDATA[<p>Today while working  on a ror project we run into an abrupt issue wiht transaction where even if the transaction was not being processed the id was increasing leading to a failure in a backgroud sidekiq worker this lead me to this stackover flow post</p>
 
 <p><a href="https://stackoverflow.com/questions/50650010/why-does-postgres-sequence-item-go-up-even-if-object-creation-fails">Post</a>
 Which then led me in rabit hole that i have tried to pen to the best of my abilities below :-&gt;</p>
