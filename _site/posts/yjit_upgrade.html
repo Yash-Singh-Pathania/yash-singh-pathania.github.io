@@ -37,7 +37,7 @@
 
 
 
-  <meta property="og:description" content="As a developer at Tata 1mg, I recently led the upgrade of our Ruby on Rails app from Ruby 2.6 to Ruby 3.2. Our production setup was complex, with dual branches for C-Ruby and JRuby. This migration not only unified the Ruby versions across our services but also paved the way for containerization using Kubernetes (K8s), streamlining our deployment processes. In this post, I’ll walk you through the small syntax changes, breaking issues, and the peculiar adjustments I had to make for a smooth transition.">
+  <meta property="og:description" content="Upgrading Ruby and Rails to YJIT: A Deep Dive into Breaking Changes, Challenges, and Code Improvements">
 
 
 
@@ -77,6 +77,18 @@
 
 
 <!-- end SEO -->
+
+
+  <script type="text/javascript"
+  src="https://unpkg.com/mermaid@8.0.0-rc.8/dist/mermaid.min.js">
+</script>
+<script>
+$(document).ready(function() {
+    mermaid.initialize({
+        theme: 'forest'
+    });
+});
+</script>
 
 
 <link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Hii There Feed">
@@ -279,7 +291,7 @@
       <meta itemprop="headline" content="Moving From ruby 2.6 -&gt; Ruby 3.2 Yjit">
     
     
-      <meta itemprop="description" content="As a developer at Tata 1mg, I recently led the upgrade of our Ruby on Rails app from Ruby 2.6 to Ruby 3.2. Our production setup was complex, with dual branches for C-Ruby and JRuby. This migration not only unified the Ruby versions across our services but also paved the way for containerization using Kubernetes (K8s), streamlining our deployment processes. In this post, I’ll walk you through the small syntax changes, breaking issues, and the peculiar adjustments I had to make for a smooth transition.">
+      <meta itemprop="description" content="Upgrading Ruby and Rails to YJIT: A Deep Dive into Breaking Changes, Challenges, and Code Improvements">
     
     
       <meta itemprop="datePublished" content="April 07, 2024">
@@ -298,7 +310,7 @@
 
 
   
-	  4 minute read
+	  13 minute read
 	
 </p>
           
@@ -310,169 +322,324 @@
       
 
       <section class="page__content" itemprop="text">
-        <p>As a developer at Tata 1mg, I recently led the upgrade of our Ruby on Rails app from Ruby 2.6 to Ruby 3.2. Our production setup was complex, with dual branches for C-Ruby and JRuby. This migration not only unified the Ruby versions across our services but also paved the way for containerization using Kubernetes (K8s), streamlining our deployment processes. In this post, I’ll walk you through the small syntax changes, breaking issues, and the peculiar adjustments I had to make for a smooth transition.</p>
+        <h1 id="upgrading-ruby-and-rails-to-yjit-a-deep-dive-into-breaking-changes-challenges-and-code-improvements">Upgrading Ruby and Rails to YJIT: A Deep Dive into Breaking Changes, Challenges, and Code Improvements</h1>
 
-<h3 id="why-ruby-32">Why Ruby 3.2?</h3>
+<p><em>Date: September 13, 2024</em></p>
 
-<p>Ruby 3.2 brings many exciting changes:</p>
-<ul>
-  <li><strong>YJIT</strong>: Faster execution with Just-in-Time compilation.</li>
-  <li><strong>Ractor improvements</strong>: True parallel execution.</li>
-  <li><strong>Memory efficiency</strong>: Improved garbage collection and memory management.</li>
-  <li><strong>Better syntax</strong>: Cleaner and faster code execution.</li>
-</ul>
+<p>When we decided to upgrade our Ruby and Rails stack at work, it was clear that the journey would not be without its hurdles. Moving from <strong>Ruby 2.6.2</strong> to <strong>Ruby 3.2</strong> and <strong>Rails 5.1.4</strong> to <strong>Rails 7.0.6</strong> required not just simple version bumps but a thorough understanding of how breaking changes would impact our codebase. Add in the transition to <strong>YJIT</strong> (Ruby’s new Just-In-Time compiler), and we had quite the challenge ahead of us. In this blog, I’ll walk you through the journey, the breaking changes we encountered, and how we overcame them with concrete examples and code snippets.</p>
 
-<p>But along with these came breaking changes that impacted how we wrote and executed code. Below are the key challenges I faced and the solutions I implemented.</p>
+<h2 id="why-the-upgrade">Why the Upgrade?</h2>
 
-<hr />
+<p>The main reason for upgrading was that our current Ruby and Rails versions had reached their end-of-life (EOL). <strong>Ruby 2.6</strong> was no longer receiving security patches or updates, and Rails 5.1.4, while functional, had several inefficiencies that Rails 7 has since addressed. The introduction of <strong>YJIT</strong> in Ruby 3.1 promised substantial performance gains, and we were eager to see how that would play out in production.</p>
 
-<h2 id="1-positional-vs-keyword-arguments">1. <strong>Positional vs. Keyword Arguments</strong></h2>
+<h2 id="breaking-down-the-version-upgrade-process">Breaking Down the Version Upgrade Process</h2>
 
-<p>Ruby 2.7 started the shift with deprecation warnings about positional vs. keyword arguments, and by Ruby 3.2, this became a hard error.</p>
+<h3 id="the-two-branch-problem">The Two-Branch Problem</h3>
 
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Ruby 2.6 - This works</span>
-<span class="k">def</span> <span class="nf">method_a</span><span class="p">(</span><span class="n">options</span> <span class="o">=</span> <span class="p">{})</span>
-  <span class="nb">puts</span> <span class="n">options</span>
-<span class="k">end</span>
+<p>Before upgrading, we had two branches in play: one for <strong>Ruby 2.6 (CRuby)</strong> and one for <strong>JRuby</strong>. Maintaining these two branches was crucial for us because <strong>JRuby</strong> provided the necessary multithreading performance for certain high-concurrency operations, while <strong>CRuby</strong> handled the bulk of our application logic.</p>
 
-<span class="n">method_a</span><span class="p">(</span><span class="ss">key: </span><span class="s1">'value'</span><span class="p">)</span>
-
-<span class="c1"># Ruby 3.2 - This raises an ArgumentError</span>
-<span class="n">method_a</span><span class="p">({</span> <span class="ss">key: </span><span class="s1">'value'</span> <span class="p">})</span>  <span class="c1"># Must explicitly pass as a hash</span>
-</code></pre></div></div>
-
-<p><strong>Fix</strong>: All methods that receive keyword arguments need to explicitly define them.</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Ruby 3.2 - Fix</span>
-<span class="k">def</span> <span class="nf">method_a</span><span class="p">(</span><span class="o">**</span><span class="n">options</span><span class="p">)</span>
-  <span class="nb">puts</span> <span class="n">options</span>
-<span class="k">end</span>
-
-<span class="n">method_a</span><span class="p">(</span><span class="ss">key: </span><span class="s1">'value'</span><span class="p">)</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="2-endless-method-definitions">2. <strong>Endless Method Definitions</strong></h2>
-
-<p>Ruby 3.0 introduced endless method definitions, improving readability for simple methods. We adopted this in some of our utility methods.</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Ruby 2.6</span>
-<span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
-  <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
-<span class="k">end</span>
-
-<span class="c1"># Ruby 3.2 - Endless method definition</span>
-<span class="k">def</span> <span class="nf">sum</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="3-hash-default-values-and-frozen-strings">3. <strong>Hash Default Values and Frozen Strings</strong></h2>
-
-<p>In Ruby 3.0, string literals are frozen by default, which can lead to errors if your code modifies strings or uses mutable defaults in hashes.</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Ruby 2.6</span>
-<span class="nb">hash</span> <span class="o">=</span> <span class="no">Hash</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
-<span class="nb">hash</span><span class="p">[</span><span class="ss">:key</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s1">'value'</span>   <span class="c1"># This works fine</span>
-
-<span class="c1"># Ruby 3.2</span>
-<span class="nb">hash</span> <span class="o">=</span> <span class="no">Hash</span><span class="p">.</span><span class="nf">new</span><span class="p">(</span><span class="s1">''</span><span class="p">)</span>
-<span class="nb">hash</span><span class="p">[</span><span class="ss">:key</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s1">'value'</span>   <span class="c1"># FrozenError: can't modify frozen String</span>
-</code></pre></div></div>
-
-<p><strong>Fix</strong>: Use a block to return a mutable default.</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Ruby 3.2 - Fix</span>
-<span class="nb">hash</span> <span class="o">=</span> <span class="no">Hash</span><span class="p">.</span><span class="nf">new</span> <span class="p">{</span> <span class="o">|</span><span class="n">h</span><span class="p">,</span> <span class="n">k</span><span class="o">|</span> <span class="n">h</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="s1">''</span> <span class="p">}</span>
-<span class="nb">hash</span><span class="p">[</span><span class="ss">:key</span><span class="p">]</span> <span class="o">&lt;&lt;</span> <span class="s1">'value'</span>   <span class="c1"># Works fine</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="4-pattern-matching-improvements">4. <strong>Pattern Matching Improvements</strong></h2>
-
-<p>Ruby 3.x introduced expanded pattern matching, making it easier to work with complex data.</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Ruby 3.2 - Pattern Matching Example</span>
-<span class="k">case</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="k">in</span> <span class="p">[</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="o">*</span><span class="n">rest</span><span class="p">]</span>
-  <span class="nb">puts</span> <span class="s2">"a=</span><span class="si">#{</span><span class="n">a</span><span class="si">}</span><span class="s2">, b=</span><span class="si">#{</span><span class="n">b</span><span class="si">}</span><span class="s2">, rest=</span><span class="si">#{</span><span class="n">rest</span><span class="si">}</span><span class="s2">"</span>
-<span class="k">end</span>
-<span class="c1"># Outputs: a=1, b=2, rest=[3]</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="5-deprecation-of-to_h-with-no-arguments">5. <strong>Deprecation of <code class="language-plaintext highlighter-rouge">#to_h</code> with No Arguments</strong></h2>
-
-<p><code class="language-plaintext highlighter-rouge">#to_h</code> used to work without arguments in Ruby 2.6, but not anymore in Ruby 3.2.</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Ruby 2.6</span>
-<span class="n">my_hash</span> <span class="o">=</span> <span class="p">{</span> <span class="ss">key: </span><span class="s1">'value'</span> <span class="p">}</span>
-<span class="n">my_hash</span><span class="p">.</span><span class="nf">to_h</span>    <span class="c1"># This works</span>
-
-<span class="c1"># Ruby 3.2 - This throws an error</span>
-<span class="n">my_hash</span><span class="p">.</span><span class="nf">to_h</span>    <span class="c1"># ArgumentError: wrong number of arguments (given 0, expected 1)</span>
-</code></pre></div></div>
-
-<p><strong>Fix</strong>: Provide arguments or handle the conversion explicitly.</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Ruby 3.2 - Fix</span>
-<span class="n">my_hash</span><span class="p">.</span><span class="nf">to_h</span> <span class="p">{</span> <span class="o">|</span><span class="n">pair</span><span class="o">|</span> <span class="n">pair</span> <span class="p">}</span>   <span class="c1"># Works fine</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="6-ractor-and-thread-safety">6. <strong>Ractor and Thread Safety</strong></h2>
-
-<p>One of the most exciting features of Ruby 3.x is <strong>Ractor</strong>, enabling parallel execution. However, global variables and shared state need to be refactored for thread safety.</p>
-
-<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Ruby 2.6 - Global caching</span>
-<span class="vg">$cache</span> <span class="o">=</span> <span class="p">{}</span>
-
-<span class="k">def</span> <span class="nf">cache_result</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
-  <span class="vg">$cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
-<span class="k">end</span>
-
-<span class="c1"># Ruby 3.2 - Ractor-safe refactor</span>
-<span class="k">class</span> <span class="nc">Cache</span>
-  <span class="k">def</span> <span class="nf">initialize</span>
-    <span class="vi">@cache</span> <span class="o">=</span> <span class="p">{}</span>
-    <span class="vi">@lock</span> <span class="o">=</span> <span class="no">Mutex</span><span class="p">.</span><span class="nf">new</span>
-  <span class="k">end</span>
-
-  <span class="k">def</span> <span class="nf">cache_result</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
-    <span class="vi">@lock</span><span class="p">.</span><span class="nf">synchronize</span> <span class="p">{</span> <span class="vi">@cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span> <span class="p">}</span>
-  <span class="k">end</span>
-<span class="k">end</span>
-</code></pre></div></div>
-
-<hr />
-
-<h2 id="7-other-minor-gotchas">7. <strong>Other Minor Gotchas</strong></h2>
+<h4 id="why-we-maintained-two-branches">Why We Maintained Two Branches</h4>
 
 <ul>
-  <li><strong><code class="language-plaintext highlighter-rouge">Bignum</code> and <code class="language-plaintext highlighter-rouge">Fixnum</code> unified into <code class="language-plaintext highlighter-rouge">Integer</code></strong>: Ensure no legacy code depends on these.</li>
-  <li><strong><code class="language-plaintext highlighter-rouge">URI.encode</code> and <code class="language-plaintext highlighter-rouge">URI.decode</code></strong> are deprecated: Use <code class="language-plaintext highlighter-rouge">URI.encode_www_form</code> or <code class="language-plaintext highlighter-rouge">CGI.escape</code>.</li>
-  <li><strong>Method visibility with blocks</strong>: Ruby 3.x changes how visibility modifiers (<code class="language-plaintext highlighter-rouge">public</code>, <code class="language-plaintext highlighter-rouge">protected</code>, <code class="language-plaintext highlighter-rouge">private</code>) interact with methods accepting blocks.</li>
+  <li><strong>JRuby</strong> was essential for running background jobs and handling high-concurrency workloads.</li>
+  <li><strong>CRuby (Ruby 2.6)</strong> provided better day-to-day performance for core application functionality.</li>
 </ul>
+
+<p>However, this setup came with a cost. Each new feature or fix required deployment to <strong>both</strong> branches, resulting in additional complexity and time. Merging changes across these branches was tedious, often leading to deployment delays.</p>
+
+<h3 id="enter-ruby-32-and-yjit">Enter Ruby 3.2 and YJIT</h3>
+
+<p>The introduction of <strong>YJIT</strong> in Ruby 3.1 was a game-changer. <strong>YJIT</strong> compiled Ruby code just-in-time, delivering a significant performance boost without requiring a complete overhaul of our JRuby setup. With YJIT, we could effectively <strong>merge</strong> both branches back into a single <strong>Ruby 3.2</strong> branch and still retain the performance benefits we had been leveraging from JRuby.</p>
+
+<h3 id="pre-upgrade-deployment-with-two-branches">Pre-Upgrade Deployment with Two Branches</h3>
+
+<p>Before the upgrade, we had to maintain <strong>two branches</strong> for deployment:</p>
+<ol>
+  <li><code class="language-plaintext highlighter-rouge">main</code> branch (for <strong>CRuby 2.6</strong>)</li>
+  <li><code class="language-plaintext highlighter-rouge">jruby_main</code> branch (for <strong>JRuby</strong>)</li>
+</ol>
+
+<p>Each branch had its own set of gem versions and <code class="language-plaintext highlighter-rouge">Gemfile.lock</code>. This setup was challenging because any change made to the <code class="language-plaintext highlighter-rouge">main</code> branch needed to be merged into the <code class="language-plaintext highlighter-rouge">jruby_main</code> branch. This often resulted in <strong>conflicts</strong>, especially in the <strong>Gemfile.lock</strong> file.</p>
+
+<h4 id="pre-upgrade-deployment-flow">Pre-Upgrade Deployment Flow</h4>
+
+<p>Here’s how the deployment process used to work:</p>
+
+<ul>
+  <li>Make changes to the <code class="language-plaintext highlighter-rouge">main</code> branch and ensure the CRuby-specific gems are up to date.</li>
+  <li>Merge the <code class="language-plaintext highlighter-rouge">main</code> branch into the <code class="language-plaintext highlighter-rouge">jruby_main</code> branch, adjusting for JRuby-specific gems.</li>
+  <li>Resolve any conflicts, especially in the <code class="language-plaintext highlighter-rouge">Gemfile.lock</code>.</li>
+  <li>Deploy each branch to separate machines (one for CRuby, one for JRuby).</li>
+  <li>Repeat this process for each environment (staging, UAT, production).</li>
+</ul>
+
+<p>The need to maintain two separate gem environments and deployment pipelines for CRuby and JRuby added significant complexity.</p>
+
+<h4 id="example-flowchart-pre-upgrade-deployment-process">Example Flowchart: Pre-Upgrade Deployment Process</h4>
+
+<div class="mermaid">
+graph TD;
+    A[Update main branch] --&gt; B[Merge into jruby_main];
+    B --&gt; C[Resolve conflicts in Gemfile.lock];
+    C --&gt; D[Deploy to separate environments];
+    D --&gt; E[Repeat for each lower environment];
+</div>
+
+<p>This workflow not only caused delays but also increased the chance of deployment errors due to conflicts and separate environment management.</p>
+
+<h3 id="post-upgrade-deployment-with-one-branch">Post-Upgrade Deployment with One Branch</h3>
+
+<p>After upgrading to <strong>Ruby 3.2 with YJIT</strong>, the <strong>jruby_main</strong> branch became unnecessary. We could merge everything back into a single branch, reducing the complexity significantly.</p>
+
+<p>Now, we maintain only the <code class="language-plaintext highlighter-rouge">main</code> branch, where all changes are made and tested. With <strong>YJIT</strong> providing the necessary performance improvements, we no longer need separate JRuby optimizations.</p>
+
+<h4 id="post-upgrade-deployment-flow">Post-Upgrade Deployment Flow</h4>
+
+<ul>
+  <li>All changes are made in the <code class="language-plaintext highlighter-rouge">main</code> branch.</li>
+  <li>No more merging or conflict resolution between branches.</li>
+  <li>A single, streamlined deployment process to all environments.</li>
+</ul>
+
+<h4 id="example-flowchart-post-upgrade-deployment-process">Example Flowchart: Post-Upgrade Deployment Process</h4>
+
+<div class="mermaid">
+graph TD;
+    A[Update main branch] --&gt; B[Deploy directly from main];
+</div>
+
+<p>This streamlined process has reduced our release times from <strong>60 minutes to just 15 minutes</strong>, eliminating the need to manage multiple branches and environments.</p>
+
+<h2 id="the-ruby-32-upgrade-breaking-changes-and-how-we-tackled-them">The Ruby 3.2 Upgrade: Breaking Changes and How We Tackled Them</h2>
+
+<h3 id="keyword-arguments-are-now-strictly-enforced">Keyword Arguments Are Now Strictly Enforced</h3>
+
+<p>One of the most significant changes in <strong>Ruby 3.2</strong> was the way <strong>keyword arguments</strong> are handled. In Ruby 2.x, keyword arguments could be passed alongside regular arguments, but this flexibility led to bugs and unintended behavior. Ruby 3.2 now requires <strong>strict separation</strong> between positional and keyword arguments.</p>
+
+<h4 id="example-of-keyword-argument-enforcement">Example of Keyword Argument Enforcement</h4>
+
+<p>In Ruby 2.6, the following code would work:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Ruby 2.6 method definition</span>
+<span class="k">def</span> <span class="nf">greet</span><span class="p">(</span><span class="nb">name</span><span class="p">:,</span> <span class="n">age</span><span class="p">:)</span>
+  <span class="nb">puts</span> <span class="s2">"Hello, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">! You are </span><span class="si">#{</span><span class="n">age</span><span class="si">}</span><span class="s2"> years old."</span>
+<span class="k">end</span>
+
+<span class="c1"># In Ruby 2.6, you could do this:</span>
+<span class="n">greet</span><span class="p">(</span><span class="ss">name: </span><span class="s2">"Alice"</span><span class="p">,</span> <span class="ss">age: </span><span class="mi">30</span><span class="p">)</span>  <span class="c1"># Works fine</span>
+<span class="n">greet</span><span class="p">(</span><span class="ss">name: </span><span class="s2">"Alice"</span><span class="p">,</span> <span class="ss">age: </span><span class="mi">30</span><span class="p">,</span> <span class="ss">city: </span><span class="s2">"New York"</span><span class="p">)</span>  <span class="c1"># No error (extra argument ignored)</span>
+</code></pre></div></div>
+
+<p>In <strong>Ruby 3.2</strong>, this would raise an <strong>ArgumentError</strong> because of the extra, unexpected keyword (<code class="language-plaintext highlighter-rouge">city</code>):</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Ruby 3.2 stricter keyword argument handling</span>
+<span class="n">greet</span><span class="p">(</span><span class="ss">name: </span><span class="s2">"Alice"</span><span class="p">,</span> <span class="ss">age: </span><span class="mi">30</span><span class="p">)</span>  <span class="c1"># Still works</span>
+<span class="n">greet</span><span class="p">(</span><span class="ss">name: </span><span class="s2">"Alice"</span><span class="p">,</span> <span class="ss">age: </span><span class="mi">30</span><span class="p">,</span> <span class="ss">city: </span><span class="s2">"New York"</span><span class="p">)</span>  <span class="c1"># Raises ArgumentError</span>
+</code></pre></div></div>
+
+<p>This change forced us to comb through our codebase and ensure every method call and definition had properly specified keywords. We also took this as an opportunity to review our method signatures for better clarity and maintainability.</p>
+
+<h3 id="method-visibility-changes">Method Visibility Changes</h3>
+
+<p>Another notable change was the default visibility for methods defined with <code class="language-plaintext highlighter-rouge">attr_reader</code>, <code class="language-plaintext highlighter-rouge">attr_writer</code>, and <code class="language-plaintext highlighter-rouge">attr_accessor</code>. In Ruby 2.x, these methods were <strong>public</strong> by default, but in <strong>Ruby 3.2</strong>, they are now <strong>private</strong> unless explicitly stated otherwise.</p>
+
+<h4 id="code-example-of-method-visibility-changes">Code Example of Method Visibility Changes</h4>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># In Ruby 2.6, this was public by default</span>
+<span class="k">class</span> <span class="nc">Person</span>
+  <span class="nb">attr_reader</span> <span class="ss">:name</span>
+
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+    <span class="vi">@name</span> <span class="o">=</span> <span class="nb">name</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="c1"># In Ruby 3.2, we need to explicitly make it public</span>
+<span class="k">class</span> <span class="nc">Person</span>
+  <span class="nb">attr_reader</span> <span class="ss">:name</span>
+  <span class="kp">public</span> <span class="ss">:name</span>  <span class="c1"># Make it public manually</span>
+
+  <span class="k">def</span> <span class="nf">initialize</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
+    <span class="vi">@name</span> <span class="o">=</span> <span class="nb">name</span>
+  <span class="k">end</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<h3 id="change-in-postgresql-query-for-datetime-objects">Change in PostgreSQL Query for Datetime Objects</h3>
+
+<p>In <strong>Rails 7</strong>, there was a significant change in how <strong>datetime objects</strong> are handled in <strong>PostgreSQL</strong> queries. Specifically, datetime values that were previously stored in a specific time zone (such as <strong>IST</strong>) are now automatically converted to <strong>UTC</strong> when inserted into the database. This change impacts how time-based data is stored and retrieved, especially for applications dealing with multiple time zones.</p>
+
+<h4 id="example-scenario-event-scheduling">Example Scenario: Event Scheduling</h4>
+
+<p>In <strong>Rails 5</strong>, when an <code class="language-plaintext highlighter-rouge">event_start</code> datetime value was inserted into the database, it would be stored in the local time zone (e.g., <strong>IST</strong>) without conversion. However, in <strong>Rails 7</strong>, the same datetime value is automatically converted to <strong>UTC</strong>, resulting in different behavior when querying and retrieving data.</p>
+
+<h4 id="code-example-before-and-after-rails-7">Code Example: Before and After Rails 7</h4>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Example payload with an event_start datetime in IST</span>
+<span class="n">payload</span> <span class="o">=</span> <span class="p">[</span>
+  <span class="p">{</span>
+    <span class="ss">:event_id</span> <span class="o">=&gt;</span> <span class="mi">1234</span><span class="p">,</span> 
+    <span class="ss">:location_id</span> <span class="o">=&gt;</span> <span class="mi">5678</span><span class="p">,</span> 
+    <span class="ss">:event_start</span> <span class="o">=&gt;</span> <span class="s2">"2024-04-11T10:55:34.648+05:30"</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+
+<span class="no">EventList</span><span class="p">.</span><span class="nf">import!</span><span class="p">(</span>
+  <span class="n">payload</span><span class="p">,</span>
+  <span class="ss">batch_size: </span><span class="no">Settings</span><span class="o">.</span><span class="no">CONSTANTS</span><span class="o">.</span><span class="no">ACTIVE_RECORD</span><span class="o">.</span><span class="no">IMPORT_BATCH_SIZE</span><span class="p">,</span>
+  <span class="ss">validate: </span><span class="kp">true</span><span class="p">,</span>
+  <span class="ss">on_duplicate_key_update: </span><span class="p">{</span>
+    <span class="ss">columns: </span><span class="p">[</span><span class="ss">:event_start</span><span class="p">],</span>
+    <span class="ss">conflict_target: </span><span class="p">[</span><span class="ss">:event_id</span><span class="p">]</span>
+  <span class="p">}</span>
+<span class="p">)</span>
+</code></pre></div></div>
+
+<h4 id="pre-upgrade-rails-5-behavior">Pre-Upgrade: Rails 5 Behavior</h4>
+
+<p>In <strong>Rails 5</strong>, when the payload was inserted into the database, the <code class="language-plaintext highlighter-rouge">event_start</code> datetime was stored in <strong>IST</strong> (or the local time zone) without any conversion. The following query illustrates how the datetime was inserted:</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">#</span> <span class="n">Rails</span> <span class="mi">5</span><span class="p">:</span> <span class="n">event_start</span> <span class="n">stored</span> <span class="k">as</span> <span class="n">IST</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="nv">"event_lists"</span> 
+<span class="p">(</span><span class="nv">"event_id"</span><span class="p">,</span> <span class="nv">"location_id"</span><span class="p">,</span> <span class="nv">"event_start"</span><span class="p">,</span> <span class="nv">"created_at"</span><span class="p">,</span> <span class="nv">"updated_at"</span><span class="p">)</span> 
+<span class="k">VALUES</span> 
+<span class="p">(</span><span class="mi">1234</span><span class="p">,</span> <span class="mi">5678</span><span class="p">,</span> <span class="s1">'2024-04-11T10:55:34.648+05:30'</span><span class="p">,</span> <span class="s1">'2024-04-11 15:15:55.481787'</span><span class="p">,</span> <span class="s1">'2024-04-11 15:15:55.481787'</span><span class="p">)</span> 
+<span class="k">ON</span> <span class="n">CONFLICT</span> <span class="p">(</span><span class="n">event_id</span><span class="p">)</span> 
+<span class="k">DO</span> <span class="k">UPDATE</span> 
+<span class="k">SET</span> <span class="nv">"event_start"</span> <span class="o">=</span> <span class="n">EXCLUDED</span><span class="p">.</span><span class="nv">"event_start"</span><span class="p">,</span> <span class="nv">"updated_at"</span> <span class="o">=</span> <span class="n">EXCLUDED</span><span class="p">.</span><span class="nv">"updated_at"</span> 
+<span class="n">RETURNING</span> <span class="nv">"id"</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>In this case, the <code class="language-plaintext highlighter-rouge">event_start</code> datetime (<code class="language-plaintext highlighter-rouge">2024-04-11T10:55:34.648+05:30</code>) was stored as <strong>IST</strong> without any timezone conversion.</p>
+
+<h4 id="post-upgrade-rails-7-behavior">Post-Upgrade: Rails 7 Behavior</h4>
+
+<p>After upgrading to <strong>Rails 7</strong>, the same <code class="language-plaintext highlighter-rouge">event_start</code> value is automatically converted to <strong>UTC</strong> when inserted into the database. Here’s what the resulting query looks like:</p>
+
+<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="o">#</span> <span class="n">Rails</span> <span class="mi">7</span><span class="p">:</span> <span class="n">event_start</span> <span class="n">automatically</span> <span class="n">converted</span> <span class="k">to</span> <span class="n">UTC</span>
+<span class="k">INSERT</span> <span class="k">INTO</span> <span class="nv">"event_lists"</span> 
+<span class="p">(</span><span class="nv">"event_id"</span><span class="p">,</span> <span class="nv">"location_id"</span><span class="p">,</span> <span class="nv">"event_start"</span><span class="p">,</span> <span class="nv">"created_at"</span><span class="p">,</span> <span class="nv">"updated_at"</span><span class="p">)</span> 
+<span class="k">VALUES</span> 
+<span class="p">(</span><span class="mi">1234</span><span class="p">,</span> <span class="mi">5678</span><span class="p">,</span> <span class="s1">'2024-04-11 05:25:34.648000'</span><span class="p">,</span> <span class="s1">'2024-04-11 15:16:23.153978'</span><span class="p">,</span> <span class="s1">'2024-04-11 15:16:23.153978'</span><span class="p">)</span> 
+<span class="k">ON</span> <span class="n">CONFLICT</span> <span class="p">(</span><span class="n">event_id</span><span class="p">)</span> 
+<span class="k">DO</span> <span class="k">UPDATE</span> 
+<span class="k">SET</span> <span class="nv">"event_start"</span> <span class="o">=</span> <span class="n">EXCLUDED</span><span class="p">.</span><span class="nv">"event_start"</span><span class="p">,</span> <span class="nv">"updated_at"</span> <span class="o">=</span> <span class="n">EXCLUDED</span><span class="p">.</span><span class="nv">"updated_at"</span> 
+<span class="n">RETURNING</span> <span class="nv">"id"</span><span class="p">;</span>
+</code></pre></div></div>
+
+<p>As you can see, the <code class="language-plaintext highlighter-rouge">event_start</code> datetime (<code class="language-plaintext highlighter-rouge">2024-04-11T10:55:34.648+05:30</code>) is now automatically converted to <strong>UTC</strong> (<code class="language-plaintext highlighter-rouge">2024-04-11 05:25:34.648000</code>), reflecting the timezone adjustment.</p>
+
+<h4 id="example-flowchart-datetime-conversion-in-rails-7">Example Flowchart: Datetime Conversion in Rails 7</h4>
+
+<pre><code class="language-mermaid">graph TD;
+    A[Datetime in IST: 2024-04-11T10:55:34.648+05:30] --&gt; B[Insert into DB];
+    B --&gt; C[Automatically converted to UTC: 2024-04-11 05:25:34.648000];
+</code></pre>
+
+<h4 id="impact-of-this-change">Impact of this Change</h4>
+
+<p>This automatic conversion simplifies the handling of datetime fields in the database, ensuring consistency across different time zones. However, it also requires careful handling when generating reports or retrieving data in a specific time zone, as queries may now return <strong>UTC</strong> values. Applications relying on local time zone data will need to adjust by converting <strong>UTC</strong> back to the desired time zone when necessary.</p>
+
+<p>By adapting to this behavior in <strong>Rails 7</strong>, we ensure that our systems handle datetime values more consistently and accurately across various time zones.</p>
+
+<p>This change required careful review of all our model definitions to ensure that method visibility was correctly specified.</p>
+
+<h2 id="rails-706-migration-breaking-changes-and-code-adjustments">Rails 7.0.6 Migration: Breaking Changes and Code Adjustments</h2>
+
+<h3 id="deprecation-of-update_attributes">Deprecation of <code class="language-plaintext highlighter-rouge">update_attributes</code></h3>
+
+<p>Rails 7 deprecates the once-familiar <code class="language-plaintext highlighter-rouge">update_attributes</code> method. Instead, the preferred method is simply <code class="language-plaintext highlighter-rouge">update</code>. While this change was straightforward, it required a thorough search and replace throughout our models.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Before Rails 7</span>
+<span class="n">user</span><span class="p">.</span><span class="nf">update_attributes</span><span class="p">(</span><span class="ss">name: </span><span class="s2">"New Name"</span><span class="p">,</span> <span class="ss">email: </span><span class="s2">"newemail@example.com"</span><span class="p">)</span>
+
+<span class="c1"># Rails 7</span>
+<span class="n">user</span><span class="p">.</span><span class="nf">update</span><span class="p">(</span><span class="ss">name: </span><span class="s2">"New Name"</span><span class="p">,</span> <span class="ss">email: </span><span class="s2">"newemail@example.com"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="return-behavior-in-transactions">Return Behavior in Transactions</h3>
+
+<p>Rails 7 also introduced changes to how <strong>return statements</strong> behave inside transactions. In earlier Rails versions, returning from within a transaction would not necessarily roll it back. However, in <strong>Rails 7</strong>, returning from a transaction block now <strong>rolls back</strong> the entire transaction. This led to some tricky bugs in our payment system where returns were used incorrectly within transactions.</p>
+
+<h3 id="raw-sql-queries-are-no-longer-allowed">Raw SQL Queries Are No Longer Allowed</h3>
+
+<p>Rails 7 deprecated the use of raw SQL queries directly in ActiveRecord, mainly to avoid SQL injection risks. Previously, you could write raw SQL like this:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Before Rails 7, using raw SQL</span>
+<span class="no">User</span><span class="p">.</span><span class="nf">where</span><span class="p">(</span><span class="s2">"name LIKE ?"</span><span class="p">,</span> <span class="s2">"%John%"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>In Rails 7, this throws an error. Instead, we now use Rails’ query interface for sanitized queries:</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Rails 7 safe query</span>
+<span class="no">User</span><span class="p">.</span><span class="nf">where</span><span class="p">(</span><span class="s2">"name ILIKE ?"</span><span class="p">,</span> <span class="s2">"%John%"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>We refactored all occurrences of raw SQL in our codebase to follow Rails’ safer conventions, making our app more secure in the process.</p>
+
+<h3 id="changes-to-update_all">Changes to <code class="language-plaintext highlighter-rouge">update_all</code></h3>
+
+<p>Another subtle but impactful change in Rails 7 was how <code class="language-plaintext highlighter-rouge">update_all</code> works within a transaction. In earlier Rails versions, when <code class="language-plaintext highlighter-rouge">update_all</code> was called, the ActiveRecord objects would not immediately reflect the changes. However, in <strong>Rails 7</strong>, calling <code class="language-plaintext highlighter-rouge">update_all</code> within a transaction updates the objects right away.</p>
+
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Before Rails 7, ActiveRecord object remains unchanged until the transaction completes</span>
+<span class="no">User</span><span class="p">.</span><span class="nf">transaction</span> <span class="k">do</span>
+  <span class="no">User</span><span class="p">.</span><span class="nf">update_all</span><span class="p">(</span><span class="ss">name: </span><span class="s2">"Updated Name"</span><span class="p">)</span>
+  <span class="n">user</span><span class="p">.</span><span class="nf">reload</span>  <span class="c1"># Would still show old name in Rails 5.x</span>
+<span class="k">end</span>
+
+<span class="c1"># In Rails 7, update_all changes take effect immediately</span>
+<span class="no">User</span><span class="p">.</span><span class="nf">transaction</span> <span class="k">do</span>
+  <span class="no">User</span><span class="p">.</span><span class="nf">update_all</span><span class="p">(</span><span class="ss">name: </span><span class="s2">"Updated Name"</span><span class="p">)</span>
+  <span class="n">user</span><span class="p">.</span><span class="nf">reload</span>  <span class="c1"># Now shows "Updated Name" immediately</span>
+<span class="k">end</span>
+</code></pre></div></div>
+
+<h2 id="migrating-from-octopus-to-rails-6-native-multi-database-support">Migrating from Octopus to Rails 6+ Native Multi-Database Support</h2>
+
+<p>Previously, we were using the <strong>Octopus</strong> gem to manage multi-database configurations. However, <strong>Rails 6</strong> introduced native support for multi-database functionality, making Octopus redundant. The transition to native multi-database support meant we could simplify our <code class="language-plaintext highlighter-rouge">database.yml</code> and remove the Octopus-specific sharding logic.</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Old Octopus configuration</span>
+<span class="na">development</span><span class="pi">:</span>
+  <span class="na">adapter</span><span class="pi">:</span> <span class="s">postgresql</span>
+  <span class="na">database</span><span class="pi">:</span> <span class="s">myapp_development</span>
+  <span class="na">octopus</span><span class="pi">:</span>
+    <span class="na">shards</span><span class="pi">:</span>
+      <span class="na">users</span><span class="pi">:</span> <span class="s">myapp_users</span>
+
+<span class="c1"># Rails 6+ native multi-database support</span>
+<span class="na">development</span><span class="pi">:</span>
+  <span class="na">adapter</span><span class="pi">:</span> <span class="s">postgresql</span>
+  <span class="na">database</span><span class="pi">:</span> <span class="s">myapp_development</span>
+  <span class="na">users</span><span class="pi">:</span>
+    <span class="na">database</span><span class="pi">:</span> <span class="s">myapp_users</span>
+</code></pre></div></div>
+
+<p>This was another significant simplification of our infrastructure, reducing the number of external dependencies we relied on.</p>
+
+<h2 id="the-performance-payoff">The Performance Payoff</h2>
+
+<p>After completing these upgrades, we saw <strong>immediate performance improvements</strong> thanks to YJIT. Our CPU usage dropped significantly, and response times for key endpoints improved by up to <strong>30%</strong>. Not to mention, the single-branch deployment process saved us countless hours in deployment overhead.</p>
+
+<h2 id="key-takeaways">Key Takeaways</h2>
+
+<ol>
+  <li><strong>Prepare for Breaking Changes</strong>: Ruby 3.2 and Rails 7 introduce numerous breaking changes, but they also offer performance and security improvements. It’s worth the effort to migrate.</li>
+  <li><strong>Consolidate Branches</strong>: If you’re maintaining multiple branches for performance reasons, consider upgrading to Ruby 3.2 with YJIT. It allowed us to merge two branches into one, greatly simplifying our workflow.</li>
+  <li><strong>Plan Thoroughly</strong>: Large-scale upgrades require careful planning. Testing in staging environments and refactoring code for keyword arguments, method visibility, and database support is critical to avoid production issues.</li>
+</ol>
+
+<h2 id="whats-next">What’s Next?</h2>
+
+<p>With Ruby 3.2, Rails 7.0.6, and YJIT now powering our app, we’re well-positioned for future improvements. We’re already exploring the possibility of integrating <strong>Hotwire</strong> and <strong>Turbo</strong> to further enhance our front-end experience.</p>
+
+<p>If you’re considering a similar upgrade, my advice is simple: <strong>go for it</strong>. The benefits far outweigh the challenges, and your app will be stronger and faster for it.</p>
 
 <hr />
 
-<h2 id="the-benefits-of-the-migration">The Benefits of the Migration</h2>
-
-<p>The upgrade to Ruby 3.2 not only gave us performance improvements (thanks to YJIT) but also allowed us to unify our C-Ruby and JRuby branches into a single Ruby version. This paved the way for transitioning our production app to Kubernetes (K8s), making deployments more streamlined and scalable.</p>
-
-<p>With faster processing, reduced memory overhead, and the flexibility of containerized microservices, this migration allowed us to improve overall system efficiency while simplifying our infrastructure management.</p>
-
-<h2 id="conclusion">Conclusion</h2>
-
-<p>Migrating from Ruby 2.6 to Ruby 3.2 in a production environment comes with its challenges, but the benefits far outweigh the effort. By addressing syntax changes, frozen string literals, and thread safety, we were able to optimize both performance and deployment. Ruby 3.2, paired with Kubernetes, made our production processes faster, more efficient, and easier to manage.</p>
-
-<p>This migration has set the stage for future improvements in both code performance and infrastructure scalability, and I highly recommend other teams to make the switch.</p>
+<p>Thanks for reading! Feel free to reach out if you have any questions about the upgrade process or want to share your own experiences with Ruby and Rails upgrades.</p>
 
 <p>Happy coding!</p>
+
 
 
         
