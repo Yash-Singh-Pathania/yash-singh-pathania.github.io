@@ -26,6 +26,10 @@
 <lastmod>2024-04-07T00:00:00+01:00</lastmod>
 </url>
 <url>
+<loc>http://localhost:4000/posts/why_uber_does_not_use_djgrathrosk</loc>
+<lastmod>2024-07-07T00:00:00+01:00</lastmod>
+</url>
+<url>
 <loc>http://localhost:4000/posts/leetcode/</loc>
 <lastmod>2024-07-14T00:00:00+01:00</lastmod>
 </url>
@@ -48,6 +52,10 @@
 <url>
 <loc>http://localhost:4000/posts/testing</loc>
 <lastmod>2024-09-10T00:00:00+01:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/posts/on_my_campus</loc>
+<lastmod>2024-09-11T00:00:00+01:00</lastmod>
 </url>
 <url>
 <loc>http://localhost:4000/projects/project-1/</loc>
@@ -112,6 +120,10 @@
 </url>
 <url>
 <loc>http://localhost:4000/files/Yash_Singh_Pathania.pdf</loc>
+<lastmod>2024-09-30T14:04:11+01:00</lastmod>
+</url>
+<url>
+<loc>http://localhost:4000/files/Yash_Singh_Pathania_initial.pdf</loc>
 <lastmod>2024-09-12T01:14:13+01:00</lastmod>
 </url>
 <url>
