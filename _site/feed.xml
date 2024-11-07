@@ -1,4 +1,81 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-09-30T14:04:24+01:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Hii There</title><subtitle>Hey there! I’m Yash, a Ruby and Python developer with a knack for AWS, diving into computer vision, and pioneering AR/VR. I love blending tech with a dash of sci-fi, turning futuristic dreams into reality. From backend architectures to immersive AR experiences, I’m all about exploring new dimensions of code and pushing the boundaries of what’s possible.</subtitle><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><entry><title type="html">Is It ony my Campus</title><link href="http://localhost:4000/posts/on_my_campus" rel="alternate" type="text/html" title="Is It ony my Campus" /><published>2024-09-11T00:00:00+01:00</published><updated>2024-09-11T00:00:00+01:00</updated><id>http://localhost:4000/posts/is_it_on_my_campus</id><content type="html" xml:base="http://localhost:4000/posts/on_my_campus"><![CDATA[<h3 id="wip">WIP</h3>]]></content><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><category term="python" /><category term="fastApi" /><category term="SelfProject" /><summary type="html"><![CDATA[WIP]]></summary></entry><entry><title type="html">What i learnt testing</title><link href="http://localhost:4000/posts/testing" rel="alternate" type="text/html" title="What i learnt testing" /><published>2024-09-10T00:00:00+01:00</published><updated>2024-09-10T00:00:00+01:00</updated><id>http://localhost:4000/posts/testing</id><content type="html" xml:base="http://localhost:4000/posts/testing"><![CDATA[<p>What i learnt testing in  Ruby: RSpec, Shoulda Matchers, SimpleCov, and Beyond</p>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-11-07T16:00:44+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Hii There</title><subtitle>Hey there! I’m Yash, a Ruby and Python developer with a knack for AWS, diving into computer vision, and pioneering AR/VR. I love blending tech with a dash of sci-fi, turning futuristic dreams into reality. From backend architectures to immersive AR experiences, I’m all about exploring new dimensions of code and pushing the boundaries of what’s possible.</subtitle><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><entry><title type="html">Free At UCD ? Free Food for Students with Real-Time Availability</title><link href="http://localhost:4000/posts/on_my_campus" rel="alternate" type="text/html" title="Free At UCD ? Free Food for Students with Real-Time Availability" /><published>2024-09-11T00:00:00+01:00</published><updated>2024-09-11T00:00:00+01:00</updated><id>http://localhost:4000/posts/free_at_ucd</id><content type="html" xml:base="http://localhost:4000/posts/on_my_campus"><![CDATA[<p><em><a href="https://www.freeatucd.com">Free at UCD</a></em>
+ is a casual, real-time platform created to help students find free food on campus! University life is packed with events, and this app helps you stay in the know about food giveaways, helping students save on costs and reducing food waste.</p>
+
+<hr />
+
+<p><em>Free at UCD</em> is just a bunch of kids coming together and code  a  project aimed at helping University College Dublin (UCD) students find free food giveaways across the campus. Launched just a day ago, the platform has already garnered over <strong>100 active users</strong>, demonstrating the significant demand and utility of such a service among students.</p>
+
+<p><img src="/images/Freeatucd.png" alt="Free at UCD Banner" /></p>
+
+<h2 id="the-inspiration-behind-free-at-ucd">The Inspiration Behind Free at UCD</h2>
+
+<p>University life comes with its own set of challenges, and managing expenses is high on that list. Recognizing the frequency of events offering free food and the lack of a centralized platform to inform students about them, we developed <em>Free at UCD</em>. Our goal is to reduce food waste and help students save money by connecting them to these opportunities in real-time.</p>
+
+<h2 id="technical-overview">Technical Overview</h2>
+
+<p>Building an application that could handle real-time data and scale efficiently was crucial. Here’s how we achieved it:</p>
+
+<h3 id="streamlit-for-rapid-development">Streamlit for Rapid Development</h3>
+
+<p>We chose <a href="https://streamlit.io/">Streamlit</a> to build our Minimum Viable Product (MVP) due to its simplicity and the speed at which we could develop interactive web applications. Streamlit allowed us to focus on core functionalities without worrying about the complexities of traditional web development frameworks.</p>
+
+<h3 id="postgresql-database">PostgreSQL Database</h3>
+
+<p>For our database, we utilized <a href="https://www.postgresql.org/">PostgreSQL</a> to store location data, food items, availability times, and other relevant information. PostgreSQL’s robustness and reliability made it an ideal choice for handling the data-intensive operations of our application.</p>
+
+<h3 id="caching-the-map-for-performance">Caching the Map for Performance</h3>
+
+<p>One of the critical features of <em>Free at UCD</em> is the interactive map that displays food giveaway locations. Initially, users experienced delays and reloads when zooming or panning the map. To enhance performance, we implemented caching mechanisms:</p>
+
+<ul>
+  <li><strong>Map Caching:</strong> By caching the map object, we reduced the load times significantly. Users can now navigate the map smoothly without unnecessary reloads.</li>
+  <li><strong>Data Caching:</strong> We also cached database queries to minimize the number of calls to our PostgreSQL database, thereby improving the application’s responsiveness.</li>
+</ul>
+
+<h3 id="deployment-on-render">Deployment on Render</h3>
+
+<p>We deployed the application on <a href="https://render.com/">Render</a>, a cloud platform known for its ease of use and scalability. Despite being a large-scale application, we managed to run it efficiently on a <strong>bare minimum CPU configuration</strong>, thanks to our optimized code and caching strategies.</p>
+
+<p><em>Figure 1: Overview of Free at UCD’s Architecture</em></p>
+
+<h2 id="day-one-success">Day One Success</h2>
+
+<p>The response to <em>Free at UCD</em> has been overwhelming. On the first day alone, we had over <strong>100 active users</strong> interacting with the platform. The feedback has been incredibly positive, with students appreciating the real-time updates and the ease of finding free food on campus.</p>
+
+<p><em>Figure 2: User Growth on Launch Day</em></p>
+
+<h2 id="lessons-learned-and-future-plans">Lessons Learned and Future Plans</h2>
+
+<p>Developing <em>Free at UCD</em> taught us valuable lessons about building scalable applications with limited resources:</p>
+
+<ul>
+  <li><strong>Optimization is Key:</strong> Efficient coding practices and caching can significantly improve performance without the need for expensive infrastructure.</li>
+  <li><strong>User-Centric Design:</strong> Focusing on the needs of the users ensured that we built a tool that provided real value.</li>
+</ul>
+
+<h3 id="upcoming-features">Upcoming Features</h3>
+
+<p>We are excited to roll out new features in the coming weeks:</p>
+
+<ul>
+  <li><strong>Notification System:</strong> Users will receive alerts when new food giveaways are added near their location.</li>
+  <li><strong>Event Submission:</strong> Allowing event organizers to add their own food giveaway events to the platform.</li>
+  <li><strong>Enhanced Filtering:</strong> Users will be able to filter giveaways based on dietary preferences like vegan or gluten-free options.</li>
+</ul>
+
+<h2 id="conclusion">Conclusion</h2>
+
+<p><em>Free at UCD</em> is more than just an app; it’s a community resource aimed at enhancing student life on campus. By leveraging modern technologies and focusing on performance optimization, we’ve created a platform that not only serves its purpose effectively but also scales efficiently.</p>
+
+<p>We are grateful for the support from the UCD community and are committed to continuous improvement. Stay tuned for more updates!</p>
+
+<h2 id="get-involved">Get Involved</h2>
+
+<p>If you’re interested in contributing to the project or have suggestions, feel free to reach out or check out our <a href="https://github.com/Yash-Singh-Pathania/free_at_ucd">GitHub repository</a>.</p>
+
+<hr />
+
+<p><em>Thank you for being part of our journey!</em></p>]]></content><author><name>Yash Singh Pathania</name></author><category term="UCD" /><category term="Technology" /><category term="Student Life" /><category term="python" /><category term="fastApi" /><category term="SelfProject" /><category term="Streamlit" /><category term="PostgreSQL" /><category term="Render" /><summary type="html"><![CDATA[Free at UCD is a casual, real-time platform created to help students find free food on campus! University life is packed with events, and this app helps you stay in the know about food giveaways, helping students save on costs and reducing food waste.]]></summary></entry><entry><title type="html">What i learnt testing</title><link href="http://localhost:4000/posts/testing" rel="alternate" type="text/html" title="What i learnt testing" /><published>2024-09-10T00:00:00+01:00</published><updated>2024-09-10T00:00:00+01:00</updated><id>http://localhost:4000/posts/testing</id><content type="html" xml:base="http://localhost:4000/posts/testing"><![CDATA[<p>What i learnt testing in  Ruby: RSpec, Shoulda Matchers, SimpleCov, and Beyond</p>
 
 <p>Welcome to our in-depth exploration of testing in Ruby! Whether you’re a seasoned developer or just embarking on your Ruby journey, understanding how to write effective tests is crucial for building robust, maintainable, and scalable applications. In this comprehensive guide, we’ll delve into essential testing tools like <code class="language-plaintext highlighter-rouge">RSpec</code>, <code class="language-plaintext highlighter-rouge">Shoulda Matchers</code>, and <code class="language-plaintext highlighter-rouge">SimpleCov</code>, and explore best practices and advanced techniques to elevate your testing strategy.</p>
 
