@@ -377,13 +377,13 @@ $(document).ready(function() {
 
 <h4 id="example-flowchart-pre-upgrade-deployment-process">Example Flowchart: Pre-Upgrade Deployment Process</h4>
 
-<div class="mermaid">
+<pre class="mermaid">
 graph TD;
     A[Update main branch] --&gt; B[Merge into jruby_main];
     B --&gt; C[Resolve conflicts in Gemfile.lock];
     C --&gt; D[Deploy to separate environments];
     D --&gt; E[Repeat for each lower environment];
-</div>
+</pre>
 
 <p>This workflow not only caused delays but also increased the chance of deployment errors due to conflicts and separate environment management.</p>
 
@@ -403,10 +403,10 @@ graph TD;
 
 <h4 id="example-flowchart-post-upgrade-deployment-process">Example Flowchart: Post-Upgrade Deployment Process</h4>
 
-<div class="mermaid">
+<pre class="mermaid">
 graph TD;
     A[Update main branch] --&gt; B[Deploy directly from main];
-</div>
+</pre>
 
 <p>This streamlined process has reduced our release times from <strong>60 minutes to just 15 minutes</strong>, eliminating the need to manage multiple branches and environments.</p>
 
@@ -531,11 +531,11 @@ graph TD;
 
 <h4 id="example-flowchart-datetime-conversion-in-rails-7">Example Flowchart: Datetime Conversion in Rails 7</h4>
 
-<div class="mermaid">
+<pre class="mermaid">
 graph TD;
     A[Datetime in IST: 2024-04-11T10:55:34.648+05:30] --&gt; B[Insert into DB];
     B --&gt; C[Automatically converted to UTC: 2024-04-11 05:25:34.648000];
-<div>
+<pre>
 
 #### Impact of this Change
 
@@ -645,7 +645,7 @@ Thanks for reading! Feel free to reach out if you have any questions about the u
 
 Happy coding!
 
-</div></div>
+</pre></pre>
 
 
         

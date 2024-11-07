@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-11-07T16:13:02+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Hii There</title><subtitle>Hey there! I’m Yash, a Ruby and Python developer with a knack for AWS, diving into computer vision, and pioneering AR/VR. I love blending tech with a dash of sci-fi, turning futuristic dreams into reality. From backend architectures to immersive AR experiences, I’m all about exploring new dimensions of code and pushing the boundaries of what’s possible.</subtitle><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><entry><title type="html">Free At UCD ? Free Food for Students with Real-Time Availability</title><link href="http://localhost:4000/posts/on_my_campus" rel="alternate" type="text/html" title="Free At UCD ? Free Food for Students with Real-Time Availability" /><published>2024-09-11T00:00:00+01:00</published><updated>2024-09-11T00:00:00+01:00</updated><id>http://localhost:4000/posts/free_at_ucd</id><content type="html" xml:base="http://localhost:4000/posts/on_my_campus"><![CDATA[<p><em><a href="https://www.freeatucd.com">Free at UCD</a></em>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-11-07T16:16:19+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Hii There</title><subtitle>Hey there! I’m Yash, a Ruby and Python developer with a knack for AWS, diving into computer vision, and pioneering AR/VR. I love blending tech with a dash of sci-fi, turning futuristic dreams into reality. From backend architectures to immersive AR experiences, I’m all about exploring new dimensions of code and pushing the boundaries of what’s possible.</subtitle><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><entry><title type="html">Free At UCD ? Free Food for Students with Real-Time Availability</title><link href="http://localhost:4000/posts/on_my_campus" rel="alternate" type="text/html" title="Free At UCD ? Free Food for Students with Real-Time Availability" /><published>2024-09-11T00:00:00+01:00</published><updated>2024-09-11T00:00:00+01:00</updated><id>http://localhost:4000/posts/free_at_ucd</id><content type="html" xml:base="http://localhost:4000/posts/on_my_campus"><![CDATA[<p><em><a href="https://www.freeatucd.com">Free at UCD</a></em>
  is a casual, real-time platform created to help students find free food on campus! University life is packed with events, and this app helps you stay in the know about food giveaways, helping students save on costs and reducing food waste.</p>
 
 <hr />
@@ -1116,13 +1116,13 @@ This was day 2 of the project, and I was weirdly excited about it. I had to deci
 
 <h4 id="example-flowchart-pre-upgrade-deployment-process">Example Flowchart: Pre-Upgrade Deployment Process</h4>
 
-<div class="mermaid">
+<pre class="mermaid">
 graph TD;
     A[Update main branch] --&gt; B[Merge into jruby_main];
     B --&gt; C[Resolve conflicts in Gemfile.lock];
     C --&gt; D[Deploy to separate environments];
     D --&gt; E[Repeat for each lower environment];
-</div>
+</pre>
 
 <p>This workflow not only caused delays but also increased the chance of deployment errors due to conflicts and separate environment management.</p>
 
@@ -1142,10 +1142,10 @@ graph TD;
 
 <h4 id="example-flowchart-post-upgrade-deployment-process">Example Flowchart: Post-Upgrade Deployment Process</h4>
 
-<div class="mermaid">
+<pre class="mermaid">
 graph TD;
     A[Update main branch] --&gt; B[Deploy directly from main];
-</div>
+</pre>
 
 <p>This streamlined process has reduced our release times from <strong>60 minutes to just 15 minutes</strong>, eliminating the need to manage multiple branches and environments.</p>
 
@@ -1270,11 +1270,11 @@ graph TD;
 
 <h4 id="example-flowchart-datetime-conversion-in-rails-7">Example Flowchart: Datetime Conversion in Rails 7</h4>
 
-<div class="mermaid">
+<pre class="mermaid">
 graph TD;
     A[Datetime in IST: 2024-04-11T10:55:34.648+05:30] --&gt; B[Insert into DB];
     B --&gt; C[Automatically converted to UTC: 2024-04-11 05:25:34.648000];
-<div>
+<pre>
 
 #### Impact of this Change
 
@@ -1384,7 +1384,7 @@ Thanks for reading! Feel free to reach out if you have any questions about the u
 
 Happy coding!
 
-</div></div>]]></content><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><category term="ruby" /><category term="engineering" /><category term="yjit" /><summary type="html"><![CDATA[Upgrading Ruby and Rails to YJIT: A Deep Dive into Breaking Changes, Challenges, and Code Improvements]]></summary></entry><entry><title type="html">Postgres Sequence Item Go Up Even If Object Creation Fails</title><link href="http://localhost:4000/posts/next_val_postgres/" rel="alternate" type="text/html" title="Postgres Sequence Item Go Up Even If Object Creation Fails" /><published>2024-03-25T00:00:00+00:00</published><updated>2024-03-25T00:00:00+00:00</updated><id>http://localhost:4000/posts/next_val_postgres</id><content type="html" xml:base="http://localhost:4000/posts/next_val_postgres/"><![CDATA[<p>Today while working  on a ror project we run into an abrupt issue wiht transaction where even if the transaction was not being processed the id was increasing leading to a failure in a backgroud sidekiq worker this lead me to this stackover flow post</p>
+</pre></pre>]]></content><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><category term="ruby" /><category term="engineering" /><category term="yjit" /><summary type="html"><![CDATA[Upgrading Ruby and Rails to YJIT: A Deep Dive into Breaking Changes, Challenges, and Code Improvements]]></summary></entry><entry><title type="html">Postgres Sequence Item Go Up Even If Object Creation Fails</title><link href="http://localhost:4000/posts/next_val_postgres/" rel="alternate" type="text/html" title="Postgres Sequence Item Go Up Even If Object Creation Fails" /><published>2024-03-25T00:00:00+00:00</published><updated>2024-03-25T00:00:00+00:00</updated><id>http://localhost:4000/posts/next_val_postgres</id><content type="html" xml:base="http://localhost:4000/posts/next_val_postgres/"><![CDATA[<p>Today while working  on a ror project we run into an abrupt issue wiht transaction where even if the transaction was not being processed the id was increasing leading to a failure in a backgroud sidekiq worker this lead me to this stackover flow post</p>
 
 <p><a href="https://stackoverflow.com/questions/50650010/why-does-postgres-sequence-item-go-up-even-if-object-creation-fails">Post</a>
 Which then led me in rabit hole that i have tried to pen to the best of my abilities below :-&gt;</p>
