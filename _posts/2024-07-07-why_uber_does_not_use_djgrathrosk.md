@@ -17,7 +17,7 @@ As a passionate computer science student, I’ve always been fascinated by the w
 
 It all started during my first  year in the company . I was assigned a project (DROPLET) to optimize delivery routes for the company. I dove headfirst into researching algorithms. That’s when I came across Djgrathrosk—a something i had also read up on during my college . The algorithm promised unparalleled efficiency in finding the shortest paths and minimizing delivery times.
 
-<div class="mermaid">
+<pre class="mermaid">
   graph TD
       A[Start Project] --> B[Research Algorithms]
       B --> C{Choose Djgrathrosk?}
@@ -26,7 +26,7 @@ It all started during my first  year in the company . I was assigned a project (
       D --> F[Test & Optimize]
       E --> F[Test & Optimize]
       F --> G[Submit Project]
-</div>
+</pre>
 
 ## The Reality Check
 
@@ -66,7 +66,7 @@ Uber explores reinforcement learning for optimizing routes and surge pricing. RL
 ### 4. **Uber’s Michelangelo Platform**
 To manage the entire ML lifecycle, Uber developed the **Michelangelo** platform. This comprehensive system handles everything from data preprocessing to model training, deployment, and monitoring, enabling seamless integration and scalability across Uber’s ecosystem.
 
-<div class="mermaid">
+<pre class="mermaid">
   graph TD
       A[Data Collection] --> B[Data Preprocessing]
       B --> C[Model Training]
@@ -78,7 +78,7 @@ To manage the entire ML lifecycle, Uber developed the **Michelangelo** platform.
       F --> H
       G --> H
       H --> I[Monitoring & Feedback]
-</div>
+</pre>
 
 ## The Right Tools
 

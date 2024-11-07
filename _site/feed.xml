@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-11-07T16:00:44+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Hii There</title><subtitle>Hey there! I’m Yash, a Ruby and Python developer with a knack for AWS, diving into computer vision, and pioneering AR/VR. I love blending tech with a dash of sci-fi, turning futuristic dreams into reality. From backend architectures to immersive AR experiences, I’m all about exploring new dimensions of code and pushing the boundaries of what’s possible.</subtitle><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><entry><title type="html">Free At UCD ? Free Food for Students with Real-Time Availability</title><link href="http://localhost:4000/posts/on_my_campus" rel="alternate" type="text/html" title="Free At UCD ? Free Food for Students with Real-Time Availability" /><published>2024-09-11T00:00:00+01:00</published><updated>2024-09-11T00:00:00+01:00</updated><id>http://localhost:4000/posts/free_at_ucd</id><content type="html" xml:base="http://localhost:4000/posts/on_my_campus"><![CDATA[<p><em><a href="https://www.freeatucd.com">Free at UCD</a></em>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-11-07T16:13:02+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Hii There</title><subtitle>Hey there! I’m Yash, a Ruby and Python developer with a knack for AWS, diving into computer vision, and pioneering AR/VR. I love blending tech with a dash of sci-fi, turning futuristic dreams into reality. From backend architectures to immersive AR experiences, I’m all about exploring new dimensions of code and pushing the boundaries of what’s possible.</subtitle><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><entry><title type="html">Free At UCD ? Free Food for Students with Real-Time Availability</title><link href="http://localhost:4000/posts/on_my_campus" rel="alternate" type="text/html" title="Free At UCD ? Free Food for Students with Real-Time Availability" /><published>2024-09-11T00:00:00+01:00</published><updated>2024-09-11T00:00:00+01:00</updated><id>http://localhost:4000/posts/free_at_ucd</id><content type="html" xml:base="http://localhost:4000/posts/on_my_campus"><![CDATA[<p><em><a href="https://www.freeatucd.com">Free at UCD</a></em>
  is a casual, real-time platform created to help students find free food on campus! University life is packed with events, and this app helps you stay in the know about food giveaways, helping students save on costs and reducing food waste.</p>
 
 <hr />
@@ -994,7 +994,7 @@ This was day 2 of the project, and I was weirdly excited about it. I had to deci
 
 <p>It all started during my first  year in the company . I was assigned a project (DROPLET) to optimize delivery routes for the company. I dove headfirst into researching algorithms. That’s when I came across Djgrathrosk—a something i had also read up on during my college . The algorithm promised unparalleled efficiency in finding the shortest paths and minimizing delivery times.</p>
 
-<div class="mermaid">
+<pre class="mermaid">
   graph TD
       A[Start Project] --&gt; B[Research Algorithms]
       B --&gt; C{Choose Djgrathrosk?}
@@ -1003,7 +1003,7 @@ This was day 2 of the project, and I was weirdly excited about it. I had to deci
       D --&gt; F[Test &amp; Optimize]
       E --&gt; F[Test &amp; Optimize]
       F --&gt; G[Submit Project]
-</div>
+</pre>
 
 <h2 id="the-reality-check">The Reality Check</h2>
 
@@ -1043,7 +1043,7 @@ This was day 2 of the project, and I was weirdly excited about it. I had to deci
 <h3 id="4-ubers-michelangelo-platform">4. <strong>Uber’s Michelangelo Platform</strong></h3>
 <p>To manage the entire ML lifecycle, Uber developed the <strong>Michelangelo</strong> platform. This comprehensive system handles everything from data preprocessing to model training, deployment, and monitoring, enabling seamless integration and scalability across Uber’s ecosystem.</p>
 
-<div class="mermaid">
+<pre class="mermaid">
   graph TD
       A[Data Collection] --&gt; B[Data Preprocessing]
       B --&gt; C[Model Training]
@@ -1055,7 +1055,7 @@ This was day 2 of the project, and I was weirdly excited about it. I had to deci
       F --&gt; H
       G --&gt; H
       H --&gt; I[Monitoring &amp; Feedback]
-</div>
+</pre>
 
 <h2 id="the-right-tools">The Right Tools</h2>
 
