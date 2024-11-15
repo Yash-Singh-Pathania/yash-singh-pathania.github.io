@@ -21,7 +21,3 @@ Oh, and I’m currently in the beautiful country of Ireland! 🌍
 <!-- 
  <a href="files/Yash_Singh_Pathania.pdf" style="text-decoration: none;">Resume</a> <span style="font-size: 0.8em; opacity: 0.6;">(Updated: 10-September-2024)</span> -->
 
-
-https://www.linkedin.com/in/amber-cher-jd/
-https://www.linkedin.com/in/ivasharma/
-

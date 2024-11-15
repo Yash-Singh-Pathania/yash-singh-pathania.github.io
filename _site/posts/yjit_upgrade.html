@@ -535,117 +535,112 @@ graph TD;
 graph TD;
     A[Datetime in IST: 2024-04-11T10:55:34.648+05:30] --&gt; B[Insert into DB];
     B --&gt; C[Automatically converted to UTC: 2024-04-11 05:25:34.648000];
-<pre>
+</pre>
 
-#### Impact of this Change
+<h4 id="impact-of-this-change">Impact of this Change</h4>
 
-This automatic conversion simplifies the handling of datetime fields in the database, ensuring consistency across different time zones. However, it also requires careful handling when generating reports or retrieving data in a specific time zone, as queries may now return **UTC** values. Applications relying on local time zone data will need to adjust by converting **UTC** back to the desired time zone when necessary.
+<p>This automatic conversion simplifies the handling of datetime fields in the database, ensuring consistency across different time zones. However, it also requires careful handling when generating reports or retrieving data in a specific time zone, as queries may now return <strong>UTC</strong> values. Applications relying on local time zone data will need to adjust by converting <strong>UTC</strong> back to the desired time zone when necessary.</p>
 
-By adapting to this behavior in **Rails 7**, we ensure that our systems handle datetime values more consistently and accurately across various time zones.
+<p>By adapting to this behavior in <strong>Rails 7</strong>, we ensure that our systems handle datetime values more consistently and accurately across various time zones.</p>
 
+<p>This change required careful review of all our model definitions to ensure that method visibility was correctly specified.</p>
 
-This change required careful review of all our model definitions to ensure that method visibility was correctly specified.
+<h2 id="rails-706-migration-breaking-changes-and-code-adjustments">Rails 7.0.6 Migration: Breaking Changes and Code Adjustments</h2>
 
-## Rails 7.0.6 Migration: Breaking Changes and Code Adjustments
+<h3 id="deprecation-of-update_attributes">Deprecation of <code class="language-plaintext highlighter-rouge">update_attributes</code></h3>
 
-### Deprecation of `update_attributes`
+<p>Rails 7 deprecates the once-familiar <code class="language-plaintext highlighter-rouge">update_attributes</code> method. Instead, the preferred method is simply <code class="language-plaintext highlighter-rouge">update</code>. While this change was straightforward, it required a thorough search and replace throughout our models.</p>
 
-Rails 7 deprecates the once-familiar `update_attributes` method. Instead, the preferred method is simply `update`. While this change was straightforward, it required a thorough search and replace throughout our models.
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Before Rails 7</span>
+<span class="n">user</span><span class="p">.</span><span class="nf">update_attributes</span><span class="p">(</span><span class="ss">name: </span><span class="s2">"New Name"</span><span class="p">,</span> <span class="ss">email: </span><span class="s2">"newemail@example.com"</span><span class="p">)</span>
 
-```ruby
-# Before Rails 7
-user.update_attributes(name: "New Name", email: "newemail@example.com")
+<span class="c1"># Rails 7</span>
+<span class="n">user</span><span class="p">.</span><span class="nf">update</span><span class="p">(</span><span class="ss">name: </span><span class="s2">"New Name"</span><span class="p">,</span> <span class="ss">email: </span><span class="s2">"newemail@example.com"</span><span class="p">)</span>
+</code></pre></div></div>
 
-# Rails 7
-user.update(name: "New Name", email: "newemail@example.com")
-```
+<h3 id="return-behavior-in-transactions">Return Behavior in Transactions</h3>
 
-### Return Behavior in Transactions
+<p>Rails 7 also introduced changes to how <strong>return statements</strong> behave inside transactions. In earlier Rails versions, returning from within a transaction would not necessarily roll it back. However, in <strong>Rails 7</strong>, returning from a transaction block now <strong>rolls back</strong> the entire transaction. This led to some tricky bugs in our payment system where returns were used incorrectly within transactions.</p>
 
-Rails 7 also introduced changes to how **return statements** behave inside transactions. In earlier Rails versions, returning from within a transaction would not necessarily roll it back. However, in **Rails 7**, returning from a transaction block now **rolls back** the entire transaction. This led to some tricky bugs in our payment system where returns were used incorrectly within transactions.
+<h3 id="raw-sql-queries-are-no-longer-allowed">Raw SQL Queries Are No Longer Allowed</h3>
 
-### Raw SQL Queries Are No Longer Allowed
+<p>Rails 7 deprecated the use of raw SQL queries directly in ActiveRecord, mainly to avoid SQL injection risks. Previously, you could write raw SQL like this:</p>
 
-Rails 7 deprecated the use of raw SQL queries directly in ActiveRecord, mainly to avoid SQL injection risks. Previously, you could write raw SQL like this:
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Before Rails 7, using raw SQL</span>
+<span class="no">User</span><span class="p">.</span><span class="nf">where</span><span class="p">(</span><span class="s2">"name LIKE ?"</span><span class="p">,</span> <span class="s2">"%John%"</span><span class="p">)</span>
+</code></pre></div></div>
 
-```ruby
-# Before Rails 7, using raw SQL
-User.where("name LIKE ?", "%John%")
-```
+<p>In Rails 7, this throws an error. Instead, we now use Rails’ query interface for sanitized queries:</p>
 
-In Rails 7, this throws an error. Instead, we now use Rails' query interface for sanitized queries:
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Rails 7 safe query</span>
+<span class="no">User</span><span class="p">.</span><span class="nf">where</span><span class="p">(</span><span class="s2">"name ILIKE ?"</span><span class="p">,</span> <span class="s2">"%John%"</span><span class="p">)</span>
+</code></pre></div></div>
 
-```ruby
-# Rails 7 safe query
-User.where("name ILIKE ?", "%John%")
-```
+<p>We refactored all occurrences of raw SQL in our codebase to follow Rails’ safer conventions, making our app more secure in the process.</p>
 
-We refactored all occurrences of raw SQL in our codebase to follow Rails' safer conventions, making our app more secure in the process.
+<h3 id="changes-to-update_all">Changes to <code class="language-plaintext highlighter-rouge">update_all</code></h3>
 
-### Changes to `update_all`
+<p>Another subtle but impactful change in Rails 7 was how <code class="language-plaintext highlighter-rouge">update_all</code> works within a transaction. In earlier Rails versions, when <code class="language-plaintext highlighter-rouge">update_all</code> was called, the ActiveRecord objects would not immediately reflect the changes. However, in <strong>Rails 7</strong>, calling <code class="language-plaintext highlighter-rouge">update_all</code> within a transaction updates the objects right away.</p>
 
-Another subtle but impactful change in Rails 7 was how `update_all` works within a transaction. In earlier Rails versions, when `update_all` was called, the ActiveRecord objects would not immediately reflect the changes. However, in **Rails 7**, calling `update_all` within a transaction updates the objects right away.
+<div class="language-ruby highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Before Rails 7, ActiveRecord object remains unchanged until the transaction completes</span>
+<span class="no">User</span><span class="p">.</span><span class="nf">transaction</span> <span class="k">do</span>
+  <span class="no">User</span><span class="p">.</span><span class="nf">update_all</span><span class="p">(</span><span class="ss">name: </span><span class="s2">"Updated Name"</span><span class="p">)</span>
+  <span class="n">user</span><span class="p">.</span><span class="nf">reload</span>  <span class="c1"># Would still show old name in Rails 5.x</span>
+<span class="k">end</span>
 
-```ruby
-# Before Rails 7, ActiveRecord object remains unchanged until the transaction completes
-User.transaction do
-  User.update_all(name: "Updated Name")
-  user.reload  # Would still show old name in Rails 5.x
-end
+<span class="c1"># In Rails 7, update_all changes take effect immediately</span>
+<span class="no">User</span><span class="p">.</span><span class="nf">transaction</span> <span class="k">do</span>
+  <span class="no">User</span><span class="p">.</span><span class="nf">update_all</span><span class="p">(</span><span class="ss">name: </span><span class="s2">"Updated Name"</span><span class="p">)</span>
+  <span class="n">user</span><span class="p">.</span><span class="nf">reload</span>  <span class="c1"># Now shows "Updated Name" immediately</span>
+<span class="k">end</span>
+</code></pre></div></div>
 
-# In Rails 7, update_all changes take effect immediately
-User.transaction do
-  User.update_all(name: "Updated Name")
-  user.reload  # Now shows "Updated Name" immediately
-end
-```
+<h2 id="migrating-from-octopus-to-rails-6-native-multi-database-support">Migrating from Octopus to Rails 6+ Native Multi-Database Support</h2>
 
-## Migrating from Octopus to Rails 6+ Native Multi-Database Support
+<p>Previously, we were using the <strong>Octopus</strong> gem to manage multi-database configurations. However, <strong>Rails 6</strong> introduced native support for multi-database functionality, making Octopus redundant. The transition to native multi-database support meant we could simplify our <code class="language-plaintext highlighter-rouge">database.yml</code> and remove the Octopus-specific sharding logic.</p>
 
-Previously, we were using the **Octopus** gem to manage multi-database configurations. However, **Rails 6** introduced native support for multi-database functionality, making Octopus redundant. The transition to native multi-database support meant we could simplify our `database.yml` and remove the Octopus-specific sharding logic.
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Old Octopus configuration</span>
+<span class="na">development</span><span class="pi">:</span>
+  <span class="na">adapter</span><span class="pi">:</span> <span class="s">postgresql</span>
+  <span class="na">database</span><span class="pi">:</span> <span class="s">myapp_development</span>
+  <span class="na">octopus</span><span class="pi">:</span>
+    <span class="na">shards</span><span class="pi">:</span>
+      <span class="na">users</span><span class="pi">:</span> <span class="s">myapp_users</span>
 
-```yaml
-# Old Octopus configuration
-development:
-  adapter: postgresql
-  database: myapp_development
-  octopus:
-    shards:
-      users: myapp_users
+<span class="c1"># Rails 6+ native multi-database support</span>
+<span class="na">development</span><span class="pi">:</span>
+  <span class="na">adapter</span><span class="pi">:</span> <span class="s">postgresql</span>
+  <span class="na">database</span><span class="pi">:</span> <span class="s">myapp_development</span>
+  <span class="na">users</span><span class="pi">:</span>
+    <span class="na">database</span><span class="pi">:</span> <span class="s">myapp_users</span>
+</code></pre></div></div>
 
-# Rails 6+ native multi-database support
-development:
-  adapter: postgresql
-  database: myapp_development
-  users:
-    database: myapp_users
-```
+<p>This was another significant simplification of our infrastructure, reducing the number of external dependencies we relied on.</p>
 
-This was another significant simplification of our infrastructure, reducing the number of external dependencies we relied on.
+<h2 id="the-performance-payoff">The Performance Payoff</h2>
 
-## The Performance Payoff
+<p>After completing these upgrades, we saw <strong>immediate performance improvements</strong> thanks to YJIT. Our CPU usage dropped significantly, and response times for key endpoints improved by up to <strong>30%</strong>. Not to mention, the single-branch deployment process saved us countless hours in deployment overhead.</p>
 
-After completing these upgrades, we saw **immediate performance improvements** thanks to YJIT. Our CPU usage dropped significantly, and response times for key endpoints improved by up to **30%**. Not to mention, the single-branch deployment process saved us countless hours in deployment overhead.
+<h2 id="key-takeaways">Key Takeaways</h2>
 
-## Key Takeaways
+<ol>
+  <li><strong>Prepare for Breaking Changes</strong>: Ruby 3.2 and Rails 7 introduce numerous breaking changes, but they also offer performance and security improvements. It’s worth the effort to migrate.</li>
+  <li><strong>Consolidate Branches</strong>: If you’re maintaining multiple branches for performance reasons, consider upgrading to Ruby 3.2 with YJIT. It allowed us to merge two branches into one, greatly simplifying our workflow.</li>
+  <li><strong>Plan Thoroughly</strong>: Large-scale upgrades require careful planning. Testing in staging environments and refactoring code for keyword arguments, method visibility, and database support is critical to avoid production issues.</li>
+</ol>
 
-1. **Prepare for Breaking Changes**: Ruby 3.2 and Rails 7 introduce numerous breaking changes, but they also offer performance and security improvements. It's worth the effort to migrate.
-2. **Consolidate Branches**: If you’re maintaining multiple branches for performance reasons, consider upgrading to Ruby 3.2 with YJIT. It allowed us to merge two branches into one, greatly simplifying our workflow.
-3. **Plan Thoroughly**: Large-scale upgrades require careful planning. Testing in staging environments and refactoring code for keyword arguments, method visibility, and database support is critical to avoid production issues.
+<h2 id="whats-next">What’s Next?</h2>
 
-## What’s Next?
+<p>With Ruby 3.2, Rails 7.0.6, and YJIT now powering our app, we’re well-positioned for future improvements. We’re already exploring the possibility of integrating <strong>Hotwire</strong> and <strong>Turbo</strong> to further enhance our front-end experience.</p>
 
-With Ruby 3.2, Rails 7.0.6, and YJIT now powering our app, we're well-positioned for future improvements. We're already exploring the possibility of integrating **Hotwire** and **Turbo** to further enhance our front-end experience.
+<p>If you’re considering a similar upgrade, my advice is simple: <strong>go for it</strong>. The benefits far outweigh the challenges, and your app will be stronger and faster for it.</p>
 
-If you're considering a similar upgrade, my advice is simple: **go for it**. The benefits far outweigh the challenges, and your app will be stronger and faster for it.
+<hr />
 
----
+<p>Thanks for reading! Feel free to reach out if you have any questions about the upgrade process or want to share your own experiences with Ruby and Rails upgrades.</p>
 
-Thanks for reading! Feel free to reach out if you have any questions about the upgrade process or want to share your own experiences with Ruby and Rails upgrades.
+<p>Happy coding!</p>
 
-Happy coding!
-
-</pre></pre>
 
 
         
