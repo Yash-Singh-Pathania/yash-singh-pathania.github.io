@@ -1,7 +1,7 @@
 ---
 title: "Homography For Old Art Pictures "
 date: 2024-09-11
-permalink: /posts/on_my_campus
+permalink: /posts/homography
 categories: [UCD, Technology, Student Life]
 tags:
   - python
