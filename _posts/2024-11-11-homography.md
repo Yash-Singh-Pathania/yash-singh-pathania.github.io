@@ -14,7 +14,8 @@ mermaid: true
 author: Yash Singh Pathania
 ---
 
-# Unraveling the Magic of Homography Transformations: A Coding Adventure
+
+Unraveling the Magic of Homography Transformations: A Coding Adventure
 
 Welcome to a fascinating exploration of homography transformations—a powerful technique in computer vision that adjusts the perspective of an image. This process has a myriad of applications, from correcting distorted photos to automating image preprocessing for machine learning tasks. In this post, I'll walk you through how we built a simple yet effective Homography Transformation App using React for the frontend and FastAPI for the backend.
 
