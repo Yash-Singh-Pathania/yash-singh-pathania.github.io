@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-11-15T19:57:24+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Hii There</title><subtitle>Hey there! I’m Yash, a Ruby and Python developer with a knack for AWS, diving into computer vision, and pioneering AR/VR. I love blending tech with a dash of sci-fi, turning futuristic dreams into reality. From backend architectures to immersive AR experiences, I’m all about exploring new dimensions of code and pushing the boundaries of what’s possible.</subtitle><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><entry><title type="html">Free At UCD ? Free Food for Students with Real-Time Availability</title><link href="http://localhost:4000/posts/on_my_campus" rel="alternate" type="text/html" title="Free At UCD ? Free Food for Students with Real-Time Availability" /><published>2024-09-11T00:00:00+01:00</published><updated>2024-09-11T00:00:00+01:00</updated><id>http://localhost:4000/posts/free_at_ucd</id><content type="html" xml:base="http://localhost:4000/posts/on_my_campus"><![CDATA[<p><em><a href="https://www.freeatucd.com">Free at UCD</a></em>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.5">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2024-11-19T01:41:54+00:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Hii There</title><subtitle>Hey there! I’m Yash, a Ruby and Python developer with a knack for AWS, diving into computer vision, and pioneering AR/VR. I love blending tech with a dash of sci-fi, turning futuristic dreams into reality. From backend architectures to immersive AR experiences, I’m all about exploring new dimensions of code and pushing the boundaries of what’s possible.</subtitle><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><entry><title type="html">Free At UCD ? Free Food for Students with Real-Time Availability</title><link href="http://localhost:4000/posts/on_my_campus" rel="alternate" type="text/html" title="Free At UCD ? Free Food for Students with Real-Time Availability" /><published>2024-09-11T00:00:00+01:00</published><updated>2024-09-11T00:00:00+01:00</updated><id>http://localhost:4000/posts/free_at_ucd</id><content type="html" xml:base="http://localhost:4000/posts/on_my_campus"><![CDATA[<p><em><a href="https://www.freeatucd.com">Free at UCD</a></em>
  is a casual, real-time platform created to help students find free food on campus! University life is packed with events, and this app helps you stay in the know about food giveaways, helping students save on costs and reducing food waste.</p>
 
 <hr />
@@ -75,7 +75,83 @@
 
 <hr />
 
-<p><em>Thank you for being part of our journey!</em></p>]]></content><author><name>Yash Singh Pathania</name></author><category term="UCD" /><category term="Technology" /><category term="Student Life" /><category term="python" /><category term="fastApi" /><category term="SelfProject" /><category term="Streamlit" /><category term="PostgreSQL" /><category term="Render" /><summary type="html"><![CDATA[Free at UCD is a casual, real-time platform created to help students find free food on campus! University life is packed with events, and this app helps you stay in the know about food giveaways, helping students save on costs and reducing food waste.]]></summary></entry><entry><title type="html">What i learnt testing</title><link href="http://localhost:4000/posts/testing" rel="alternate" type="text/html" title="What i learnt testing" /><published>2024-09-10T00:00:00+01:00</published><updated>2024-09-10T00:00:00+01:00</updated><id>http://localhost:4000/posts/testing</id><content type="html" xml:base="http://localhost:4000/posts/testing"><![CDATA[<p>What i learnt testing in  Ruby: RSpec, Shoulda Matchers, SimpleCov, and Beyond</p>
+<p><em>Thank you for being part of our journey!</em></p>]]></content><author><name>Yash Singh Pathania</name></author><category term="UCD" /><category term="Technology" /><category term="Student Life" /><category term="python" /><category term="fastApi" /><category term="SelfProject" /><category term="Streamlit" /><category term="PostgreSQL" /><category term="Render" /><summary type="html"><![CDATA[Free at UCD is a casual, real-time platform created to help students find free food on campus! University life is packed with events, and this app helps you stay in the know about food giveaways, helping students save on costs and reducing food waste.]]></summary></entry><entry><title type="html">Homography For Old Art Pictures</title><link href="http://localhost:4000/posts/on_my_campus" rel="alternate" type="text/html" title="Homography For Old Art Pictures" /><published>2024-09-11T00:00:00+01:00</published><updated>2024-09-11T00:00:00+01:00</updated><id>http://localhost:4000/posts/homography</id><content type="html" xml:base="http://localhost:4000/posts/on_my_campus"><![CDATA[<h1 id="unraveling-the-magic-of-homography-transformations-a-coding-adventure">Unraveling the Magic of Homography Transformations: A Coding Adventure</h1>
+
+<p>Welcome to a fascinating exploration of homography transformations—a powerful technique in computer vision that adjusts the perspective of an image. This process has a myriad of applications, from correcting distorted photos to automating image preprocessing for machine learning tasks. In this post, I’ll walk you through how we built a simple yet effective Homography Transformation App using React for the frontend and FastAPI for the backend.</p>
+
+<h3 id="what-is-homography">What is Homography?</h3>
+
+<p>Homography is a transformation applied to points on a plane in a three-dimensional projective space. It’s commonly used to manipulate images where you need to correct the perspective. For example, imagine taking a picture of a painting from the side; homography can help “straighten” that image to look as if you’d captured it head-on.</p>
+
+<h3 id="the-mathematical-grit">The Mathematical Grit</h3>
+
+<p>Homography involves a series of linear transformations and is defined by a 3x3 matrix. Given a set of four points in both the original and target images, we can compute this matrix to map between these points. Here’s a simplified breakdown of the mathematics involved:</p>
+
+<ol>
+  <li><strong>Point Collection</strong>:
+    <ul>
+      <li>You define points on your image that form a quadrilateral, which might represent, for instance, the corners of a document in an image taken at an angle.</li>
+    </ul>
+  </li>
+  <li><strong>Matrix Equation</strong>:
+    <ul>
+      <li>The homography matrix ( H ) relates corresponding points in two images, ( p ) in the original image and ( p’ ) in the transformed image, as follows:
+[
+p’ = H \cdot p
+]
+Where ( p ) and ( p’ ) are points in homogeneous coordinates.</li>
+    </ul>
+  </li>
+  <li><strong>Direct Linear Transformation (DLT)</strong>:
+    <ul>
+      <li>The matrix ( H ) can be found using a series of linear equations derived from the coordinates of points in both images:
+[
+\begin{align<em>}
+ax + by + c &amp; = x’ <br />
+dx + ey + f &amp; = y’ <br />
+gx + hy + i &amp; = 1
+\end{align</em>}
+]</li>
+      <li>The coefficients (a-i) are solved using Singular Value Decomposition (SVD), ensuring the matrix transforms the source points to their destinations.</li>
+    </ul>
+  </li>
+  <li><strong>Matrix Application</strong>:
+    <ul>
+      <li>For any given point ( (x, y) ) in the original image, we apply ( H ) to find the corresponding point in the new image, effectively transforming the perspective.</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="building-the-app">Building the App</h3>
+
+<h4 id="step-1-setting-up-the-environment">Step 1: Setting Up the Environment</h4>
+
+<p>We started by setting up two main components: a React frontend and a FastAPI backend. React manages the UI, providing a responsive way to upload images and select points. FastAPI, on the other hand, handles the computationally intensive task of calculating and applying the homography matrix.</p>
+
+<h4 id="step-2-user-interaction">Step 2: User Interaction</h4>
+
+<p>Users upload an image and then click to select four points on the image. These points dictate how the image will be transformed. The app dynamically draws a quadrilateral as points are selected, reinforcing the expected transformation.</p>
+
+<h4 id="step-3-backend-magic">Step 3: Backend Magic</h4>
+
+<p>Upon receiving the points and the image, the backend:</p>
+<ul>
+  <li>Orders the points to ensure consistency.</li>
+  <li>Computes the homography matrix using the provided points.</li>
+  <li>Applies this matrix to transform the image, which is then sent back to the user.</li>
+</ul>
+
+<h3 id="challenges-and-solutions">Challenges and Solutions</h3>
+
+<p>Implementing the app wasn’t without its hurdles. Ensuring that points are selected in a way that makes mathematical sense (i.e., forming a convex quadrilateral) required some additional checks. Moreover, handling different image sizes and aspect ratios meant scaling the points appropriately before applying transformations.</p>
+
+<h3 id="conclusion-why-it-matters">Conclusion: Why It Matters</h3>
+
+<p>The Homography Transformation App is more than just a technical showcase; it’s a practical tool for anyone needing to correct image perspectives quickly. For developers, it’s a great starting point for more complex computer vision tasks that require image normalization.</p>
+
+<p>This project is a testament to the beauty of combining mathematical theory with software development to solve real-world problems. Whether you’re a seasoned developer or a curious enthusiast, the world of homography transformations offers endless possibilities for exploration and innovation.</p>
+
+<hr />]]></content><author><name>Yash Singh Pathania</name></author><category term="UCD" /><category term="Technology" /><category term="Student Life" /><category term="python" /><category term="fastApi" /><category term="SelfProject" /><category term="Streamlit" /><category term="PostgreSQL" /><category term="Render" /><summary type="html"><![CDATA[Unraveling the Magic of Homography Transformations: A Coding Adventure]]></summary></entry><entry><title type="html">What i learnt testing</title><link href="http://localhost:4000/posts/testing" rel="alternate" type="text/html" title="What i learnt testing" /><published>2024-09-10T00:00:00+01:00</published><updated>2024-09-10T00:00:00+01:00</updated><id>http://localhost:4000/posts/testing</id><content type="html" xml:base="http://localhost:4000/posts/testing"><![CDATA[<p>What i learnt testing in  Ruby: RSpec, Shoulda Matchers, SimpleCov, and Beyond</p>
 
 <p>Welcome to our in-depth exploration of testing in Ruby! Whether you’re a seasoned developer or just embarking on your Ruby journey, understanding how to write effective tests is crucial for building robust, maintainable, and scalable applications. In this comprehensive guide, we’ll delve into essential testing tools like <code class="language-plaintext highlighter-rouge">RSpec</code>, <code class="language-plaintext highlighter-rouge">Shoulda Matchers</code>, and <code class="language-plaintext highlighter-rouge">SimpleCov</code>, and explore best practices and advanced techniques to elevate your testing strategy.</p>
 
@@ -949,7 +1025,13 @@
 <p>As I pen down this header, I am excited and eager to code. Happy reading!</p>
 
 <h2 id="progress">Progress</h2>
-<p>-<a href="../building_hawkeye/week1">Week 1: Core Functionality Development</a></p>]]></content><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><category term="Computer Vision" /><category term="Python" /><summary type="html"><![CDATA[As the lead developer at Tata 1mg, designing the Common Order Taking (COT) portal, I realized the critical need for analytics and performance metrics in high-efficiency retail stores, dark stores, and warehouses. When every last rupee counts towards profitability, understanding these metrics is imperative. So during my notice period i have decided to work on something called hawkeye ( i watch cricket a lot and hence the name )]]></summary></entry><entry><title type="html">Week 1: Core Functionality Development</title><link href="http://localhost:4000/posts/building_hawkeye/week1/" rel="alternate" type="text/html" title="Week 1: Core Functionality Development" /><published>2024-07-14T00:00:00+01:00</published><updated>2024-07-14T00:00:00+01:00</updated><id>http://localhost:4000/posts/building_hawkeye/week1</id><content type="html" xml:base="http://localhost:4000/posts/building_hawkeye/week1/"><![CDATA[<p>Day 1-7: Project Setup and Initial Development</p>
+<p>-<a href="../building_hawkeye/week1">Week 1: Core Functionality Development</a></p>]]></content><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><category term="Computer Vision" /><category term="Python" /><summary type="html"><![CDATA[As the lead developer at Tata 1mg, designing the Common Order Taking (COT) portal, I realized the critical need for analytics and performance metrics in high-efficiency retail stores, dark stores, and warehouses. When every last rupee counts towards profitability, understanding these metrics is imperative. So during my notice period i have decided to work on something called hawkeye ( i watch cricket a lot and hence the name )]]></summary></entry><entry><title type="html">Leet Code Fun Questions</title><link href="http://localhost:4000/posts/leetcode/" rel="alternate" type="text/html" title="Leet Code Fun Questions" /><published>2024-07-14T00:00:00+01:00</published><updated>2024-07-14T00:00:00+01:00</updated><id>http://localhost:4000/posts/leetcode</id><content type="html" xml:base="http://localhost:4000/posts/leetcode/"><![CDATA[<p>This is the place where I write about the LeetCode questions I find interesting. I rarely do LeetCode, but I need to brush up on my DSA and competitive coding skills before my master’s, so I’ll be blogging about that here.</p>
+
+<p>Check out these subpages for more detailed discussions:</p>
+<ul>
+  <li><a href="../leetcode/1518">Bottle Exchange</a></li>
+  <li><a href="../leetcode/subpage2">Subpage 2</a></li>
+</ul>]]></content><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><category term="Leetcode" /><category term="Competitive Coding" /><summary type="html"><![CDATA[This is the place where I write about the LeetCode questions I find interesting. I rarely do LeetCode, but I need to brush up on my DSA and competitive coding skills before my master’s, so I’ll be blogging about that here.]]></summary></entry><entry><title type="html">Leet Code Subpage 2</title><link href="http://localhost:4000/posts/leetcode/subpage2/" rel="alternate" type="text/html" title="Leet Code Subpage 2" /><published>2024-07-14T00:00:00+01:00</published><updated>2024-07-14T00:00:00+01:00</updated><id>http://localhost:4000/posts/leetcode/subpage2</id><content type="html" xml:base="http://localhost:4000/posts/leetcode/subpage2/"><![CDATA[<p>This is the second subpage for the LeetCode Fun Questions blog post. Here, I will cover more advanced problems and techniques.</p>]]></content><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><category term="leetcode" /><summary type="html"><![CDATA[This is the second subpage for the LeetCode Fun Questions blog post. Here, I will cover more advanced problems and techniques.]]></summary></entry><entry><title type="html">Week 1: Core Functionality Development</title><link href="http://localhost:4000/posts/building_hawkeye/week1/" rel="alternate" type="text/html" title="Week 1: Core Functionality Development" /><published>2024-07-14T00:00:00+01:00</published><updated>2024-07-14T00:00:00+01:00</updated><id>http://localhost:4000/posts/building_hawkeye/week1</id><content type="html" xml:base="http://localhost:4000/posts/building_hawkeye/week1/"><![CDATA[<p>Day 1-7: Project Setup and Initial Development</p>
 
 <h2 id="day-1-setting-up-hawkeye">Day 1: Setting Up Hawkeye</h2>
 
@@ -980,13 +1062,7 @@ This was day 2 of the project, and I was weirdly excited about it. I had to deci
 
 <p>Today’s commit <a href="https://github.com/Yash-Git-Hub/Hawkeye/compare/481a8eb6e00e15b6cb6493122557534439894e95...cf40098133a17c5438040cadca662e35221db8e7">commit</a></p>
 
-<hr />]]></content><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><category term="Computer Vision" /><category term="Python" /><category term="Building Hawkeye" /><summary type="html"><![CDATA[Day 1-7: Project Setup and Initial Development]]></summary></entry><entry><title type="html">Leet Code Subpage 2</title><link href="http://localhost:4000/posts/leetcode/subpage2/" rel="alternate" type="text/html" title="Leet Code Subpage 2" /><published>2024-07-14T00:00:00+01:00</published><updated>2024-07-14T00:00:00+01:00</updated><id>http://localhost:4000/posts/leetcode/subpage2</id><content type="html" xml:base="http://localhost:4000/posts/leetcode/subpage2/"><![CDATA[<p>This is the second subpage for the LeetCode Fun Questions blog post. Here, I will cover more advanced problems and techniques.</p>]]></content><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><category term="leetcode" /><summary type="html"><![CDATA[This is the second subpage for the LeetCode Fun Questions blog post. Here, I will cover more advanced problems and techniques.]]></summary></entry><entry><title type="html">Leet Code Fun Questions</title><link href="http://localhost:4000/posts/leetcode/" rel="alternate" type="text/html" title="Leet Code Fun Questions" /><published>2024-07-14T00:00:00+01:00</published><updated>2024-07-14T00:00:00+01:00</updated><id>http://localhost:4000/posts/leetcode</id><content type="html" xml:base="http://localhost:4000/posts/leetcode/"><![CDATA[<p>This is the place where I write about the LeetCode questions I find interesting. I rarely do LeetCode, but I need to brush up on my DSA and competitive coding skills before my master’s, so I’ll be blogging about that here.</p>
-
-<p>Check out these subpages for more detailed discussions:</p>
-<ul>
-  <li><a href="../leetcode/1518">Bottle Exchange</a></li>
-  <li><a href="../leetcode/subpage2">Subpage 2</a></li>
-</ul>]]></content><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><category term="Leetcode" /><category term="Competitive Coding" /><summary type="html"><![CDATA[This is the place where I write about the LeetCode questions I find interesting. I rarely do LeetCode, but I need to brush up on my DSA and competitive coding skills before my master’s, so I’ll be blogging about that here.]]></summary></entry><entry><title type="html">Why Uber Does not use Djgrathrosk Algorithm</title><link href="http://localhost:4000/posts/why_uber_does_not_use_djgrathrosk" rel="alternate" type="text/html" title="Why Uber Does not use Djgrathrosk Algorithm" /><published>2024-07-07T00:00:00+01:00</published><updated>2024-07-07T00:00:00+01:00</updated><id>http://localhost:4000/posts/why_uber_does_not_use_djgrathrosk</id><content type="html" xml:base="http://localhost:4000/posts/why_uber_does_not_use_djgrathrosk"><![CDATA[<p>As a passionate computer science student, I’ve always been fascinated by the world of machine learning (ML). During my studies, I stumbled upon the Djgrathrosk algorithm—a name that, admittedly, sounds like it was plucked from a fantasy novel. Convinced that Djgrathrosk was the pinnacle of time optimization algorithms whose on the get go the problem it should have solved was calculating ETA. Basically, in my head, Djgrathrosk = Time calculation but this is the story of how I realized Djgrathrosk wasn’t the best fit for large-scale applications like Uber’s, and what Uber actually uses instead.</p>
+<hr />]]></content><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><category term="Computer Vision" /><category term="Python" /><category term="Building Hawkeye" /><summary type="html"><![CDATA[Day 1-7: Project Setup and Initial Development]]></summary></entry><entry><title type="html">Why Uber Does not use Djgrathrosk Algorithm</title><link href="http://localhost:4000/posts/why_uber_does_not_use_djgrathrosk" rel="alternate" type="text/html" title="Why Uber Does not use Djgrathrosk Algorithm" /><published>2024-07-07T00:00:00+01:00</published><updated>2024-07-07T00:00:00+01:00</updated><id>http://localhost:4000/posts/why_uber_does_not_use_djgrathrosk</id><content type="html" xml:base="http://localhost:4000/posts/why_uber_does_not_use_djgrathrosk"><![CDATA[<p>As a passionate computer science student, I’ve always been fascinated by the world of machine learning (ML). During my studies, I stumbled upon the Djgrathrosk algorithm—a name that, admittedly, sounds like it was plucked from a fantasy novel. Convinced that Djgrathrosk was the pinnacle of time optimization algorithms whose on the get go the problem it should have solved was calculating ETA. Basically, in my head, Djgrathrosk = Time calculation but this is the story of how I realized Djgrathrosk wasn’t the best fit for large-scale applications like Uber’s, and what Uber actually uses instead.</p>
 
 <p><img src="/images/uber_eta.png" alt="Eta" style="width:  30%; float: right; margin-left: 15px;" /></p>
 
@@ -1378,78 +1454,4 @@ graph TD;
 
 <p>Thanks for reading! Feel free to reach out if you have any questions about the upgrade process or want to share your own experiences with Ruby and Rails upgrades.</p>
 
-<p>Happy coding!</p>]]></content><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><category term="ruby" /><category term="engineering" /><category term="yjit" /><summary type="html"><![CDATA[Upgrading Ruby and Rails to YJIT: A Deep Dive into Breaking Changes, Challenges, and Code Improvements]]></summary></entry><entry><title type="html">Postgres Sequence Item Go Up Even If Object Creation Fails</title><link href="http://localhost:4000/posts/next_val_postgres/" rel="alternate" type="text/html" title="Postgres Sequence Item Go Up Even If Object Creation Fails" /><published>2024-03-25T00:00:00+00:00</published><updated>2024-03-25T00:00:00+00:00</updated><id>http://localhost:4000/posts/next_val_postgres</id><content type="html" xml:base="http://localhost:4000/posts/next_val_postgres/"><![CDATA[<p>Today while working  on a ror project we run into an abrupt issue wiht transaction where even if the transaction was not being processed the id was increasing leading to a failure in a backgroud sidekiq worker this lead me to this stackover flow post</p>
-
-<p><a href="https://stackoverflow.com/questions/50650010/why-does-postgres-sequence-item-go-up-even-if-object-creation-fails">Post</a>
-Which then led me in rabit hole that i have tried to pen to the best of my abilities below :-&gt;</p>
-
-<h1 id="postgresql-sequences-unexpected-increments">PostgreSQL Sequences: Unexpected Increments?</h1>
-
-<p>Imagine you’re working with a PostgreSQL database, and you’ve set up a sequence to auto-increment primary keys for your <code class="language-plaintext highlighter-rouge">Client</code> model. Everything seems fine until you encounter a puzzling issue: the sequence value jumps up even when a client creation fails.</p>
-
-<h2 id="the-mystery-unveiled">The Mystery Unveiled</h2>
-
-<p>In PostgreSQL, sequences are special objects used to generate unique identifiers, commonly for primary key fields. When you create a new record, PostgreSQL automatically fetches the next value from the sequence and assigns it to the primary key column.</p>
-
-<h3 id="example-scenario">Example Scenario</h3>
-
-<p>Let’s say your sequence currently stands at 262. You attempt to create a new client, but due to a unique constraint violation (perhaps someone manually set a primary key, which PostgreSQL sequences ignore), the creation fails. Oddly enough, upon rechecking the sequence, you find it’s incremented to 263, despite no new client being added to the database.</p>
-
-<h3 id="why-does-this-happen">Why Does This Happen?</h3>
-
-<p>PostgreSQL’s sequence mechanism operates independently of transaction rollbacks. When you call <code class="language-plaintext highlighter-rouge">nextval</code> on a sequence (implicitly done when a new record is inserted), it advances the sequence whether or not the transaction succeeds or fails. This design ensures each session receives a unique sequence value, even if multiple sessions are running concurrently.</p>
-
-<h3 id="consider-the-consequences">Consider the Consequences</h3>
-
-<p>This behavior can lead to unexpected scenarios if not handled carefully. For instance, if your application logic relies on sequential numbering for auditing or reporting purposes, gaps might appear if transactions fail after fetching a sequence value. These gaps are harmless but can be surprising if not anticipated.</p>
-
-<h3 id="best-practices">Best Practices</h3>
-
-<p>To avoid issues:</p>
-<ul>
-  <li><strong>Avoid Manually Setting Primary Keys:</strong> Let PostgreSQL manage sequence values automatically.</li>
-  <li><strong>Handle Unique Constraints Gracefully:</strong> Ensure your application handles unique constraint violations gracefully to prevent unnecessary gaps in sequence usage.</li>
-</ul>
-
-<h2 id="visualizing-postgresql-sequence-behavior">Visualizing PostgreSQL Sequence Behavior</h2>
-
-<p>To illustrate, here’s a table summarizing how PostgreSQL sequences behave:</p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Action</th>
-      <th>Sequence Value Before</th>
-      <th>Sequence Value After</th>
-      <th>Transaction Outcome</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>Attempt to Create Client</td>
-      <td>262</td>
-      <td>262 (if creation fails)</td>
-      <td>Transaction fails, no new client added</td>
-    </tr>
-    <tr>
-      <td>Retry Creation</td>
-      <td>262</td>
-      <td>263 (if creation succeeds)</td>
-      <td>Transaction succeeds, new client added</td>
-    </tr>
-    <tr>
-      <td>Query Sequence</td>
-      <td>263</td>
-      <td>263</td>
-      <td>Query reflects latest sequence value</td>
-    </tr>
-  </tbody>
-</table>
-
-<h2 id="conclusion">Conclusion</h2>
-
-<p>Understanding PostgreSQL sequences is crucial for maintaining data integrity and application reliability. While the behavior of sequence incrementation on failed transactions might seem counterintuitive at first, it ensures robustness and scalability in multi-session environments.</p>
-
-<p>So, the next time you encounter an unexpected sequence increment in PostgreSQL, remember: it’s all part of PostgreSQL’s design to maintain transactional integrity and support concurrent operations seamlessly.</p>
-
-<p>By grasping these nuances, you can navigate PostgreSQL’s sequence behavior more effectively, ensuring your applications perform reliably even under challenging conditions. Understanding these mechanics not only enhances your troubleshooting skills but also empowers you to design more resilient database architectures.</p>]]></content><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><category term="Postgres" /><summary type="html"><![CDATA[Today while working on a ror project we run into an abrupt issue wiht transaction where even if the transaction was not being processed the id was increasing leading to a failure in a backgroud sidekiq worker this lead me to this stackover flow post]]></summary></entry></feed>
+<p>Happy coding!</p>]]></content><author><name>Yash</name><email>yashpathania704@gmail.com</email></author><category term="ruby" /><category term="engineering" /><category term="yjit" /><summary type="html"><![CDATA[Upgrading Ruby and Rails to YJIT: A Deep Dive into Breaking Changes, Challenges, and Code Improvements]]></summary></entry></feed>
