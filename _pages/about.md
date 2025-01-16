@@ -13,11 +13,12 @@ I'm passionate about NLP and machine learning and have worked on various project
 
 When I'm not immersed in coding, I enjoy exploring various interests and hobbies that keep me grounded in the real world. I love to scuba dive 🤿 and play basketball 🏀. If you know any dive spots or want to hoop, feel free to reach out. Check out the [Misc](./misc) section to see what I'm up to outside of coding.
 
-Feel free to reach out at [yashpathania704@gmail.com](mailto:yashpathania704@gmail.com). Let's connect! I use Obsidian a lot, so this entire website is basically Markdown.
+Feel free to reach out at [yashpathania704@gmail.com](mailto:yashpathania704@gmail.com). Let's connect! I use Obsidian a lot, so this entire website is basically Markdown.  
+
+**Fancy a chat? Book a 30-minute call here:** [Calendly](https://calendly.com/yash-pathania-ucdconnect/30min)
 
 Oh, and I’m currently in the beautiful country of Ireland! 🌍
 
 ***Haigh, go raibh maith agat as bheith anseo!*** (Hi, thank you for being here!)
 <!-- 
  <a href="files/Yash_Singh_Pathania.pdf" style="text-decoration: none;">Resume</a> <span style="font-size: 0.8em; opacity: 0.6;">(Updated: 10-September-2024)</span> -->
-

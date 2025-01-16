@@ -19,7 +19,7 @@
 
 
 
-<title>Yash Singh Pathania - Hii There</title>
+<title>Homography For Old Art Pictures  - Hii There</title>
 
 
 
@@ -29,13 +29,15 @@
 
 <meta property="og:locale" content="en-US">
 <meta property="og:site_name" content="Hii There">
-<meta property="og:title" content="Yash Singh Pathania">
+<meta property="og:title" content="Homography For Old Art Pictures">
 
 
-  <link rel="canonical" href="http://localhost:4000/">
-  <meta property="og:url" content="http://localhost:4000/">
+  <link rel="canonical" href="http://localhost:4000/posts/homography">
+  <meta property="og:url" content="http://localhost:4000/posts/homography">
 
 
+
+  <meta property="og:description" content="Unraveling the Magic of Homography Transformations: A Coding Adventure">
 
 
 
@@ -48,6 +50,9 @@
 
 
 
+
+  <meta property="og:type" content="article">
+  <meta property="article:published_time" content="2024-09-11T00:00:00+01:00">
 
 
 
@@ -73,6 +78,17 @@
 
 <!-- end SEO -->
 
+
+  <script type="text/javascript"
+  src="https://unpkg.com/mermaid@8.0.0-rc.8/dist/mermaid.min.js">
+</script>
+<script>
+$(document).ready(function() {
+    mermaid.initialize({
+        theme: 'forest'
+    });
+});
+</script>
 
 
 <link href="http://localhost:4000/feed.xml" type="application/atom+xml" rel="alternate" title="Hii There Feed">
@@ -272,9 +288,13 @@
 
   <article class="page" itemscope itemtype="http://schema.org/CreativeWork">
     
-      <meta itemprop="headline" content="Yash Singh Pathania">
+      <meta itemprop="headline" content="Homography For Old Art Pictures">
     
     
+      <meta itemprop="description" content="Unraveling the Magic of Homography Transformations: A Coding Adventure">
+    
+    
+      <meta itemprop="datePublished" content="September 11, 2024">
     
     
 
@@ -282,31 +302,103 @@
       
         <header>
           
-            <h1 class="page__title" itemprop="headline">Yash Singh Pathania
+            <h1 class="page__title" itemprop="headline">Homography For Old Art Pictures
 </h1>
           
           
+            <p class="page__meta"><i class="fa fa-clock-o" aria-hidden="true"></i> 
+
+
+  
+	  3 minute read
+	
+</p>
           
+          
+          
+            <p class="page__date"><strong><i class="fa fa-fw fa-calendar" aria-hidden="true"></i> Published:</strong> <time datetime="2024-09-11T00:00:00+01:00">September 11, 2024</time></p>
               
         </header>
       
 
       <section class="page__content" itemprop="text">
-        <p>Hey there!! I’m a master’s student in <a href="https://hub.ucd.ie/usis/!W_HU_MENU.P_PUBLISH?p_tag=PROG&amp;MAJR=T150">Computer Science Negotiated Learning</a> at University College Dublin. Before this, I worked at <a href="https://www.1mg.com/aboutUs?wpsrc=Google+Organic+Search">Tata 1mg</a> as a Software Developer on <a href="https://odin.1mg.com/login">ODIN</a>, an inhouse  data science driven warehouse management software for medicine supply chains serviing about 100k orders in a day.</p>
+        <p>Unraveling the Magic of Homography Transformations: A Coding Adventure</p>
 
-<p>I’m passionate about NLP and machine learning and have worked on various projects, including a <a href="https://www.techscience.com/cmc/v70n3/44965">research paper</a>. Want to know more? Check out my CV and projects tab on this site. Don’t miss the blogs section—I’d love to hear your thoughts!</p>
+<p>Welcome to a fascinating exploration of homography transformations—a powerful technique in computer vision that adjusts the perspective of an image. This process has a myriad of applications, from correcting distorted photos to automating image preprocessing for machine learning tasks. In this post, I’ll walk you through how we built a simple yet effective Homography Transformation App using React for the frontend and FastAPI for the backend.</p>
 
-<p>When I’m not immersed in coding, I enjoy exploring various interests and hobbies that keep me grounded in the real world. I love to scuba dive 🤿 and play basketball 🏀. If you know any dive spots or want to hoop, feel free to reach out. Check out the <a href="./misc">Misc</a> section to see what I’m up to outside of coding.</p>
+<h3 id="what-is-homography">What is Homography?</h3>
 
-<p>Feel free to reach out at <a href="mailto:yashpathania704@gmail.com">yashpathania704@gmail.com</a>. Let’s connect! I use Obsidian a lot, so this entire website is basically Markdown.</p>
+<p>Homography is a transformation applied to points on a plane in a three-dimensional projective space. It’s commonly used to manipulate images where you need to correct the perspective. For example, imagine taking a picture of a painting from the side; homography can help “straighten” that image to look as if you’d captured it head-on.</p>
 
-<p><strong>Fancy a chat? Book a 30-minute call here:</strong> <a href="https://calendly.com/yash-pathania-ucdconnect/30min">Calendly</a></p>
+<h3 id="the-mathematical-grit">The Mathematical Grit</h3>
 
-<p>Oh, and I’m currently in the beautiful country of Ireland! 🌍</p>
+<p>Homography involves a series of linear transformations and is defined by a 3x3 matrix. Given a set of four points in both the original and target images, we can compute this matrix to map between these points. Here’s a simplified breakdown of the mathematics involved:</p>
 
-<p><strong><em>Haigh, go raibh maith agat as bheith anseo!</em></strong> (Hi, thank you for being here!)
-<!-- 
- <a href="files/Yash_Singh_Pathania.pdf" style="text-decoration: none;">Resume</a> <span style="font-size: 0.8em; opacity: 0.6;">(Updated: 10-September-2024)</span> --></p>
+<ol>
+  <li><strong>Point Collection</strong>:
+    <ul>
+      <li>You define points on your image that form a quadrilateral, which might represent, for instance, the corners of a document in an image taken at an angle.</li>
+    </ul>
+  </li>
+  <li><strong>Matrix Equation</strong>:
+    <ul>
+      <li>The homography matrix ( H ) relates corresponding points in two images, ( p ) in the original image and ( p’ ) in the transformed image, as follows:
+[
+p’ = H \cdot p
+]
+Where ( p ) and ( p’ ) are points in homogeneous coordinates.</li>
+    </ul>
+  </li>
+  <li><strong>Direct Linear Transformation (DLT)</strong>:
+    <ul>
+      <li>The matrix ( H ) can be found using a series of linear equations derived from the coordinates of points in both images:
+[
+\begin{align<em>}
+ax + by + c &amp; = x’ <br />
+dx + ey + f &amp; = y’ <br />
+gx + hy + i &amp; = 1
+\end{align</em>}
+]</li>
+      <li>The coefficients (a-i) are solved using Singular Value Decomposition (SVD), ensuring the matrix transforms the source points to their destinations.</li>
+    </ul>
+  </li>
+  <li><strong>Matrix Application</strong>:
+    <ul>
+      <li>For any given point ( (x, y) ) in the original image, we apply ( H ) to find the corresponding point in the new image, effectively transforming the perspective.</li>
+    </ul>
+  </li>
+</ol>
+
+<h3 id="building-the-app">Building the App</h3>
+
+<h4 id="step-1-setting-up-the-environment">Step 1: Setting Up the Environment</h4>
+
+<p>We started by setting up two main components: a React frontend and a FastAPI backend. React manages the UI, providing a responsive way to upload images and select points. FastAPI, on the other hand, handles the computationally intensive task of calculating and applying the homography matrix.</p>
+
+<h4 id="step-2-user-interaction">Step 2: User Interaction</h4>
+
+<p>Users upload an image and then click to select four points on the image. These points dictate how the image will be transformed. The app dynamically draws a quadrilateral as points are selected, reinforcing the expected transformation.</p>
+
+<h4 id="step-3-backend-magic">Step 3: Backend Magic</h4>
+
+<p>Upon receiving the points and the image, the backend:</p>
+<ul>
+  <li>Orders the points to ensure consistency.</li>
+  <li>Computes the homography matrix using the provided points.</li>
+  <li>Applies this matrix to transform the image, which is then sent back to the user.</li>
+</ul>
+
+<h3 id="challenges-and-solutions">Challenges and Solutions</h3>
+
+<p>Implementing the app wasn’t without its hurdles. Ensuring that points are selected in a way that makes mathematical sense (i.e., forming a convex quadrilateral) required some additional checks. Moreover, handling different image sizes and aspect ratios meant scaling the points appropriately before applying transformations.</p>
+
+<h3 id="conclusion-why-it-matters">Conclusion: Why It Matters</h3>
+
+<p>The Homography Transformation App is more than just a technical showcase; it’s a practical tool for anyone needing to correct image perspectives quickly. For developers, it’s a great starting point for more complex computer vision tasks that require image normalization.</p>
+
+<p>This project is a testament to the beauty of combining mathematical theory with software development to solve real-world problems. Whether you’re a seasoned developer or a curious enthusiast, the world of homography transformations offers endless possibilities for exploration and innovation.</p>
+
+<hr />
 
 
         
@@ -319,6 +411,78 @@
         
 
 
+  
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-tags" aria-hidden="true"></i> Tags: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/tags/#fastapi" class="page__taxonomy-item" rel="tag">fastApi</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#postgresql" class="page__taxonomy-item" rel="tag">PostgreSQL</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#python" class="page__taxonomy-item" rel="tag">python</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#render" class="page__taxonomy-item" rel="tag">Render</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#selfproject" class="page__taxonomy-item" rel="tag">SelfProject</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/tags/#streamlit" class="page__taxonomy-item" rel="tag">Streamlit</a>
+    
+    </span>
+  </p>
+
+
+
+
+  
+
+
+
+
+
+
+  
+  
+  
+
+  <p class="page__taxonomy">
+    <strong><i class="fa fa-fw fa-folder-open" aria-hidden="true"></i> Categories: </strong>
+    <span itemprop="keywords">
+    
+      
+      
+      <a href="http://localhost:4000/categories/#student-life" class="page__taxonomy-item" rel="tag">Student Life</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/categories/#technology" class="page__taxonomy-item" rel="tag">Technology</a><span class="sep">, </span>
+    
+      
+      
+      <a href="http://localhost:4000/categories/#ucd" class="page__taxonomy-item" rel="tag">UCD</a>
+    
+    </span>
+  </p>
 
 
       </footer>
