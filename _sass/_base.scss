@@ -5,15 +5,26 @@ html {
   /* sticky footer fix */
   position: relative;
   min-height: 100%;
+  font-size: 16px;
+  
+  @media screen and (max-width: $small) {
+    font-size: 14px;
+  }
+  
+  @media screen and (min-width: $large) {
+    font-size: 18px;
+  }
 }
 
 body {
   margin: 0;
   padding: $masthead-height 0 0;
-  padding-bottom: 9em;
-  color: $text-color;
+  padding-bottom: max(9em, calc(9em + 100px));
+  color: var(--text-color);
+  background-color: var(--background-color);
   font-family: $global-font-family;
   line-height: 1.5;
+  transition: background-color 0.3s ease, color 0.3s ease;
 
   &.overflow--hidden {
     /* when primary navigation is visible, the content in the background won't scroll */
@@ -312,4 +323,19 @@ nav {
 b, i, strong, em, blockquote, p, q, span, figure, img, h1, h2, header, input, a, tr, td, form button, input[type="submit"], .btn, .highlight, .archive__item-teaser {
   -webkit-transition: $global-transition;
   transition: $global-transition;
+}
+
+/* Media queries for responsive scaling */
+@media screen and (max-width: $small) {
+  h1 { font-size: calc($type-size-3 * 0.85); }
+  h2 { font-size: calc($type-size-4 * 0.85); }
+  h3 { font-size: calc($type-size-5 * 0.85); }
+  h4, h5, h6 { font-size: calc($type-size-6 * 0.85); }
+}
+
+@media screen and (min-width: $large) {
+  h1 { font-size: calc($type-size-3 * 1.1); }
+  h2 { font-size: calc($type-size-4 * 1.1); }
+  h3 { font-size: calc($type-size-5 * 1.1); }
+  h4, h5, h6 { font-size: calc($type-size-6 * 1.1); }
 }

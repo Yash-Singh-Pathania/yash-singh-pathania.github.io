@@ -56,3 +56,26 @@
     font-weight: 700;
   }
 }
+
+.theme-toggle {
+  background: transparent;
+  border: none;
+  color: var(--text-color);
+  cursor: pointer;
+  padding: 0.5em;
+  font-size: 1.2em;
+  margin-left: 1em;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  i {
+    transition: color 0.3s ease;
+  }
+}

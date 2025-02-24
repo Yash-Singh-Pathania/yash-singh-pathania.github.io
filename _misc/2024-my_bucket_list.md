@@ -21,3 +21,5 @@ Below are the goals I’m determined to achieve in my lifetime. Each one represe
 > _**Remember:** Every big dream starts with a single step._  
 
 This is my lifeand i plan to do everythign i want its no long about having everything on the table its about having everything on the table . 
+
+

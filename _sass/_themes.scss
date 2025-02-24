@@ -1,0 +1,30 @@
+/* ==========================================================================
+   THEME VARIABLES
+   ========================================================================== */
+
+:root {
+  // Light theme colors (default)
+  --background-color: #fff;
+  --text-color: #{$dark-gray};
+  --link-color: #{$info-color};
+  --border-color: #{$lighter-gray};
+  --code-background-color: #{$code-background-color};
+  --footer-background-color: #{$lighter-gray};
+  --masthead-background-color: #fff;
+  --blockquote-border-color: #{$primary-color};
+  
+  // Transitions for smooth theme switching
+  --theme-transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+// Dark theme colors
+[data-theme="dark"] {
+  --background-color: #1a1a1a;
+  --text-color: #e6e6e6;
+  --link-color: #6cb2eb;
+  --border-color: #404040;
+  --code-background-color: #2d2d2d;
+  --footer-background-color: #2d2d2d;
+  --masthead-background-color: #2d2d2d;
+  --blockquote-border-color: #6cb2eb;
+} 
