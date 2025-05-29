@@ -2,6 +2,119 @@
 
 <!-- start custom head snippets -->
 
+<style>
+/* Mobile Responsiveness Styles */
+@media screen and (max-width: 768px) {
+  /* Main content area */
+  #main {
+    padding: 0 1em;
+  }
+
+  /* Page content */
+  .page__content {
+    padding: 0 0.5em;
+  }
+
+  /* Sidebar */
+  .sidebar {
+    width: 100%;
+    padding: 1em 0;
+  }
+
+  /* Author profile */
+  .author__avatar {
+    display: block;
+    margin: 0 auto 1em;
+  }
+
+  .author__content {
+    text-align: center;
+  }
+
+  /* Navigation */
+  .masthead {
+    padding: 0.5em 1em;
+  }
+
+  /* Headings */
+  h1 {
+    font-size: 1.8em;
+  }
+  
+  h2 {
+    font-size: 1.5em;
+  }
+  
+  h3 {
+    font-size: 1.3em;
+  }
+
+  
+  /* Tables */
+  table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Code blocks */
+  pre, code {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+  
+  /* Images */
+  img {
+    height: auto;
+    max-width: 100%;
+  }
+  
+  /* Project grid */
+  .grid__item {
+    width: 100%;
+    margin-bottom: 2em;
+  }
+  
+  /* Buttons */
+  .btn {
+    display: block;
+    width: 100%;
+    margin-bottom: 0.5em;
+    text-align: center;
+  }
+}
+
+/* Smaller mobile devices */
+@media screen and (max-width: 480px) {
+  /* Further reduce font sizes */
+  body {
+    font-size: 14px;
+  }
+  
+  h1 {
+    font-size: 1.6em;
+  }
+  
+  h2 {
+    font-size: 1.3em;
+  }
+  
+  h3 {
+    font-size: 1.1em;
+  }
+  
+  /* Adjust padding and margins */
+  .page__content {
+    padding: 0 0.25em;
+  }
+  
+  /* Author profile */
+  .author__avatar img {
+    max-width: 150px;
+  }
+}
+</style>
+
 <link rel="apple-touch-icon" sizes="57x57" href="{{ base_path }}/images/apple-touch-icon-57x57.png?v=M44lzPylqQ">
 <link rel="apple-touch-icon" sizes="60x60" href="{{ base_path }}/images/apple-touch-icon-60x60.png?v=M44lzPylqQ">
 <link rel="apple-touch-icon" sizes="72x72" href="{{ base_path }}/images/apple-touch-icon-72x72.png?v=M44lzPylqQ">
