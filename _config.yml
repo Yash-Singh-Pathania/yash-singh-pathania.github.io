@@ -11,7 +11,7 @@ locale                   : "en-US"
 title                    : "Hii There"
 title_separator          : "-"
 name                     : &name "Yash Singh Pathania"
-description              : &description "Hey there! I’m Yash, a Ruby and Python developer with a knack for AWS, diving into computer vision, and pioneering AR/VR. I love blending tech with a dash of sci-fi, turning futuristic dreams into reality. From backend architectures to immersive AR experiences, I’m all about exploring new dimensions of code and pushing the boundaries of what’s possible."
+description              : &description "AI Engineer at Honeywell building scalable AI solutions with LLMs, multi-agent systems, and ML pipelines. MSc in Computer Science & AI from UCD (Top 1%, First Class Honours). Passionate about bridging research and real-world applications through innovative AI/ML solutions."
 url                      : https://yash-singh-pathania.github.io
 baseurl                  : ""
 repository               : "Yash-Singh-Pathania/yash-singh-pathania.github.io"
@@ -24,7 +24,7 @@ author:
   avatar           : "profile.jpg"
   name             : "Yash"
   pronouns         : "he/him"  
-  bio              : "Solving everyday problems through code, one line at a time."
+  bio              : "AI Engineer at Honeywell | MSc Computer Science & AI | Building scalable LLM solutions"
   location         : "Dublin, Ireland"
   email            : "yashpathania704@gmail.com" 
 
